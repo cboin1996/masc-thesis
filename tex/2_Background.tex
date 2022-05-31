@@ -3,69 +3,211 @@ In this chapter, high level background information is introduced on topics of au
 driving, FL, DRL, and lastly FRL
 
 \section{Autonomous Driving}
-In recent years there has been a surge in autonomous vehicle (AV) research, likely due to the technologies potential for increasing road safety, traffic throughput and fuel economy \cite{Makantasis2020a, Ye2019}. AV designs can vary in complexity from simple AV designs including hand designed rules with estimations for making driving possible, to complex systems composed of sensors and sophisticated software  \cite{Makantasis2020a}.  The simplest designs lack the ability to generalize to the complex driving environments found in the real world \cite{Makantasis2020a}. In order to best model AV environments, two areas of research are often considered: supervised learning or RL approaches \cite{Makantasis2020a}.  Driving is considered to be a multi-agent interaction problem, and due to large variability of road data it can be quite challenging (or near impossible) to gather a dataset large enough to train a supervised model \cite{ElSallab2017a}.  In addition, driving data is collected from humans, which can also limit an AI's ability to that of human level \cite{Ye2019}. In contrast, RL methods are known to generalize quite well \cite{Makantasis2020a} \cite{Makantasis2020a}, and furthermore DRL has seen large successes in autonomous driving and AV platooning research. 
+In recent years there has been a surge in autonomous vehicle (AV) research, likely due 
+to the technologies potential for increasing road safety, traffic throughput and fuel 
+economy \cite{Makantasis2020a, Ye2019}. AV designs can vary in complexity from simple 
+AV designs including hand designed rules with estimations for making driving possible, 
+to complex systems composed of sensors and sophisticated software  \cite{Makantasis2020a}.  
+The simplest designs lack the ability to generalize to the complex driving environments 
+found in the real world \cite{Makantasis2020a}. In order to best model AV environments, 
+two areas of research are often considered: supervised learning or RL approaches 
+\cite{Makantasis2020a}.  Driving is considered to be a multi-agent interaction problem, 
+and due to large variability of road data it can be quite challenging (or near impossible) 
+to gather a dataset large enough to train a supervised model \cite{ElSallab2017a}.  
+In addition, driving data is collected from humans, which can also limit an AI's ability 
+to that of human level \cite{Ye2019}. In contrast, RL methods are known to generalize 
+quite well \cite{Makantasis2020a} \cite{Makantasis2020a}, and furthermore DRL has seen 
+large successes in autonomous driving and AV platooning research. 
 
-In general there are two types of models for AV decision making: vehicle-following modeling or lane-changing modeling \cite{Ye2019}, the vehicle-following approach is selected as the AV model for this study.  In \cite{Zhu2018}, four typical AV platooning environments are presented: stimulus-based, safety-based, safety-distance, pyscho-physical and desired-measures. Stimulus-based environments reference their acceleration off of the relative distance and speed from the leading vehicle \cite{Zhu2018}. Safety distance models choose a gap large enough to stop at a specific velocity if the leading vehicle were to suddenly stop \cite{Zhu2018}.  Psycho-physical models operate with a driver varying their behavior with regard to traffic state through approaching the lead vehicle, steady state following, free driving, or braking \cite{Zhu2018}.  The desired measures model takes a select set of measures (for example speed or headway), and tries to minimize its actual measurements from the desired \cite{Zhu2018}. Vehicle-following models are based on following a vehicle in a single lane of a road with respect to a leading vehicle's actions \cite{Zhu2018}.  Vehicle-following models controlled using traditional controls methods are known to have: limited accuracy, poor generalization from a lack of data, and a lack of adaptive updating \cite{Zhu2018}. In order to address such limitations, AI is being explored as a method to control vehicle-following models \cite{Zhu2018}. In particular, DRL models have become a prominent area of research applied to AV platooning.
+In general there are two types of models for AV decision making: vehicle-following 
+modeling or lane-changing modeling \cite{Ye2019}, the vehicle-following approach is 
+selected as the AV model for this study.  In \cite{Zhu2018}, four typical AV platooning 
+environments are presented: stimulus-based, safety-based, safety-distance, pyscho-physical 
+and desired-measures. Stimulus-based environments reference their acceleration off 
+of the relative distance and speed from the leading vehicle \cite{Zhu2018}. Safety 
+distance models choose a gap large enough to stop at a specific velocity if the 
+leading vehicle were to suddenly stop \cite{Zhu2018}.  Psycho-physical models 
+operate with a driver varying their behavior with regard to traffic state through 
+approaching the lead vehicle, steady state following, free driving, or braking \cite{Zhu2018}.  The desired measures model takes a select set of measures (for example speed or headway), and tries to minimize its actual measurements from the desired \cite{Zhu2018}. Vehicle-following models are based on following a vehicle in a single lane of a road with respect to a leading vehicle's actions \cite{Zhu2018}.  Vehicle-following models controlled using traditional controls methods are known to have: limited accuracy, poor generalization from a lack of data, and a lack of adaptive updating \cite{Zhu2018}. In order to address such limitations, AI is being explored as a method to control vehicle-following models \cite{Zhu2018}. In particular, DRL models have become a prominent area of research applied to AV platooning.
 
-DRL approaches are model-free and the model may be inferred by the algorithm during training.  There are three elements important to DRL: training environment (ensuring variety in the training), choosing the proper algorithm for the case study (Q-learning and other algorithms are described below), and the creation of an effective reward function \cite{Ye2019}.  In order to achieve human like control, DRL has been accepted as one of the most promising approaches \cite{ElSallab2017a}.  DRL may be applied to human like driving models due to its ability to perform in complex situations \cite{Zhu2018}, mitigating common issues with vehicle following models \cite{Zhu2018}.  DRL is promising for AV research for a few reasons: function approximation provided by deep neural networks (DNN)'s, ability to generalize from learning through training data (rather than parameter estimation as a result of data fitting) and continuous improvement \cite{Zhu2018}.
+DRL approaches are model-free and the model may be inferred by the algorithm during 
+training.  There are three elements important to DRL: training environment (ensuring 
+variety in the training), choosing the proper algorithm for the case study (Q-learning 
+and other algorithms are described below), and the creation of an effective reward 
+function \cite{Ye2019}.  In order to achieve human like control, DRL has been accepted 
+as one of the most promising approaches \cite{ElSallab2017a}.  DRL may be applied to 
+human like driving models due to its ability to perform in complex situations 
+\cite{Zhu2018}, mitigating common issues with vehicle following models \cite{Zhu2018}.  
+DRL is promising for AV research for a few reasons: function approximation provided 
+by deep neural networks (DNN)'s, ability to generalize from learning through training 
+data (rather than parameter estimation as a result of data fitting) and continuous 
+improvement \cite{Zhu2018}.
 
-Several reinforcement learning models are useful to know when considering a DRL approach to AV: value-based RL, policy-based RL, DRL, Deep Q-Network (DQN) and Deep Deterministic Policy Gradient (DDPG). It is important to note that DDPG is the current prominent algorithm for applying DRL to AV driving scenarios, especially AV platooning. The following references are summarized in Chapter \ref{chap:litreview}, which are works that apply DDPG to AV platooning \cite{Lin2019, Song2020, Chu2019b, Peake2020}.  
+Several reinforcement learning models are useful to know when considering a DRL approach 
+to AV: value-based RL, policy-based RL, DRL, Deep Q-Network (DQN) and Deep Deterministic 
+Policy Gradient (DDPG). It is important to note that DDPG is the current prominent algorithm 
+for applying DRL to AV driving scenarios, especially AV platooning. The following 
+references are summarized in Chapter \ref{chap:litreview}, which are works that apply 
+DDPG to AV platooning \cite{Lin2019, Song2020, Chu2019b, Peake2020}.  
 
 \section{Federated Learning}
-Google began the discussion of FL, showing FL's privacy advantages when compared to a centralized architecture \cite{Konecny2015, BrendanMcMahan2017a, McMahan2016FederatedLO}.  At the time of discovery, the core ideology of FL was to train machine learning models from distributed data sets across mobile devices while minimizing data leakage \cite{McMahan2016FederatedLO}.   Data transmitted during a FL process must be the minimal required to improve a model in order to reduce risk of data breaches \cite{BrendanMcMahan2017a}.  FL is defined in \cite{Yang2019a, IntelAI19} as a series of $N$ data owners ${\mathcal{F}_1,...\mathcal{F}_N}$ wishing to train a machine learning model by compiling data ${\mathcal{D}_1,...\mathcal{D}_N}$.  FL can be framed as an optimization problem containing the following characteristics \cite{IntelAI19}:
+Google began the discussion of FL, showing FL's privacy advantages when compared 
+to a centralized architecture \cite{Konecny2015, BrendanMcMahan2017a, McMahan2016FederatedLO}.  At the time of discovery, the core ideology of FL was to train machine learning models from distributed data sets across mobile devices while minimizing data leakage \cite{McMahan2016FederatedLO}.   Data transmitted during a FL process must be the minimal required to improve a model in order to reduce risk of data breaches \cite{BrendanMcMahan2017a}.  FL is defined in \cite{Yang2019a, IntelAI19} as a series of $N$ data owners ${\mathcal{F}_1,...\mathcal{F}_N}$ wishing to train a machine learning model by compiling data ${\mathcal{D}_1,...\mathcal{D}_N}$.  FL can be framed as an optimization problem containing the following characteristics \cite{IntelAI19}:
 \begin{enumerate}
-    \item Non-independent identical distributed (non-IID) datasets: Agents in a FL setting may contain differing distributions amongst their data.
+    \item Non-independent identical distributed (non-IID) datasets: Agents in a FL setting 
+    may contain differing distributions amongst their data.
     \item Unbalanced number of data points: The sample space for each agent is variable.
-    \item Large user base: Due to the large amounts of data required by deep learning models, many participants with their own data sets are a likely solution to meet the data demand for training a model.
-    \item Communication challenges: FL systems rely on the users, introducing a variety of user based challenges such as upload speed per user.
+    \item Large user base: Due to the large amounts of data required by deep learning 
+    models, many participants with their own data sets are a likely solution to meet 
+    the data demand for training a model.
+    \item Communication challenges: FL systems rely on the users, introducing a variety 
+    of user based challenges such as upload speed per user.
 \end{enumerate}
 
-FL strategies can be categorized based on the data's underlying characteristics \cite{Yang2019a, IntelAI19}.  
+FL strategies can be categorized based on the data's underlying characteristics 
+\cite{Yang2019a, IntelAI19}.  
 
 \begin{itemize}
-    \item Horizontal FL (HFL): Applied to data sets with the same feature space (columns) but different samples \cite{Yang2019a, IntelAI19}.  
-    \item Vertical FL (VFL): Applied to data sets with the same sample space (rows in the data set), but different features \cite{Yang2019a}.   
-    \item Federated transfer learning (FTL): is essentially a combination of HFL and VFL \cite{Yang2019a, IntelAI19}.  Thus, the feature and sample spaces of the data sets are variable \cite{Yang2019a}.
+    \item Horizontal FL (HFL): Applied to data sets with the same feature space (columns) 
+    but different samples \cite{Yang2019a, IntelAI19}.  
+    \item Vertical FL (VFL): Applied to data sets with the same sample space (rows in the 
+    data set), but different features \cite{Yang2019a}.   
+    \item Federated transfer learning (FTL): is essentially a combination of HFL and 
+    VFL \cite{Yang2019a, IntelAI19}.  Thus, the feature and sample spaces of the data 
+    sets are variable \cite{Yang2019a}.
 \end{itemize}
 
-In general, FL enables the online training of a single model with performance approaching that of the optimal centralized model \cite{Yang2019a}. A centralized model is the idealistic model for a distributed system, where a single model incorporates the intricacies of all agents into it's model structure directly \cite{Yang2019a}.  Often this centralized approach is desired for the control of a multi-agent system, however in the event of server failure all agents in the system would also fail \cite{Long2018}.  FL processes aim to avoid the risk of total system failure by producing a FL model from a training process that does not share any of the agents data points amongst themselves \cite{Yang2019a}.  Ideally, the FL  model's performance should be close to that of the centralized model \cite{Yang2019a}.
+In general, FL enables the online training of a single model with performance approaching 
+that of the optimal centralized model \cite{Yang2019a}. A centralized model is the 
+idealistic model for a distributed system, where a single model incorporates the intricacies 
+of all agents into it's model structure directly \cite{Yang2019a}.  Often this centralized 
+approach is desired for the control of a multi-agent system, however in the event of server 
+failure all agents in the system would also fail \cite{Long2018}.  FL processes aim to 
+avoid the risk of total system failure by producing a FL model from a training process 
+that does not share any of the agents data points amongst themselves \cite{Yang2019a}.  
+Ideally, the FL  model's performance should be close to that of the centralized model 
+\cite{Yang2019a}.
 
-As previously mentioned, \cite{BrendanMcMahan2017a} produced the FedAvg algorithm.  In FedAvg, each client takes a single step of gradient descent, computing the loss with local data. The Federated server then takes the weighted average of all resulting models \cite{BrendanMcMahan2017a}, returning the averaged parameters to each client for another local training step.  FedAvg provided an increase in performance for training high quality models, however privacy still needed to be considered further to ensure security during transmission \cite{BrendanMcMahan2017a}. \cite{Smith2017} employed a different approach from that of \cite{Yang2019a, BrendanMcMahan2017a} in the implementation of FL, by applying Multi-Task Learning (MTL) to the FL setting.  MTL allows for the training of separate models for each node in a system, but with the fitting of related models simultaneously \cite{Smith2017}. MTL labels any clustered, spare or low-rank structure between tasks in an a-priori fashion (without observation) -- task relationships are not known beforehand and may be inferred from the data structure itself \cite{Smith2017}.  Although MTL has its benefits, FedAvg is widely used in literature and even used an an aggregation strategy within FRL. Because of FedAvg's relevance in literature, FedAvg is selected to be implemented on the AV platooning problem in this thesis. Lastly, it is important to understand that FL is only applied to supervised ML problems.  In order to apply FL to DRL problems, FRL has been developed. Before discussing FRL, first a brief introduction on the topics of RL and DRL is presented.
+As previously mentioned, \cite{BrendanMcMahan2017a} produced the FedAvg algorithm.  In 
+FedAvg, each client takes a single step of gradient descent, computing the loss with 
+local data. The Federated server then takes the weighted average of all resulting models 
+\cite{BrendanMcMahan2017a}, returning the averaged parameters to each client for another 
+local training step.  FedAvg provided an increase in performance for training high 
+quality models, however privacy still needed to be considered further to ensure security 
+during transmission \cite{BrendanMcMahan2017a}. \cite{Smith2017} employed a different 
+approach from that of \cite{Yang2019a, BrendanMcMahan2017a} in the implementation of FL, 
+by applying Multi-Task Learning (MTL) to the FL setting.  MTL allows for the training of 
+separate models for each node in a system, but with the fitting of related models 
+simultaneously \cite{Smith2017}. MTL labels any clustered, spare or low-rank structure 
+between tasks in an a-priori fashion (without observation) -- task relationships are not 
+known beforehand and may be inferred from the data structure itself \cite{Smith2017}.  
+Although MTL has its benefits, FedAvg is widely used in literature and even used an an 
+aggregation strategy within FRL. Because of FedAvg's relevance in literature, FedAvg is 
+selected to be implemented on the AV platooning problem in this thesis. Lastly, it is 
+important to understand that FL is only applied to supervised ML problems.  In order to 
+apply FL to DRL problems, FRL has been developed. Before discussing FRL, first a brief 
+introduction on the topics of RL and DRL is presented.
 
 \section{Deep Reinforcement Learning}
-RL is a learning from experience based optimization method useful for inferring actions as an output using an environment's states as input. In RL, an agent observes a given state, takes an action based on the state, and receives a reward as a metric to determine how `good' the action was.  As an RL agent explores an environment over a training episode, the agent aims to maximize the cumulative reward that is the sum of each reward received from taking an action at a time-step during a training episode.  The cumulative reward is maximized through learning an optimal state-action function known as the policy through a trial and error learning process.  DRL uses multi-layer neural networks in place of the policy function.  Some examples of well known DRL algorithms are: DQN, Advantage Actor Critic (A2C) and DDPG. Due to the success of DDPG in AV platooning research, the DDPG algorithm is selected for use in this thesis.  
+RL is a learning from experience based optimization method useful for inferring actions as 
+an output using an environment's states as input. In RL, an agent observes a given state, 
+takes an action based on the state, and receives a reward as a metric to determine how 
+`good' the action was.  As an RL agent explores an environment over a training episode, 
+the agent aims to maximize the cumulative reward that is the sum of each reward received 
+from taking an action at a time-step during a training episode.  The cumulative reward 
+is maximized through learning an optimal state-action function known as the policy through 
+a trial and error learning process.  DRL uses multi-layer neural networks in place of the 
+policy function.  Some examples of well known DRL algorithms are: DQN, Advantage Actor 
+Critic (A2C) and DDPG. Due to the success of DDPG in AV platooning research, the DDPG 
+algorithm is selected for use in this thesis.  
 
-Several RL and DRL algorithms are useful in building an understanding of DRL applications to AV platooning: value-based RL, policy-based RL, DQN and DDPG. In value-based RL a value function measures the quality of each state action pair predicting a long-term reward. The action value equation provides an expected reward given an action $u$ in state $x$, thereafter following the optimal policy. The action-value function is presented below from \cite{sutton2018reinforcement}
+Several RL and DRL algorithms are useful in building an understanding of DRL applications 
+to AV platooning: value-based RL, policy-based RL, DQN and DDPG. In value-based RL a value 
+function measures the quality of each state action pair predicting a long-term reward. The 
+action value equation provides an expected reward given an action $u$ in state $x$, 
+thereafter following the optimal policy. The action-value function is presented below 
+from \cite{sutton2018reinforcement}
 
 \begin{equation}
     q^{\pi}(x,u) = E[R_t|x_t = x, u_t = u]. \label{eqn:act_val}
 \end{equation}
 
-Q-learning aims to learn the action-value function from experience. The Q-function begins at random, and is updated according to the Bellman equation, presented below from  \cite{sutton2018reinforcement}. 
+Q-learning aims to learn the action-value function from experience. The Q-function begins at 
+random, and is updated according to the Bellman equation, presented below from  
+\cite{sutton2018reinforcement}. 
 
 \begin{equation}
     q(x,u) = E[r + \gamma\max_{u^{'}}(q(x', u'))] \label{eqn:bell}
 \end{equation}
 
-\noindent The Bellman equation assumes that the immediate reward $r$ plus the maximum future reward for the next state $x'$ produces the maximum future reward for state $x$ and action $u$ \cite{Zhu2018}.  Q-learning has become one of the most popular value-based methods, along with its variants: DQN, Double DQN, and Dueling DQN.\cite{sWang2017}.  
+\noindent The Bellman equation assumes that the immediate reward $r$ plus the maximum 
+future reward for the next state $x'$ produces the maximum future reward for state $x$ 
+and action $u$ \cite{Zhu2018}.  Q-learning has become one of the most popular value-based 
+methods, along with its variants: DQN, Double DQN, and Dueling DQN.\cite{sWang2017}.  
 
-Policy based DRL also uses a value function $q(x, \theta)$ \cite{sutton2018reinforcement, sWang2017}. The policy, $\pi(u|x, \theta)$, is represented by neural networks, where $\theta$ represents the weights in a deep neural network (DNN) \cite{Zhu2018}.  A state space is given as input, and a continuous action space may be the output \cite{Zhu2018}. DRL uses a neural network to model the policy or value function \cite{Zhu2018}.  DQN is known to work in discrete action states, which has limited use in AV platoons where vehicles experience continuous action spaces \cite{Zhu2018, sWang2017}. The limitations of DQN in continuous environments led to the development of DDPG: a combination of DQN, actor-critic, and deterministic policy gradients, providing a DRL algorithm capable of training models with continuous action spaces \cite{Lillicrap2016, sWang2017}.  
+Policy based DRL also uses a value function $q(x, \theta)$ 
+\cite{sutton2018reinforcement, sWang2017}. The policy, $\pi(u|x, \theta)$, is represented 
+by neural networks, where $\theta$ represents the weights in a deep neural network (DNN) 
+\cite{Zhu2018}.  A state space is given as input, and a continuous action space may be 
+the output \cite{Zhu2018}. DRL uses a neural network to model the policy or value 
+function \cite{Zhu2018}.  DQN is known to work in discrete action states, which has 
+limited use in AV platoons where vehicles experience continuous action spaces 
+\cite{Zhu2018, sWang2017}. The limitations of DQN in continuous environments led to 
+the development of DDPG: a combination of DQN, actor-critic, and deterministic 
+policy gradients, providing a DRL algorithm capable of training models with continuous 
+action spaces \cite{Lillicrap2016, sWang2017}.  
 
-Much like DQN, DDPG uses DNNs as the function approximators \cite{Zhu2018}.  Most optimization algorithms assume that samples of data are IID \cite{Lillicrap2016}.  By the addition of a finite ``replay buffer'' which stores the state, action, reward and next state $(x, u, r, x^{'})$ for each state transition, minibatch sampling from the buffer allows the DDPG algorithm to learn across uncorrelated state transitions \cite{Lillicrap2016}.  In addition to the inclusion of a replay buffer, target networks are implemented to track the actor and critic weights slowly over time, stabilizing convergence during training \cite{Lillicrap2016, Zhu2018}.  The target network's are merely copies of the actor and critic networks, with weights updated slowly according to the hyper parameter $\tau$, such that $ \theta^{'} \leftarrow \tau\theta + (1-\tau)\theta^{'} $ \cite{Lillicrap2016}. Lastly, to address the challenge of exploration, an Ornstein-Uhlenbeck process is applied to sampled actions during training. Applying an Ornstein-Uhlenbeck process to continuous control problems with inertia (like that of the AV platooning problem) has been shown to improve exploration efficiency \cite{Lillicrap2016}.
+Much like DQN, DDPG uses DNNs as the function approximators \cite{Zhu2018}.  Most 
+optimization algorithms assume that samples of data are IID \cite{Lillicrap2016}.  
+By the addition of a finite ``replay buffer'' which stores the state, action, reward 
+and next state $(x, u, r, x^{'})$ for each state transition, minibatch sampling from 
+the buffer allows the DDPG algorithm to learn across uncorrelated state transitions 
+\cite{Lillicrap2016}.  In addition to the inclusion of a replay buffer, target 
+networks are implemented to track the actor and critic weights slowly over time, stabilizing 
+convergence during training \cite{Lillicrap2016, Zhu2018}.  The target network's are 
+merely copies of the actor and critic networks, with weights updated slowly according to 
+the hyper parameter $\tau$, such that 
+$ \theta^{'} \leftarrow \tau\theta + (1-\tau)\theta^{'} $ \cite{Lillicrap2016}. 
+Lastly, to address the challenge of exploration, an Ornstein-Uhlenbeck process is 
+applied to sampled actions during training. Applying an Ornstein-Uhlenbeck process 
+to continuous control problems with inertia (like that of the AV platooning problem) 
+has been shown to improve exploration efficiency \cite{Lillicrap2016}.
 
-The DDPG algorithm has been hugely successful in the control of continuous non linear systems: the inverted pendulum and robotic arm control are but a few examples of such successes \cite{Lim2020}. These successes in conjunction with the existing literature for AV platooning have been a large motivation for this thesis's application of DDPG to AV platooning. 
+The DDPG algorithm has been hugely successful in the control of continuous non 
+linear systems: the inverted pendulum and robotic arm control are but a few examples 
+of such successes \cite{Lim2020}. These successes in conjunction with the existing 
+literature for AV platooning have been a large motivation for this thesis's application of 
+DDPG to AV platooning. 
 
 \section{Federated Reinforcement Learning}
-Like FL, FRL aims to accelerate the training of DRL models through the sharing of parameters across a system. Most FRL research can be categorized into the following two categories: Horizontal Federated Reinforcement Learning (HFRL), and Vertical Federated Reinforcement Learning (VFRL).  The works in this Thesis are most closely related to HFRL.  HFRL and VFRL differ with respect to the structure of their environments and aggregation methods.  All agents in a HFRL architecture use isolated environments. It follows that each agent's action in a HFRL system has no effect on the other agents in the system.  HFRL architecture proposes the following training cycle for each agent: 
+Like FL, FRL aims to accelerate the training of DRL models through the sharing of parameters 
+across a system. Most FRL research can be categorized into the following two categories: 
+Horizontal Federated Reinforcement Learning (HFRL), and Vertical Federated Reinforcement 
+Learning (VFRL).  The works in this Thesis are most closely related to HFRL.  HFRL and VFRL 
+differ with respect to the structure of their environments and aggregation methods.  All 
+agents in a HFRL architecture use isolated environments. It follows that each agent's action 
+in a HFRL system has no effect on the other agents in the system.  HFRL architecture 
+proposes the following training cycle for each agent: 
 
 \begin{itemize}
     \item a training step is performed locally, 
-    \item environment specific parameters are uploaded to the aggregation server, known as the Federated Server,
-    \item the Federated Server aggregates the parameters based on the aggregation method (FedAvg is one example of an aggregation method),
-    \item aggregated parameters are returned to each agent in the system for another local training step.
+    \item environment specific parameters are uploaded to the aggregation server, 
+    known as the Federated Server,
+    \item the Federated Server aggregates the parameters based on the aggregation 
+    method (FedAvg is one example of an aggregation method),
+    \item aggregated parameters are returned to each agent in the system for 
+    another local training step.
 \end{itemize} 
 
-HFRL may be noted to have similarities to ``Parallel RL".  Parallel RL is a long studied field of RL, where agent gradients are transferred amongst each other \cite{Lim2020, Nadiger2019}.  On the contrary, VFRL defines an architecture composed of multiple agents exploring a single global environment. The agents in a VFRL system may observe partial or full states from the global model, and the actions of each agent have an affect the system as a whole. As previously stated, the works of this thesis most closely align with an HFRL architecture.
+HFRL may be noted to have similarities to ``Parallel RL".  Parallel RL is a long studied 
+field of RL, where agent gradients are transferred amongst each other 
+\cite{Lim2020, Nadiger2019}.  On the contrary, VFRL defines an architecture composed 
+of multiple agents exploring a single global environment. The agents in a VFRL system 
+may observe partial or full states from the global model, and the actions of each agent 
+have an affect the system as a whole. As previously stated, the works of this thesis most 
+closely align with an HFRL architecture.
 
 \section{Summary}
-Now that the theory and fundamentals of autonomous driving, FL, RL and lastly FRL have been introduced, an in depth summary of the state-of-the-art research in direct relation to the works of this thesis is presented in the next Chapter.
+Now that the theory and fundamentals of autonomous driving, FL, RL and lastly FRL 
+have been introduced, an in depth summary of the state-of-the-art research in 
+direct relation to the works of this thesis is presented in the next Chapter.
