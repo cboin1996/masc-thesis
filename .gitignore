@@ -1,0 +1,17 @@
+# .tex generation files
+
+main.log
+main.lof
+main.lot
+main.out
+main.aux
+main.toc
+main.pdf
+main.bbl
+main.blg
+
+svg-inkscape/
+.task/
+
+# OS files
+.DS_Store

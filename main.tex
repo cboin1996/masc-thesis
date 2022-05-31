@@ -1,0 +1,59 @@
+\documentclass[oneside, 12pt]{book}
+\usepackage{mystyle}
+\usepackage{subfiles} %essential for modular writing and subfile compilation must be last package loaded
+\graphicspath{{./images/}{images/}} %this command specifies first the path relative to main file to images folder, then the path relative to sub file i think.. very important
+
+\usepackage{hyperref}
+\begin{document}
+\begin{titlepage}
+	\setlength{\parskip}{12pt}
+	\centering
+	{\textbf{\LARGE A Federated Reinforcement Learning Approach for Autonomous Vehicle Platooning}\par}
+	\vspace{1.5 cm}
+	{by}\par
+	\vspace{1 cm}
+	{Christian Boin}\par
+	\vspace{2cm}
+	{A thesis\\
+	presented to\\
+	the University of Guelph}\par
+	\vspace{2cm}
+	{In partial fulfillment of requirements\\
+	for the degree of\\
+	Master of Applied Science\\
+	in\\
+	Engineering Systems and Computing}\par
+	\vspace{2cm}
+	{\normalsize Guelph, Ontario, Canada}\par
+	\vspace{0.25cm}
+	{\copyright\hspace{6pt}Christian Boin, August 2022}\par
+\end{titlepage}
+
+\chapter*{Abstract}
+ Since 2016 Federated Learning (FL) has been an evolving topic of discussion in the artificial intelligence (AI) research community.  Applications of FL led to the development and study of Federated Reinforcement Learning (FRL).  Few works exist on the topic of FRL applied to autonomous vehicle (AV) platoons. In addition, most FRL works choose a single aggregation method (usually weight or gradient aggregation). We explore FRL's effectiveness as a means to improve AV platooning red by designing and implementing a FRL framework atop of a custom AV platoon environment.  The application of FRL in AV platooning is studied under two scenarios: (1)  Inter-platoon FRL (Inter-FRL) where FRL is applied to AVs across different platoons; (2) Intra-platoon FRL (Intra-FRL) where FRL is applied to AVs within a single platoon. Both Inter-FRL and Intra-FRL are applied to a custom AV platooning environment using both gradient and weight aggregation to observe the performance effects FRL can have on AV platoons relative to an AV platooning environment trained without FRL.  It is concluded that Intra-FRL using weight aggregation (Intra-FRLWA) provides the best performance for controlling an AV platoon. In addition, we found that weight aggregation in FRL for AV platooning provides increases in performance relative to gradient aggregation. Finally, a performance analysis is conducted for Intra-FRLWA versus a platooning environment without FRL for platoons of length 3, 4 and 5 vehicles. It is concluded that Intra-FRLWA largely out-performs the platooning environment that is trained without FRL.
+
+\tableofcontents
+% \clearpage\addcontentsline{toc}{chapter}{List of Tables}
+\listoftables
+% \clearpage\addcontentsline{toc}{chapter}{List of Figures}
+\listoffigures
+% \textcolor{green}{PROOF READ NEEDED}
+% \textcolor{blue}{FINAL RESULT SUMMARY NEEDED}
+% \textcolor{red}{MAJOR REVISION NEEDED!}
+\subfile{tex/1_Introduction}
+\subfile{tex/2_Background}
+\subfile{tex/3_Literature}
+\subfile{tex/4_Methods}
+\subfile{tex/5_Results_Discussion}
+\subfile{tex/6_Conclusion}
+
+
+\newpage
+\bibliographystyle{IEEEtran} 
+\addcontentsline{toc}{section}{References}
+\bibliography{references}
+% \newpage
+% \newpage
+% \appendix 
+
+\end{document}

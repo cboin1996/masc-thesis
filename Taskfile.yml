@@ -1,0 +1,27 @@
+version: '3'
+silent: true
+output: prefixed
+
+tasks:
+  dev:
+    prefix: dev
+    cmds:
+      - task: build    
+    sources:
+      - ./main.tex
+      - ./references.bib
+      - ./mystyle.sty
+      - ./tex/1_Introduction.tex
+      - ./tex/2_Background.tex
+      - ./tex/3_Literature.tex
+      - ./tex/4_Methods.tex
+      - ./tex/5_Results_Discussion.tex
+      - ./tex/6_Conclusion.tex
+
+  build:
+    prefix: build
+    cmds:
+      - pdflatex -shell-escape main.tex
+      - bibtex main
+      - pdflatex -shell-escape main.tex
+      - pdflatex -shell-escape main.tex

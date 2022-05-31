@@ -1,0 +1,171 @@
+\ProvidesPackage{mystyle}
+
+% -- IEEE Conference Stuff -- %
+
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+% -- Paper setup -- %
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}                		% See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   		% ... or a4paper or a5paper or ... 
+%\geometry{landscape}                		% Activate for rotated page geometry
+\usepackage[normalem]{ulem}				% TeX will automatically convert eps --> pdf in pdflatex		
+% \usepackage{fancyhdr} % for setting complex headers
+\usepackage{titlesec}
+% \setcounter{secnumdepth}{4} % uncomment for increased depth in subsecs
+% \setcounter{tocdepth}{4}
+
+% -- Float environment stuff -- %
+\usepackage{graphicx}	% for setting up floats
+\usepackage{pdfpages} %for inputting PDFS
+\usepackage{enumitem}
+\usepackage{float} % allows [H] in float parameter
+\usepackage{listings} % for code imports
+\usepackage{graphicx, epstopdf} % Required for the inclusion of images
+\usepackage[font=small]{caption} % allows figures to go multiple pages
+\usepackage{subcaption}
+\usepackage{svg} % For svg files
+\usepackage{adjustbox}
+% -- Algorithms -- %
+\usepackage[ruled,lined]{algorithm2e}
+
+% -- Special Table stuff -- %
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{bigstrut}
+\usepackage{hhline}
+\usepackage{booktabs} % To thicken table lines
+
+
+% -- Math Packages -- %
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{siunitx}                    %Unit package: [\si{\watt\per\meter\squared}]
+\renewcommand{\familydefault}{\rmdefault}
+% -- URLS -- %
+\usepackage{textcomp}
+
+\usepackage[hyphens]{url} % with urls
+\usepackage[hidelinks]{hyperref}
+\makeatletter \g@addto@macro{\UrlBreaks}{\do\/\do\-\do\r} \makeatother %command allowing a break at any point in a url... \do\breakchar ... is the syntax
+
+% -- Chemical Equations -- %
+\usepackage[version=3]{mhchem} % Package for chemical equations --from ADESHI Kadambi
+\usepackage{siunitx} % The \SI{}{} and \si{} command for SI units
+
+% -- Lists -- %
+\usepackage[sharp]{easylist} % for lists, using # as list identifier
+
+% -- Spacing -- %
+%\usepackage{parskip} % for skipping post paragraphs
+%\setlength{\parskip}{11pt}
+%\usepackage{indentfirst} %indents first paragraph in section
+\usepackage{setspace} %package for line spacing
+% \singlespacing
+% \doublespacing	%1.5 spacing 
+\onehalfspacing
+
+
+% -- Code styling -- %
+% \usepackage[framed,numbered]{matlab-prettifier}
+
+% \usepackage{xcolor}
+% \definecolor{mGreen}{rgb}{0,0.6,0}
+% \definecolor{mGray}{rgb}{0.5,0.5,0.5}
+% \definecolor{mPurple}{rgb}{0.58,0,0.82}
+% \definecolor{backgroundColour}{rgb}{0.95,0.95,0.92}
+% \usepackage{bookmark}
+
+% \lstdefinestyle{CStyle}{
+%     backgroundcolor=\color{backgroundColour},   
+%     commentstyle=\color{mGreen},
+%     keywordstyle=\color{magenta},
+%     numberstyle=\tiny\color{mGray},
+%     stringstyle=\color{mPurple},
+%     basicstyle=\footnotesize,
+%     breakatwhitespace=false,         
+%     breaklines=true,                 
+%     captionpos=t,                    
+%     keepspaces=true,                 
+%     numbers=left,                    
+%     numbersep=5pt,                  
+%     showspaces=false,                
+%     showstringspaces=false,
+%     showtabs=false,                  
+%     tabsize=2,
+%     language=C
+% }
+
+% -- Python -- %
+% Default fixed font does not support bold face
+\DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{12} % for bold
+\DeclareFixedFont{\ttm}{T1}{txtt}{m}{n}{12}  % for normal
+
+% Custom colors
+\usepackage{color}
+\definecolor{deepblue}{rgb}{0,0,0.5}
+\definecolor{deepred}{rgb}{0.6,0,0}
+\definecolor{deepgreen}{rgb}{0,0.5,0}
+
+\usepackage{listings}
+
+% Python style for highlighting
+\newcommand\pythonstyle{\lstset{
+language=Python,
+basicstyle=\ttm,
+morekeywords={self},              % Add keywords here
+keywordstyle=\ttb\color{deepblue},
+emph={MyClass,__init__},          % Custom highlighting
+emphstyle=\ttb\color{deepred},    % Custom highlighting style
+stringstyle=\color{deepgreen},
+frame=tb,                         % Any extra options here
+showstringspaces=false
+}}
+
+
+% Python environment
+\lstnewenvironment{python}[1][]
+{
+\pythonstyle
+\lstset{#1}
+}
+{}
+
+% Python for external files
+\newcommand\pythonexternal[2][]{{
+\pythonstyle
+\lstinputlisting[#1]{#2}}}
+
+% Python for inline
+\newcommand\pythoninline[1]{{\pythonstyle\lstinline!#1!}}
+
+% Appendixing %
+
+\newcommand{\appendixpagenumbering}{
+  \newpage
+  \pagenumbering{arabic}
+  \renewcommand{\thepage}{\thesection-\arabic{page}}
+}
+
+% -- Referencing -- %
+\usepackage{cite}
+
+% APA Citation Style
+% \usepackage{apacite}
+% \usepackage{natbib} % uncomment to use round brackets and apa styling.
+
+
+% -- Misc -- %
+% \usepackage{fixltx2e} not required with latex released after 2015
+\usepackage[normalem]{ulem}
+\useunder{\uline}{\ul}{}
+\usepackage{skak} % Typesetting Chess
+
+\usepackage{tikz}
