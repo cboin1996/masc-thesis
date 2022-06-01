@@ -79,13 +79,29 @@ platooning scenarios, in particular:
 
 \section{Contributions}
 To the best of our knowledge, no works at the time of this study exist covering the 
-specific topic of FRL applied to platoon control. Many of the works existing on FRL have shown the benefits of FRL with regard to increased rate of convergence and overall system performance with distributed networks, edge caching and communications \cite{ZhangX2020, LimHyun2021, WangXiaofei2021, Huang2021}.  Furthermore, of the works cited in this study, the works closely related to FRL for platoon control are those of \cite{Peake2020} and \cite{Liang2019}.  In contrast to \cite{Liang2019}, where FedAvg is successfully applied to control the steering angle of a single vehicle, we apply FRL to an AV platooning problem where the control of multiple vehicles' positions and spacing are required.  \cite{Peake2020} explores multi-agent reinforcement learning and it's ability to improve the performance of AV platoons experiencing communication delays.  Although \cite{Peake2020} is also successful in their approach, there is no specific reference to FRL in the paper. In addition, the variety of existing works on FRL choose to use either gradients or model weights in the FRL aggregation method.  This study explores how both aggregation methods can provide benefits to the AV platooning problem, and most importantly which provides a better result. Finally, this study further distinguishes it's approach from existing literature through declaring two new possible ways to apply FRL to AV platooning:
+specific topic of FRL applied to platoon control. Many of the works existing on FRL 
+have shown the benefits of FRL with regard to increased rate of convergence and overall 
+system performance with distributed networks, edge caching and communications 
+\cite{ZhangX2020, LimHyun2021, WangXiaofei2021, Huang2021}.  Furthermore, of the works 
+cited in this study, the works closely related to FRL for platoon control are those of 
+\cite{Peake2020} and \cite{Liang2019}.  In contrast to \cite{Liang2019}, where FedAvg 
+is successfully applied to control the steering angle of a single vehicle, we apply 
+FRL to an AV platooning problem where the control of multiple vehicles' positions and 
+spacing are required.  \cite{Peake2020} explores multi-agent reinforcement learning 
+and it's ability to improve the performance of AV platoons experiencing communication delays.  
+Although \cite{Peake2020} is also successful in their approach, there is no specific 
+reference to FRL in the paper. In addition, the variety of existing works on FRL 
+choose to use either gradients or model weights in the FRL aggregation method.  
+This study explores how both aggregation methods can provide benefits to the AV 
+platooning problem, and most importantly which provides a better result. Finally, this 
+study further distinguishes it's approach from existing literature through declaring two 
+new possible ways to apply FRL to AV platooning:
 
 \begin{enumerate}
     \item Intra-FRL: where multi-vehicle platoons share data during training to increase 
     the performance of vehicles within the same platoon.
     \item Inter-FRL: where multi-vehicle platoons share data during training across 
-    platoons amongst vehicles in the exact same platoon position to increase performance.
+    platoons amongst vehicles in the exact same platoon position. 
 \end{enumerate}
 
 In contrast to existing literature where it is common to average the parameters 
