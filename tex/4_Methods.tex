@@ -137,7 +137,6 @@ motion.  The proposed reward thus includes the normalized position error, $e_{pi
 velocity error $e_{vi,k}$, control input $u_{i,k}$ and lastly the jerk. The vehicle 
 reward $c_{i,k}$ is given below, where $a$ $b$, $c$ and $d$ are system hyperparameters.
 \begin{equation} \label{eqn:rewardB}
-\small
 \begin{aligned}
     c_{i,k} &= -\left(a\frac{|e_{pi,k}|}{\max(e_{pi,k})} + b\frac{|e_{vi,k}|}{\max(e_{vi,k})} + c\frac{|u_{i,k}|}{\max(u_{i,k})} +  d\frac{\dot{|a_{i,k}|}}{2\max(a_{i,k})}\right) \\
     % c_{i,pl,k} &= -\frac{1}{len(V)-1}\sum_{i\epsilon V \setminus \{1\} } c_{i,k}

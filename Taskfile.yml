@@ -11,12 +11,7 @@ tasks:
       - ./main.tex
       - ./references.bib
       - ./mystyle.sty
-      - ./tex/1_Introduction.tex
-      - ./tex/2_Background.tex
-      - ./tex/3_Literature.tex
-      - ./tex/4_Methods.tex
-      - ./tex/5_Results_Discussion.tex
-      - ./tex/6_Conclusion.tex
+      - ./tex/*.tex
 
   build:
     prefix: build

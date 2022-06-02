@@ -73,6 +73,15 @@ year = {2019}
   volume={abs/1602.05629}
 }
 
+@article{Li2020a,
+  author={Li, Tian and Sahu, Anit Kumar and Talwalkar, Ameet and Smith, Virginia},
+  journal={IEEE Signal Processing Magazine}, 
+  title={Federated Learning: Challenges, Methods, and Future Directions}, 
+  year={2020},
+  volume={37},
+  number={3},
+  pages={50-60},
+  doi={10.1109/MSP.2020.2975749}}
 
 % RL
 @book{sutton2018reinforcement,
@@ -131,6 +140,20 @@ year = {2009}
   bibsource = {dblp computer science bibliography, https://dblp.org}
 }
 % --- --- VFRL--- --- %
+@article{Liang2019,
+abstract = {Reinforcement learning (RL) is widely used in autonomous driving tasks and training RL models typically involves in a multi-step process: pre-training RL models on simulators, uploading the pre-trained model to real-life robots, and fine-tuning the weight parameters on robot vehicles. This sequential process is extremely time-consuming and more importantly, knowledge from the fine-tuned model stays local and can not be re-used or leveraged collaboratively. To tackle this problem, we present an online federated RL transfer process for real-time knowledge extraction where all the participant agents make corresponding actions with the knowledge learned by others, even when they are acting in very different environments. To validate the effectiveness of the proposed approach, we constructed a real-life collision avoidance system with Microsoft Airsim simulator and NVIDIA JetsonTX2 car agents, which cooperatively learn from scratch to avoid collisions in indoor environment with obstacle objects. We demonstrate that with the proposed framework, the simulator car agents can transfer knowledge to the RC cars in real-time, with 27{\%} increase in the average distance with obstacles and 42{\%} decrease in the collision counts.},
+archivePrefix = {arXiv},
+arxivId = {1910.06001},
+author = {Liang, Xinle and Liu, Yang and Chen, Tianjian and Liu, Ming and Yang, Qiang},
+eprint = {1910.06001},
+file = {:C$\backslash$:/Users/chris/iCloudDrive/Documents/School/MASTERS/Research/CB{\_}found/fed/1910.06001.pdf:pdf},
+journal = {arXiv},
+mendeley-groups = {Masters/Federated},
+title = {Federated transfer reinforcement learning for autonomous driving},
+year = {2019}
+}
+
+% -------- UNUSED -------- 
 @article{Zhuo2019,
 abstract = {In reinforcement learning, building policies of high-quality is challenging when the feature space of states is small and the training data is limited. Directly transferring data or knowledge from an agent to another agent will not work due to the privacy requirement of data and models. In this paper, we propose a novel reinforcement learning approach to considering the privacy requirement and building Q-network for each agent with the help of other agents, namely federated reinforcement learning (FRL). To protect the privacy of data and models, we exploit Gausian differentials on the information shared with each other when updating their local models. In the experiment, we evaluate our FRL framework in two diverse domains, Grid-world and Text2Action domains, by comparing to various baselines.},
 archivePrefix = {arXiv},
@@ -156,19 +179,6 @@ number = {October},
 pages = {156--165},
 title = {In-Edge AI: Intelligentizing mobile edge computing, caching and communication by federated learning},
 year = {2018}
-}
-
-@article{Liang2019,
-abstract = {Reinforcement learning (RL) is widely used in autonomous driving tasks and training RL models typically involves in a multi-step process: pre-training RL models on simulators, uploading the pre-trained model to real-life robots, and fine-tuning the weight parameters on robot vehicles. This sequential process is extremely time-consuming and more importantly, knowledge from the fine-tuned model stays local and can not be re-used or leveraged collaboratively. To tackle this problem, we present an online federated RL transfer process for real-time knowledge extraction where all the participant agents make corresponding actions with the knowledge learned by others, even when they are acting in very different environments. To validate the effectiveness of the proposed approach, we constructed a real-life collision avoidance system with Microsoft Airsim simulator and NVIDIA JetsonTX2 car agents, which cooperatively learn from scratch to avoid collisions in indoor environment with obstacle objects. We demonstrate that with the proposed framework, the simulator car agents can transfer knowledge to the RC cars in real-time, with 27{\%} increase in the average distance with obstacles and 42{\%} decrease in the collision counts.},
-archivePrefix = {arXiv},
-arxivId = {1910.06001},
-author = {Liang, Xinle and Liu, Yang and Chen, Tianjian and Liu, Ming and Yang, Qiang},
-eprint = {1910.06001},
-file = {:C$\backslash$:/Users/chris/iCloudDrive/Documents/School/MASTERS/Research/CB{\_}found/fed/1910.06001.pdf:pdf},
-journal = {arXiv},
-mendeley-groups = {Masters/Federated},
-title = {Federated transfer reinforcement learning for autonomous driving},
-year = {2019}
 }
 
 @article{Wang2020a,
@@ -204,23 +214,8 @@ pages = {6252--6259},
 title = {Towards optimally decentralized multi-robot collision avoidance via deep reinforcement learning},
 year = {2018}
 }
-
 % --- ---- HRFL --- --- %
-@article{Ren2019,
-abstract = {Recently, smart cities, smart homes, and smart medical systems have challenged the functionality and connectivity of the large-scale Internet of Things (IoT) devices. Thus, with the idea of offloading intensive computing tasks from them to edge nodes (ENs), edge computing emerged to supplement these limited devices. Benefit from this advantage, IoT devices can save more energy and still maintain the quality of the services they should provide. However, computational offload decisions involve federation and complex resource management and should be determined in the real-time face to dynamic workloads and radio environments. Therefore, in this work, we use multiple deep reinforcement learning (DRL) agents deployed on multiple edge nodes to indicate the decisions of the IoT devices. On the other hand, with the aim of making DRL-based decisions feasible and further reducing the transmission costs between the IoT devices and edge nodes, federated learning (FL) is used to train DRL agents in a distributed fashion. The experimental results demonstrate the effectiveness of the decision scheme and federated learning in the dynamic IoT system.},
-author = {Ren, Jianji and Wang, Haichao and Hou, Tingting and Zheng, Shuai and Tang, Chaosheng},
-doi = {10.1109/ACCESS.2019.2919736},
-url = {https://doi.org/10.1109/ACCESS.2019.2919736},
-file = {:D$\backslash$:/chris/Downloads/08728285.pdf:pdf},
-issn = {21693536},
-journal = {IEEE Access},
-keywords = {Federated learning,IoT,computation offloading,edge computing},
-mendeley-groups = {Masters/FEDRL},
-pages = {69194--69201},
-title = {Federated Learning-Based Computation Offloading Optimization in Edge Computing-Supported Internet of Things},
-volume = {7},
-year = {2019}
-}
+
 
 @article{Lim2020,
 abstract = {Reinforcement learning has recently been studied in various fields and also used to optimally control IoT devices supporting the expansion of Internet connection beyond the usual standard devices. In this paper, we try to allow multiple reinforcement learning agents to learn optimal control policy on their own IoT devices of the same type but with slightly different dynamics. For such multiple IoT devices, there is no guarantee that an agent who interacts only with one IoT device and learns the optimal control policy will also control another IoT device well. Therefore, we may need to apply independent reinforcement learning to each IoT device individually, which requires a costly or time-consuming effort. To solve this problem, we propose a new federated reinforcement learning architecture where each agent working on its independent IoT device shares their learning experience (i.e., the gradient of loss function) with each other, and transfers a mature policy model parameters into other agents. They accelerate its learning process by using mature parameters. We incorporate the actor–critic proximal policy optimization (Actor–Critic PPO) algorithm into each agent in the proposed collaborative architecture and propose an efficient procedure for the gradient sharing and the model transfer. Using multiple rotary inverted pendulum devices interconnected via a network switch, we demonstrate that the proposed federated reinforcement learning scheme can effectively facilitate the learning process for multiple IoT devices and that the learning speed can be faster if more agents are involved.},
@@ -270,6 +265,23 @@ volume = {4},
 year = {2019}
 }
 
+% -------- UNUSED ------
+@article{Ren2019,
+abstract = {Recently, smart cities, smart homes, and smart medical systems have challenged the functionality and connectivity of the large-scale Internet of Things (IoT) devices. Thus, with the idea of offloading intensive computing tasks from them to edge nodes (ENs), edge computing emerged to supplement these limited devices. Benefit from this advantage, IoT devices can save more energy and still maintain the quality of the services they should provide. However, computational offload decisions involve federation and complex resource management and should be determined in the real-time face to dynamic workloads and radio environments. Therefore, in this work, we use multiple deep reinforcement learning (DRL) agents deployed on multiple edge nodes to indicate the decisions of the IoT devices. On the other hand, with the aim of making DRL-based decisions feasible and further reducing the transmission costs between the IoT devices and edge nodes, federated learning (FL) is used to train DRL agents in a distributed fashion. The experimental results demonstrate the effectiveness of the decision scheme and federated learning in the dynamic IoT system.},
+author = {Ren, Jianji and Wang, Haichao and Hou, Tingting and Zheng, Shuai and Tang, Chaosheng},
+doi = {10.1109/ACCESS.2019.2919736},
+url = {https://doi.org/10.1109/ACCESS.2019.2919736},
+file = {:D$\backslash$:/chris/Downloads/08728285.pdf:pdf},
+issn = {21693536},
+journal = {IEEE Access},
+keywords = {Federated learning,IoT,computation offloading,edge computing},
+mendeley-groups = {Masters/FEDRL},
+pages = {69194--69201},
+title = {Federated Learning-Based Computation Offloading Optimization in Edge Computing-Supported Internet of Things},
+volume = {7},
+year = {2019}
+}
+
 % --------- FRL aggregation improvement techniques ---------- %
 @article{ZhangX2020,
   author={Zhang, Xinran and Peng, Mugen and Yan, Shi and Sun, Yaohua},
@@ -312,52 +324,7 @@ year = {2019}
   doi={10.1109/JSAC.2021.3087227}}
  
 % ---------------------------- ---------- AV RL -------------- ---------------------------- %
-@article{Wang2018,
-abstract = {In this paper, we consider the problem of cooperative driving for connected autonomous vehicles to reduce traffic congestion. The connected autonomous vehicles are able to exchange information as well as driving intentions with surrounding vehicles through vehicle-to-vehicle (V2V) communications. We define three driving conditions for a given vehicle, namely, maximum, deadlock, and freerun, in which a deadlock condition implies that the vehicle is in a congestion condition that cannot be resolved alone. For the purpose of improving overall traffic flow, we design a strategy called Altruistic Cooperative Driving (ACD), in which a connected autonomous vehicle can automatically identify a deadlock condition and form a multi-vehicle coordination group to resolve the deadlock through a cooperative maneuver procedure. The proposed ACD is evaluated in our traffic simulator in terms of speed efficiency and communication traffic between the connected autonomous vehicles. The results show that ACD can improve speed efficiency and successfully resolve traffic congestion caused by deadlock conditions.},
-author = {Wang, Nannan and Wang, Xi and Palacharla, Paparao and Ikeuchi, Tadashi},
-doi = {10.1109/VNC.2017.8275620},
-url = {https://doi.org/10.1109/VNC.2017.8275620},
-file = {:D$\backslash$:/chris/iCloudDrive/Documents/School/MASTERS/Research/CB{\_}found/Comms/Cooperative Autonomous Driving for  Traffic Congestion Avoidance Through V2V Communications.pdf:pdf},
-isbn = {9781538609866},
-issn = {21579865},
-journal = {IEEE Vehicular Networking Conference, VNC},
-keywords = {Cooperative driving,coordination group,deadlock,traffic congestion,vehicle-to-vehicle communication},
-pages = {327--330},
-title = {{Cooperative autonomous driving for traffic congestion avoidance through vehicle-to-vehicle communications}},
-volume = {2018-Janua},
-year = {2018}
-}
-@article{Wang2019,
-abstract = {The development of light detection and ranging, Radar, camera, and other advanced sensor technologies inaugurated a new era in autonomous driving. However, due to the intrinsic limitations of these sensors, autonomous vehicles are prone to making erroneous decisions and causing serious disasters. At this point, networking and communication technologies can greatly make up for sensor deficiencies, and are more reliable, feasible and efficient to promote the information interaction, thereby improving autonomous vehicle's perception and planning capabilities as well as realizing better vehicle control. This paper surveys the networking and communication technologies in autonomous driving from two aspects: intra-and inter-vehicle. The intra-vehicle network as the basis of realizing autonomous driving connects the on-board electronic parts. The inter-vehicle network is the medium for interaction between vehicles and outside information. In addition, we present the new trends of communication technologies in autonomous driving, as well as investigate the current mainstream verification methods and emphasize the challenges and open issues of networking and communications in autonomous driving.},
-author = {Wang, Jiadai and Liu, Jiajia and Kato, Nei},
-doi = {10.1109/COMST.2018.2888904},
-url = {https://doi.org/10.1109/COMST.2018.2888904},
-file = {:C$\backslash$:/Users/chris/iCloudDrive/Documents/School/Uni/Masters/Networking and Communications in Autonomous Driving A Survey.pdf:pdf},
-issn = {1553877X},
-journal = {IEEE Communications Surveys and Tutorials},
-keywords = {Autonomous driving,inter-vehicle network,intra-vehicle network,survey,verification method},
-number = {2},
-pages = {1243--1274},
-publisher = {IEEE},
-title = {{Networking and Communications in Autonomous Driving: A Survey}},
-volume = {21},
-year = {2019}
-}
-@article{Schwarting2018,
-abstract = {In this review, we provide an overview of emerging trends and challenges in the field of intelligent and autonomous, or self-driving, vehicles. Recent advances in the field of perception, planning, and decision-making for autonomous vehicles have led to great improvements in functional capabilities, with several prototypes already driving on our roads and streets. Yet challenges remain regarding guaranteed performance and safety under all driving circumstances. For instance, planning methods that provide safe and system-compliant performance in complex, cluttered environments while modeling the uncertain interaction with other traffic participants are required. Furthermore, new paradigms, such as interactive planning and end-to-end learning, open up questions regarding safety and reliability that need to be addressed. In this survey, we emphasize recent approaches for integrated perception and planning and for behavior-aware planning, many of which rely on machine learning. This raises the question of verification and safety, which we also touch upon. Finally, we discuss the state of the art and remaining challenges for managing fleets of autonomous vehicles.},
-author = {Schwarting, Wilko and Alonso-Mora, Javier and Rus, Daniela},
-doi = {10.1146/annurev-control-060117-105157},
-url = {https://doi.org/10.1146/annurev-control-060117-105157},
-file = {:C$\backslash$:/Users/chris/iCloudDrive/Documents/School/Uni/Masters/Planning and Decision-Making for Autonomous Vehicles.pdf:pdf},
-issn = {2573-5144},
-journal = {Annual Review of Control, Robotics, and Autonomous Systems},
-keywords = {artificial intelligence,autonomous vehicles,autonomous vehicles,intelligent vehicles,decision-,decision-making,fleet management,intelligent vehicles,motion,planning,verification},
-number = {1},
-pages = {187--210},
-title = {{Planning and Decision-Making for Autonomous Vehicles}},
-volume = {1},
-year = {2018}
-}
+
 @article{ElSallab2017a,
 abstract = {Reinforcement learning is considered to be a strong AI paradigm which can be used to teach machines through interaction with the environment and learning from their mistakes. Despite its perceived utility, it has not yet been successfully applied in automotive applications. Motivated by the successful demonstrations of learning of Atari games and Go by Google DeepMind, we propose a framework for autonomous driving using deep reinforcement learning. This is of particular relevance as it is difficult to pose autonomous driving as a supervised learning problem due to strong interactions with the environment including other vehicles, pedestrians and roadworks. As it is a relatively new area of research for autonomous driving, we provide a short overview of deep reinforcement learning and then describe our proposed framework. It incorporates Recurrent Neural Networks for information integration, enabling the car to handle partially observable scenarios. It also integrates the recent work on attention models to focus on relevant information, thereby reducing the computational complexity for deployment on embedded hardware. The framework was tested in an open source 3D car racing simulator called TORCS. Our simulation results demonstrate learning of autonomous maneuvering in a scenario of complex road curvatures and simple interaction of other vehicles.},
 archivePrefix = {arXiv},
@@ -391,127 +358,7 @@ title = {{Deep Reinforcement Learning for Autonomous Driving}},
 volume = {12109 LNAI},
 year = {2017}
 }
-@article{Naik2019,
-abstract = {With the rising interest in autonomous vehicles, developing radio access technologies (RATs) that enable reliable and low-latency vehicular communications has become of paramount importance. Dedicated short-range communications (DSRCs) and cellular V2X (C-V2X) are two present-day technologies that are capable of supporting day-1 vehicular applications. However, these RATs fall short of supporting communication requirements of many advanced vehicular applications, which are believed to be critical in enabling fully autonomous vehicles. Both the DSRC and C-V2X are undergoing extensive enhancements in order to support advanced vehicular applications that are characterized by high reliability, low latency, and high throughput requirements. These RAT evolutions - the IEEE 802.11bd for the DSRC and NR V2X for C-V2X - can supplement today's vehicular sensors in enabling autonomous driving. In this paper, we survey the latest developments in the standardization of 802.11bd and NR V2X. We begin with a brief description of the two present-day vehicular RATs. In doing so, we highlight their inability to guarantee the quality of service requirements of many advanced vehicular applications. We then look at the two RAT evolutions, i.e., the IEEE 802.11bd and NR V2X, outline their objectives, describe their salient features, and provide an in-depth description of key mechanisms that enable these features. While both, the IEEE 802.11bd and NR V2X, are in their initial stages of development, we shed light on their preliminary performance projections and compare and contrast the two evolutionary RATs with their respective predecessors.},
-archivePrefix = {arXiv},
-arxivId = {1903.08391},
-author = {Naik, Gaurang and Choudhury, Biplav and Park, Jung Min},
-doi = {10.1109/ACCESS.2019.2919489},
-url = {https://doi.org/10.1109/ACCESS.2019.2919489},
-eprint = {1903.08391},
-file = {:D$\backslash$:/chris/iCloudDrive/Documents/School/MASTERS/Research/CB{\_}found/Comms/Access Technologies for V2X Communications.pdf:pdf},
-issn = {21693536},
-journal = {IEEE Access},
-keywords = {C-V2X,DSRC,IEEE 802.11bd,NR V2X},
-pages = {70169--70184},
-publisher = {IEEE},
-title = {{IEEE 802.11bd 5G NR V2X: Evolution of Radio Access Technologies for V2X Communications}},
-volume = {7},
-year = {2019}
-}
-@article{Campolo2017,
-abstract = {Platooning is the first step toward fully autonomous driving, which is deemed as one of the most representative fifth-generation (5G) use cases. Spacing and speed in a platoon of vehicles are regulated by a fully automated control system that relies on updated vehicles? kinematics data. In this article, we investigate the potential of long-term evolution (LTE) device-todevice (D2D) communications for data dissemination in the platoon. Exploiting pooled LTE resources and the coordination by the in-front vehicle of the platoon, the proposed solution is shown to fulfill the ultralow latency requirements of messaging in the platoon. As a further advantage, our proposal is able to provide spatial reuse of LTE resources among members of the same platoon and of different platoons, thus drastically reducing the capacity demand.},
-author = {Campolo, Claudia and Molinaro, Antonella and Araniti, Giuseppe and Berthet, Antoine O.},
-doi = {10.1109/MVT.2016.2632418},
-url = {https://doi.org/10.1109/MVT.2016.2632418},
-file = {:D$\backslash$:/chris/iCloudDrive/Documents/School/MASTERS/Research/CB{\_}found/Comms/Better Platooning Control Toward Autonomous Driving.pdf:pdf},
-issn = {15566072},
-journal = {IEEE Vehicular Technology Magazine},
-number = {1},
-pages = {30--38},
-publisher = {IEEE},
-title = {{Better Platooning Control Toward Autonomous Driving: An LTE Device-to-Device Communications Strategy That Meets Ultralow Latency Requirements}},
-volume = {12},
-year = {2017}
-}
-@article{Dey2016,
-abstract = {Cooperative adaptive cruise control (CACC) systems have the potential to increase traffic throughput by allowing smaller headway between vehicles and moving vehicles safely in a platoon at a harmonized speed. CACC systems have been attracting significant attention from both academia and industry since connectivity between vehicles will become mandatory for new vehicles in the USA in the near future. In this paper, we review three basic and important aspects of CACC systems: communications, driver characteristics, and controls to identify the most challenging issues for their real-world deployment. Different routing protocols that support the data communication requirements between vehicles in the CACC platoon are reviewed. Promising and suitable protocols are identified. Driver characteristics related issues, such as how to keep drivers engaged in driving tasks during CACC operations, are discussed. To achieve mass acceptance, the control design needs to depict real-world traffic variability such as communication effects, driver behavior, and traffic composition. Thus, this paper also discusses the issues that existing CACC control modules face when considering close to ideal driving conditions.},
-author = {Dey, Kakan C. and Yan, Li and Wang, Xujie and Wang, Yue and Shen, Haiying and Chowdhury, Mashrur and Yu, Lei and Qiu, Chenxi and Soundararaj, Vivekgautham},
-doi = {10.1109/TITS.2015.2483063},
-url = {https://doi.org/10.1109/TITS.2015.2483063},
-file = {:C$\backslash$:/Users/chris/iCloudDrive/Documents/School/Uni/Masters/A Review of Communication, Driver Characteristics and Controls Aspects o....pdf:pdf},
-issn = {15249050},
-journal = {IEEE Transactions on Intelligent Transportation Systems},
-keywords = {Cooperative adaptive cruise control (CACC),communication protocols,controls,driver characteristics,string stability},
-number = {2},
-pages = {491--509},
-publisher = {IEEE},
-title = {{A Review of Communication, Driver Characteristics, and Controls Aspects of Cooperative Adaptive Cruise Control (CACC)}},
-volume = {17},
-year = {2016}
-}
-@article{Shwartz2018,
-abstract = {Autonomous driving is a multi-agent setting where the host vehicle must apply sophisticated negotiation skills with other road users when overtaking, giving way, merging, taking left and right turns and while pushing ahead in unstructured urban roadways. Since there are many possible scenarios, manually tackling all possible cases will likely yield a too simplistic policy. Moreover, one must balance between unexpected behavior of other drivers/pedestrians and at the same time not to be too defensive so that normal traffic flow is maintained. In this paper we apply deep reinforcement learning to the problem of forming long term driving strategies. We note that there are two major challenges that make autonomous driving different from other robotic tasks. First, is the necessity for ensuring functional safety - something that machine learning has difficulty with given that performance is optimized at the level of an expectation over many instances. Second, the Markov Decision Process model often used in robotics is problematic in our case because of unpredictable behavior of other agents in this multi-agent scenario. We make three contributions in our work. First, we show how policy gradient iterations can be used without Markovian assumptions. Second, we decompose the problem into a composition of a Policy for Desires (which is to be learned) and trajectory planning with hard constraints (which is not learned). The goal of Desires is to enable comfort of driving, while hard constraints guarantees the safety of driving. Third, we introduce a hierarchical temporal abstraction we call an "Option Graph" with a gating mechanism that significantly reduces the effective horizon and thereby reducing the variance of the gradient estimation even further.},
-archivePrefix = {arXiv},
-arxivId = {arXiv:1610.03295v1},
-author = {Shalev-Shwartz, Shai and Shammah, Shaked and Shashua, Amnon},
-doi = {10.5626/ktcp.2018.24.12.670},
-url = {https://doi.org/10.5626/ktcp.2018.24.12.670},
-eprint = {arXiv:1610.03295v1},
-file = {:D$\backslash$:/chris/iCloudDrive/Documents/School/MASTERS/Research/Lei{\_}Prov/Safe, Multi-Agent, Reinforcement Learning for Autonomous Driving.pdf:pdf},
-issn = {2383-6318},
-journal = {KIISE Transactions on Computing Practices},
-number = {12},
-pages = {670--674},
-title = {{Multi-agent Deep Reinforcement Learning for Autonomous Driving}},
-volume = {24},
-year = {2018}
-}
-@article{Garcia2015,
-abstract = {Safe Reinforcement Learning can be defined as the process of learning policies that maximize the expectation of the return in problems in which it is important to ensure reasonable system performance and/or respect safety constraints during the learning and/or deployment processes. We categorize and analyze two approaches of Safe Reinforcement Learning. The first is based on the modification of the optimality criterion, the classic discounted finite/infinite horizon, with a safety factor. The second is based on the modification of the exploration process through the incorporation of external knowledge or the guidance of a risk metric. We use the proposed classification to survey the existing literature, as well as suggesting future directions for Safe Reinforcement Learning.},
-author = {Garc{\'{i}}a, Javier and Fern{\'{a}}ndez, Fernando},
-file = {:D$\backslash$:/chris/iCloudDrive/Documents/School/MASTERS/Research/Lei{\_}Prov/A comprehensive survye on safe reinforcement learning.pdf:pdf},
-issn = {15337928},
-journal = {Journal of Machine Learning Research},
-keywords = {Reinforcement learning,Risk sensitivity,Safe exploration,Teacher advice},
-pages = {1437--1480},
-title = {{A comprehensive survey on safe reinforcement learning}},
-volume = {16},
-year = {2015}
-}
-@article{Hussain2019,
-abstract = {Throughout the last century, the automobile industry achieved remarkable milestones in manufacturing reliable, safe, and affordable vehicles. Because of significant recent advances in computation and communication technologies, autonomous cars are becoming a reality. Already autonomous car prototype models have covered millions of miles in test driving. Leading technical companies and car manufacturers have invested a staggering amount of resources in autonomous car technology, as they prepare for autonomous cars' full commercialization in the coming years. However, to achieve this goal, several technical and nontechnical issues remain: software complexity, real-time data analytics, and testing and verification are among the greater technical challenges; and consumer stimulation, insurance management, and ethical/moral concerns rank high among the nontechnical issues. Tackling these challenges requires thoughtful solutions that satisfy consumers, industry, and governmental requirements, regulations, and policies. Thus, here we present a comprehensive review of state-of-the-art results for autonomous car technology. We discuss current issues that hinder autonomous cars' development and deployment on a large scale. We also highlight autonomous car applications that will benefit consumers and many other sectors. Finally, to enable cost-effective, safe, and efficient autonomous cars, we discuss several challenges that must be addressed (and provide helpful suggestions for adoption) by designers, implementers, policymakers, regulatory organizations, and car manufacturers.},
-author = {Hussain, Rasheed and Zeadally, Sherali},
-doi = {10.1109/COMST.2018.2869360},
-url = {https://doi.org/10.1109/COMST.2018.2869360},
-file = {:C$\backslash$:/Users/chris/iCloudDrive/Documents/School/Uni/Masters/Autonomous Cars Research Results, Issues, and Future Challenges.pdf:pdf},
-issn = {1553877X},
-journal = {IEEE Communications Surveys and Tutorials},
-keywords = {Autonomous cars,connected cars,driverless cars,policy,privacy,security,simulation},
-number = {2},
-pages = {1275--1313},
-publisher = {IEEE},
-title = {{Autonomous Cars: Research Results, Issues, and Future Challenges}},
-volume = {21},
-year = {2019}
-}
-@article{Darbha2019,
-author = {Darbha, Swaroop and Konduri, Shyamprasad and Pagilla, Prabhakar R},
-file = {:D$\backslash$:/chris/iCloudDrive/Documents/School/MASTERS/Research/CB{\_}found/Comms/Benefits of Autonomous Driving.pdf:pdf},
-number = {5},
-pages = {1954--1963},
-title = {{Benefits of V2V Communication for Autonomous and Connected Vehicles}},
-volume = {20},
-year = {2019}
-}
-@article{Zeng2019,
-abstract = {Autonomous vehicular platoons will play an important role in improving on-road safety in tomorrow's smart cities. Vehicles in an autonomous platoon can exploit vehicle-to-vehicle (V2V) communications to collect environmental information so as to maintain the target velocity and inter-vehicle distance. However, due to the uncertainty of the wireless channel, V2V communications within a platoon will experience a wireless system delay. Such system delay can impair the vehicles' ability to stabilize their velocity and distances within their platoon. In this paper, the problem of integrated communication and control system is studied for wireless connected autonomous vehicular platoons. In particular, a novel framework is proposed for optimizing a platoon's operation while jointly taking into account the delay of the wireless V2V network and the stability of the vehicle's control system. First, stability analysis for the control system is performed and the maximum wireless system delay requirements which can prevent the instability of the control system are derived. Then, delay analysis is conducted to determine the end-to-end delay, including queuing, processing, and transmission delay for the V2V link in the wireless network. Subsequently, using the derived wireless delay, a lower bound and an approximated expression of the reliability for the wireless system, defined as the probability that the wireless system meets the control system's delay needs, are derived. Then, the parameters of the control system are optimized in a way to maximize the derived wireless system reliability. Simulation results corroborate the analytical derivations and study the impact of parameters, such as the packet size and the platoon size, on the reliability performance of the vehicular platoon. More importantly, the simulation results shed light on the benefits of integrating control system and wireless network design while providing guidelines for designing an autonomous platoon so as to realize the required wireless network reliability and control system stability.},
-archivePrefix = {arXiv},
-arxivId = {1804.05290},
-author = {Zeng, Tengchan and Semiari, Omid and Saad, Walid and Bennis, Mehdi},
-doi = {10.1109/TCOMM.2019.2931583},
-url = {https://doi.org/10.1109/TCOMM.2019.2931583},
-eprint = {1804.05290},
-file = {:C$\backslash$:/Users/chris/iCloudDrive/Documents/School/Uni/Masters/Joint Communication and Control for Wireless Autonomous Vehicular Platoon Systems.pdf:pdf},
-issn = {15580857},
-journal = {IEEE Transactions on Communications},
-keywords = {Vehicular communications,connected autonomous vehicles,control system design,delay analysis,stability analysis},
-number = {11},
-pages = {7907--7922},
-title = {{Joint Communication and Control for Wireless Autonomous Vehicular Platoon Systems}},
-volume = {67},
-year = {2019}
-}
+
 @article{Ye2019,
 abstract = {Automated vehicles (AVs) are deemed to be the key element for the intelligent transportation system in the future. Many studies have been made to improve AVs' ability of environment recognition and vehicle control, while the attention paid to decision making is not enough and the existing decision algorithms are very preliminary. Therefore, a framework of the decision-making training and learning is put forward in this paper. It consists of two parts: the deep reinforcement learning (DRL) training program and the high-fidelity virtual simulation environment. Then the basic microscopic behavior, car-following (CF), is trained within this framework. In addition, theoretical analysis and experiments were conducted to evaluate the proposed reward functions for accelerating training using DRL. The results show that on the premise of driving comfort, the efficiency of the trained AV increases 7.9{\%} and 3.8{\%} respectively compared to the classical adaptive cruise control models, intelligent driver model and constant-time headway policy. Moreover, on a more complex three-lane section, we trained an integrated model combining both CF and lane-changing behavior, with the average speed further growing 2.4{\%}. It indicates that our framework is effective for AV's decision-making learning.},
 author = {Ye, Yingjun and Zhang, Xiaohui and Sun, Jian},
@@ -527,6 +374,7 @@ url = {https://doi.org/10.1016/j.trc.2019.08.011},
 volume = {107},
 year = {2019}
 }
+
 @article{Zhu2018,
 abstract = {This study proposes a framework for human-like autonomous car-following planning based on deep reinforcement learning (deep RL). Historical driving data are fed into a simulation environment where an RL agent learns from trial and error interactions based on a reward function that signals how much the agent deviates from the empirical data. Through these interactions, an optimal policy, or car-following model that maps in a human-like way from speed, relative speed between a lead and following vehicle, and inter-vehicle spacing to acceleration of a following vehicle is finally obtained. The model can be continuously updated when more data are fed in. Two thousand car-following periods extracted from the 2015 Shanghai Naturalistic Driving Study were used to train the model and compare its performance with that of traditional and recent data-driven car-following models. As shown by this study's results, a deep deterministic policy gradient car-following model that uses disparity between simulated and observed speed as the reward function and considers a reaction delay of 1 s, denoted as DDPGvRT, can reproduce human-like car-following behavior with higher accuracy than traditional and recent data-driven car-following models. Specifically, the DDPGvRT model has a spacing validation error of 18{\%} and speed validation error of 5{\%}, which are less than those of other models, including the intelligent driver model, models based on locally weighted regression, and conventional neural network-based models. Moreover, the DDPGvRT demonstrates good capability of generalization to various driving situations and can adapt to different drivers by continuously learning. This study demonstrates that reinforcement learning methodology can offer insight into driver behavior and can contribute to the development of human-like autonomous driving algorithms and traffic-flow models.},
 author = {Zhu, Meixin and Wang, Xuesong and Wang, Yinhai},
@@ -543,84 +391,7 @@ url = {https://doi.org/10.1016/j.trc.2018.10.024},
 volume = {97},
 year = {2018}
 }
-@article{Vinitsky2018,
-abstract = {We release new benchmarks in the use of deep reinforcement learning (RL) to create controllers for mixed-autonomy traffic, where connected and autonomous vehicles (CAVs) interact with human drivers and infrastructure. Benchmarks , such as Mujoco or the Arcade Learning Environment, have spurred new research by enabling researchers to effectively compare their results so that they can focus on algorithmic improvements and control techniques rather than system design. To promote similar advances in traffic control via RL, we propose four benchmarks, based on three new traffic scenarios, illustrating distinct reinforcement learning problems with applications to mixed-autonomy traffic. We provide an introduction to each control problem, an overview of their MDP structures, and preliminary performance results from commonly used RL algorithms. For the purpose of reproducibility, the benchmarks, reference implementations, and tutorials are available at https://github.com/flow-project/flow.},
-author = {Vinitsky, Eugene and Kreidieh, Aboudy and {Le Flem}, Luc and Kheterpal, Nishant and Jang, Kathy and Wu, Cathy and Wu, Fangyu and Liaw, Richard and Liang, Eric and Bayen, Alexandre M},
-file = {:D$\backslash$:/chris/iCloudDrive/Documents/School/MASTERS/Research/Lei{\_}Prov/Benchmarks for reinforcement learning in mixed-autonomy traffic.pdf:pdf},
-number = {CoRL},
-title = {{Benchmarks for reinforcement learning in mixed-autonomy traffic}},
-url = {https://github.com/flow-project/flow.},
-year = {2018}
-}
-@article{Kiran2020,
-abstract = {With the development of deep representation learning, the domain of reinforcement learning (RL) has become a powerful learning framework now capable of learning complex policies in high dimensional environments. This review summarises deep reinforcement learning (DRL) algorithms, provides a taxonomy of automated driving tasks where (D)RL methods have been employed, highlights the key challenges algorithmically as well as in terms of deployment of real world autonomous driving agents, the role of simulators in training agents, and finally methods to evaluate, test and robustifying existing solutions in RL and imitation learning.},
-archivePrefix = {arXiv},
-arxivId = {2002.00444},
-author = {Kiran, B Ravi and Sobh, Ibrahim and Talpaert, Victor and Mannion, Patrick and Sallab, Ahmad A. Al and Yogamani, Senthil and P{\'{e}}rez, Patrick},
-eprint = {2002.00444},
-file = {:C$\backslash$:/Users/chris/iCloudDrive/Documents/School/Uni/Masters/Deep Reinforcement Learning for Autonomous Driving A Survey.pdf:pdf},
-pages = {1--18},
-title = {{Deep Reinforcement Learning for Autonomous Driving: A Survey}},
-url = {http://arxiv.org/abs/2002.00444},
-year = {2020}
-}
-@article{Hobert2016,
-abstract = {Two emerging technologies in the automotive domain are autonomous vehicles and V2X communication. Even though these technologies are usually considered separately, their combination enables two key cooperative features: sensing and maneuvering. Cooperative sensing allows vehicles to exchange information gathered from local sensors. Cooperative maneuvering permits inter-vehicle coordination of maneuvers. These features enable the creation of cooperative autonomous vehicles, which may greatly improve traffic safety, efficiency, and driver comfort. The first generation V2X communication systems with the corresponding standards, such as Release 1 from ETSI, have been designed mainly for driver warning applications in the context of road safety and traffic efficiency, and do not target use cases for autonomous driving. This article presents the design of core functionalities for cooperative autonomous driving and addresses the required evolution of communication standards in order to support a selected number of autonomous driving use cases. The article describes the targeted use cases, identifies their communication requirements, and analyzes the current V2X communication standards from ETSI for missing features. The result is a set of specifications for the amendment and extension of the standards in support of cooperative autonomous driving.},
-author = {Hobert, Laurens and Festag, Andreas and Llatser, Ignacio and Altomare, Luciano and Visintainer, Filippo and Kovacs, Andras},
-file = {:D$\backslash$:/chris/iCloudDrive/Documents/School/MASTERS/Research/CB{\_}found/V2X/Enhancements of V2X Communication in Suppoert of Cooperative Autonomous Driving.pdf:pdf},
-issn = {20612125},
-journal = {Infocommunications Journal},
-number = {3},
-pages = {27--33},
-publisher = {IEEE},
-title = {{Enhancements of V2X communication in support of cooperative autonomous driving}},
-volume = {8},
-year = {2016}
-}
-@misc{Hussain2019a,
-abstract = {Throughout the last century, the automobile industry achieved remarkable milestones in manufacturing reliable, safe, and affordable vehicles. Because of significant recent advances in computation and communication technologies, autonomous cars are becoming a reality. Already autonomous car prototype models have covered millions of miles in test driving. Leading technical companies and car manufacturers have invested a staggering amount of resources in autonomous car technology, as they prepare for autonomous cars' full commercialization in the coming years. However, to achieve this goal, several technical and nontechnical issues remain: software complexity, real-time data analytics, and testing and verification are among the greater technical challenges; and consumer stimulation, insurance management, and ethical/moral concerns rank high among the nontechnical issues. Tackling these challenges requires thoughtful solutions that satisfy consumers, industry, and governmental requirements, regulations, and policies. Thus, here we present a comprehensive review of state-of-the-art results for autonomous car technology. We discuss current issues that hinder autonomous cars' development and deployment on a large scale. We also highlight autonomous car applications that will benefit consumers and many other sectors. Finally, to enable cost-effective, safe, and efficient autonomous cars, we discuss several challenges that must be addressed (and provide helpful suggestions for adoption) by designers, implementers, policymakers, regulatory organizations, and car manufacturers.},
-author = {Hussain, Rasheed and Zeadally, Sherali},
-booktitle = {IEEE Communications Surveys and Tutorials},
-doi = {10.1109/COMST.2018.2869360},
-url = {https://doi.org/10.1109/COMST.2018.2869360},
-file = {:C$\backslash$:/Users/chris/iCloudDrive/Documents/School/Uni/Masters/Autonomous Cars Research Results, Issues, and Future Challenges.pdf:pdf},
-issn = {1553877X},
-keywords = {Autonomous cars,connected cars,driverless cars,policy,privacy,security,simulation},
-number = {2},
-pages = {1275--1313},
-title = {{Autonomous Cars: Research Results, Issues, and Future Challenges}},
-volume = {21},
-year = {2019}
-}
-@article{Chu2019,
-abstract = {This paper proposes a model-based deep reinforcement learning (DRL) algorithm for cooperative adaptive cruise control (CACC) of connected vehicles. Differing from most existing CACC works, we consider a platoon consisting of both human-driven and autonomous vehicles. The humandriven vehicles are heterogeneous and connected via vehicleto-vehicle (V2V) communication and the autonomous vehicles are controlled by a cloud-based centralized DRL controller via vehicle-to-cloud (V2C) communication. To overcome the safety and robustness issues of RL, the algorithm informs lowerlevel controllers of desired headway signals instead of directly controlling vehicle accelerations. The lower-level behavior is modeled according to the optimal velocity model (OVM), which determines vehicle acceleration according to a headway input. Numerical experiments show that the model-based DRL algorithm outperforms its model-free version in both safety and stability of CACC. Furthermore, we study the impact of different penetration ratios of autonomous vehicles on the safety, stability, and optimality of the CACC policy.},
-author = {Chu, Tianshu and Kalabic, Uros},
-doi = {10.1109/CDC40024.2019.9030110},
-url = {https://doi.org/10.1109/CDC40024.2019.9030110},
-file = {:C$\backslash$:/Users/chris/iCloudDrive/Documents/School/Uni/Masters/Model-based deep reinforcement learning for CACC in mixed-autonomy vehic....pdf:pdf},
-isbn = {9781728113982},
-issn = {07431546},
-journal = {Proceedings of the IEEE Conference on Decision and Control},
-pages = {4079--4084},
-title = {Model-based deep reinforcement learning for CACC in mixed-autonomy vehicle platoon},
-volume = {2019-Decem},
-year = {2019}
-}
-@article{Dey2016b,
-abstract = {Cooperative adaptive cruise control (CACC) systems have the potential to increase traffic throughput by allowing smaller headway between vehicles and moving vehicles safely in a platoon at a harmonized speed. CACC systems have been attracting significant attention from both academia and industry since connectivity between vehicles will become mandatory for new vehicles in the USA in the near future. In this paper, we review three basic and important aspects of CACC systems: communications, driver characteristics, and controls to identify the most challenging issues for their real-world deployment. Different routing protocols that support the data communication requirements between vehicles in the CACC platoon are reviewed. Promising and suitable protocols are identified. Driver characteristics related issues, such as how to keep drivers engaged in driving tasks during CACC operations, are discussed. To achieve mass acceptance, the control design needs to depict real-world traffic variability such as communication effects, driver behavior, and traffic composition. Thus, this paper also discusses the issues that existing CACC control modules face when considering close to ideal driving conditions.},
-author = {Dey, Kakan C. and Yan, Li and Wang, Xujie and Wang, Yue and Shen, Haiying and Chowdhury, Mashrur and Yu, Lei and Qiu, Chenxi and Soundararaj, Vivekgautham},
-doi = {10.1109/TITS.2015.2483063},
-url = {https://doi.org/10.1109/TITS.2015.2483063},
-issn = {15249050},
-journal = {IEEE Transactions on Intelligent Transportation Systems},
-keywords = {Cooperative adaptive cruise control (CACC),communication protocols,controls,driver characteristics,string stability},
-number = {2},
-pages = {491--509},
-publisher = {IEEE},
-title = {{A Review of Communication, Driver Characteristics, and Controls Aspects of Cooperative Adaptive Cruise Control (CACC)}},
-volume = {17},
-year = {2016}
-}
+
 @article{Makantasis2020a,
 abstract = {In this work, the problem of path planning for an autonomous vehicle that moves on a freeway is considered. The most common approaches that are used to address this problem are based on optimal control methods, which make assumptions about the model of the environment and the system dynamics. On the contrary, this work proposes the development of a driving policy based on reinforcement learning. In this way, the proposed driving policy makes minimal or no assumptions about the environment, since a priori knowledge about the system dynamics is not required. Driving scenarios where the road is occupied both by autonomous and manual driving vehicles are considered. To the best of the authors' knowledge, this is one of the first approaches that propose a reinforcement learning driving policy for mixed driving environments. The derived reinforcement learning policy, firstly, is compared against an optimal policy derived via dynamic programming, and, secondly, its efficiency is evaluated under realistic scenarios generated by the established SUMO microscopic traffic flow simulator. Finally, some initial results regarding the effect of autonomous vehicles' behaviour on the overall traffic flow are presented.},
 archivePrefix = {arXiv},
@@ -638,21 +409,7 @@ title = {{Deep reinforcement-learning-based driving policy for autonomous road v
 volume = {14},
 year = {2020}
 }
-@article{Khamis2014a,
-abstract = {In this paper, we focus on computing a consistent traffic signal configuration at each junction that optimizes multiple performance indices, i.e.; multi-objective traffic signal control. The multi-objective function includes minimizing trip waiting time, total trip time, and junction waiting time. Moreover, the multi-objective function includes maximizing flow rate, satisfying green waves for platoons traveling in main roads, avoiding accidents especially in residential areas, and forcing vehicles to move within moderate speed range of minimum fuel consumption. In particular, we formulate our multi-objective traffic signal control as a multi-agent system (MAS). Traffic signal controllers have a distributed nature in which each traffic signal agent acts individually and possibly cooperatively in a MAS. In addition, agents act autonomously according to the current traffic situation without any human intervention. Thus, we develop a multi-agent multi-objective reinforcement learning (RL) traffic signal control framework that simulates the driver's behavior (acceleration/deceleration) continuously in space and time dimensions. The proposed framework is based on a multi-objective sequential decision making process whose parameters are estimated based on the Bayesian interpretation of probability. Using this interpretation together with a novel adaptive cooperative exploration technique, the proposed traffic signal controller can make real-time adaptation in the sense that it responds effectively to the changing road dynamics. These road dynamics are simulated by the Green Light District (GLD) vehicle traffic simulator that is the testbed of our traffic signal control. We have implemented the Intelligent Driver Model (IDM) acceleration model in the GLD traffic simulator. The change in road conditions is modeled by varying the traffic demand probability distribution and adapting the IDM parameters to the adverse weather conditions. Under the congested and free traffic situations, the proposed multi-objective controller significantly outperforms the underlying single objective controller which only minimizes the trip waiting time (i.e.; the total waiting time in the whole vehicle trip rather than at a specific junction). For instance, the average trip and waiting times are ≃ 8 and 6 times lower respectively when using the multi-objective controller. {\textcopyright} 2014 Elsevier Ltd. All rights reserved.},
-author = {Khamis, Mohamed A. and Gomaa, Walid},
-doi = {10.1016/j.engappai.2014.01.007},
-file = {:D$\backslash$:/chris/iCloudDrive/Documents/School/MASTERS/Research/CB{\_}found/RL/Adaptive multi-objective reinforcement learning with hybrid exploration for traffic signal control based on cooperative multi-agent framework.pdf:pdf},
-issn = {09521976},
-journal = {Engineering Applications of Artificial Intelligence},
-keywords = {Adaptive optimization,Cooperative multi-agent system,Exploration,Multi-objective optimization,Reinforcement learning,Traffic signal control},
-pages = {134--151},
-publisher = {Elsevier},
-title = {{Adaptive multi-objective reinforcement learning with hybrid exploration for traffic signal control based on cooperative multi-agent framework}},
-url = {http://dx.doi.org/10.1016/j.engappai.2014.01.007},
-volume = {29},
-year = {2014}
-}
+
 @article{Liu2019,
 abstract = {Safety is the most important requirement for autonomous vehicles; hence, the ultimate challenge of designing an edge computing ecosystem for autonomous vehicles is to deliver enough computing power, redundancy, and security so as to guarantee the safety of autonomous vehicles. Specifically, autonomous driving systems are extremely complex; they tightly integrate many technologies, including sensing, localization, perception, decision making, as well as the smooth interactions with cloud platforms for high-definition (HD) map generation and data storage. These complexities impose numerous challenges for the design of autonomous driving edge computing systems. First, edge computing systems for autonomous driving need to process an enormous amount of data in real time, and often the incoming data from different sensors are highly heterogeneous. Since autonomous driving edge computing systems are mobile, they often have very strict energy consumption restrictions. Thus, it is imperative to deliver sufficient computing power with reasonable energy consumption, to guarantee the safety of autonomous vehicles, even at high speed. Second, in addition to the edge system design, vehicle-to-everything (V2X) provides redundancy for autonomous driving workloads and alleviates stringent performance and energy constraints on the edge side. With V2X, more research is required to define how vehicles cooperate with each other and the infrastructure. Last, safety cannot be guaranteed when security is compromised. Thus, protecting autonomous driving edge computing systems against attacks at different layers of the sensing and computing stack is of paramount concern. In this paper, we review state-of-the-art approaches in these areas as well as explore potential solutions to address these challenges.},
 author = {Liu, Shaoshan and Liu, Liangkai and Tang, Jie and Yu, Bo and Wang, Yifan and Shi, Weisong},
@@ -666,77 +423,6 @@ number = {8},
 pages = {1697--1716},
 title = {Edge Computing for Autonomous Driving: Opportunities and Challenges},
 volume = {107},
-year = {2019}
-}
-@article{Jung2020,
-abstract = {In recent years, research concerning autonomous driving has gained momentum to enhance road safety and traffic efficiency. Relevant concepts are being applied to the fields of perception, planning, and control of automated vehicles to leverage the advantages offered by the vehicle-to-everything (V2X) communication technology. This paper presents a V2X communication-aided autonomous driving system for vehicles. It is comprised of three subsystems: beyond line-of-sight (BLOS) perception, extended planning, and control. Specifically, the BLOS perception subsystem facilitates unlimited LOS environmental perception through data fusion between local perception using on-board sensors and communication perception via V2X. In the extended planning subsystem, various algorithms are presented regarding the route, velocity, and behavior planning to reflect real-time traffic information obtained utilizing V2X communication. To verify the results, the proposed system was integrated into a full-scale vehicle that participated in the 2019 Hyundai Autonomous Vehicle Competition held in K-city with the V2X infrastructure. Using the proposed system, the authors demonstrated successful completion of all assigned real-life-based missions, including emergency braking caused by a jaywalker, detouring around a construction site ahead, complying with traffic signals, collision avoidance, and yielding the ego-lane for an emergency vehicle. The findings of this study demonstrated the possibility of several potential applications of V2X communication with regard to autonomous driving systems.},
-author = {Jung, Chanyoung and Lee, Daegyu and Lee, Seungwook and Shim, David Hyunchul},
-doi = {10.3390/s20102903},
-url = {https://doi.org/10.3390/s20102903},
-file = {:D$\backslash$:/chris/iCloudDrive/Documents/School/MASTERS/Research/CB{\_}found/V2X/V2X-Communication-Aided Autonomous Driving.pdf:pdf},
-issn = {14248220},
-journal = {Sensors (Switzerland)},
-keywords = {Autonomous driving system,Control,Intelligent transportation system,Perception,Planning,V2X communication},
-number = {10},
-pages = {1--21},
-pmid = {32443823},
-title = {{V2x-communication-aided autonomous driving: System design and experimental validation}},
-volume = {20},
-year = {2020}
-}
-@article{Zheng2015,
-abstract = {Autonomous driving technology has been regarded as a promising solution to reduce road accidents and traffic congestion, as well as to optimize the usage of fuel and lane. Reliable and highly efficient vehicle-to-vehicle and vehicle-to-infrastructure communications are essential for commercial autonomous driving vehicles to be on the road before 2020. The current article first presents the concept of heterogeneous vehicular networks (HetVNETs) for autonomous driving, in which an improved protocol stack is proposed to satisfy the communication requirements of not only safety but also non-safety services. We then consider and study in detail several typical scenarios for autonomous driving. In order to tackle the potential challenges raised by the autonomous driving vehicles in HetVNETs, new techniques from transmission to networking are proposed as potential solutions.},
-archivePrefix = {arXiv},
-arxivId = {1510.06607},
-author = {Zheng, Kan and Zheng, Qiang and Yang, Haojun and Zhao, Long and Hou, Lu and Chatzimisios, Periklis},
-doi = {10.1109/MCOM.2015.7355569},
-url = {https://doi.org/10.1109/MCOM.2015.7355569},
-eprint = {1510.06607},
-file = {:D$\backslash$:/chris/iCloudDrive/Documents/School/MASTERS/Research/CB{\_}found/Comms/Reliable and Efficient Autonomous Driving The Need for Heterogeneous Vehicular Networks.pdf:pdf},
-issn = {01636804},
-journal = {IEEE Communications Magazine},
-keywords = {Planning,Protocols,Reliability,Roads,Safety,Vehicles},
-number = {12},
-pages = {72--79},
-publisher = {IEEE},
-title = {Reliable and efficient autonomous driving: The need for heterogeneous vehicular networks},
-volume = {53},
-year = {2015}
-}
-@article{Li2019,
-author = {Li, Changjian},
-file = {:D$\backslash$:/chris/iCloudDrive/Documents/School/MASTERS/Research/CB{\_}found/RL/Li{\_}Changjian.pdf:pdf},
-title = {{Autonomous Driving : A Multi-Objective Deep Reinforcement Learning Approach}},
-year = {2019}
-}
-@article{Kendall2019,
-abstract = {We demonstrate the first application of deep reinforcement learning to autonomous driving. From randomly initialised parameters, our model is able to learn a policy for lane following in a handful of training episodes using a single monocular image as input. We provide a general and easy to obtain reward: the distance travelled by the vehicle without the safety driver taking control. We use a continuous, model-free deep reinforcement learning algorithm, with all exploration and optimisation performed on-vehicle. This demonstrates a new framework for autonomous driving which moves away from reliance on defined logical rules, mapping, and direct supervision. We discuss the challenges and opportunities to scale this approach to a broader range of autonomous driving tasks.},
-archivePrefix = {arXiv},
-arxivId = {1807.00412},
-author = {Kendall, Alex and Hawke, Jeffrey and Janz, David and Mazur, Przemyslaw and Reda, Daniele and Allen, John Mark and Lam, Vinh Dieu and Bewley, Alex and Shah, Amar},
-doi = {10.1109/ICRA.2019.8793742},
-url = {https://doi.org/10.1109/ICRA.2019.8793742},
-eprint = {1807.00412},
-file = {:C$\backslash$:/Users/chris/iCloudDrive/Documents/School/Uni/Masters/Learning to Drive in a Day.pdf:pdf},
-isbn = {9781538660263},
-issn = {10504729},
-journal = {Proceedings - IEEE International Conference on Robotics and Automation},
-pages = {8248--8254},
-title = {Learning to drive in a day},
-volume = {2019-May},
-year = {2019}
-}
-@article{Chu2019a,
-abstract = {This paper proposes a model-based deep reinforcement learning (DRL) algorithm for cooperative adaptive cruise control (CACC) of connected vehicles. Differing from most existing CACC works, we consider a platoon consisting of both human-driven and autonomous vehicles. The humandriven vehicles are heterogeneous and connected via vehicleto-vehicle (V2V) communication and the autonomous vehicles are controlled by a cloud-based centralized DRL controller via vehicle-to-cloud (V2C) communication. To overcome the safety and robustness issues of RL, the algorithm informs lowerlevel controllers of desired headway signals instead of directly controlling vehicle accelerations. The lower-level behavior is modeled according to the optimal velocity model (OVM), which determines vehicle acceleration according to a headway input. Numerical experiments show that the model-based DRL algorithm outperforms its model-free version in both safety and stability of CACC. Furthermore, we study the impact of different penetration ratios of autonomous vehicles on the safety, stability, and optimality of the CACC policy.},
-author = {Chu, Tianshu and Kalabic, Uros},
-doi = {10.1109/CDC40024.2019.9030110},
-url = {https://doi.org/10.1109/CDC40024.2019.9030110},
-isbn = {9781728113982},
-issn = {07431546},
-journal = {Proceedings of the IEEE Conference on Decision and Control},
-pages = {4079--4084},
-title = {Model-based deep reinforcement learning for CACC in mixed-autonomy vehicle platoon},
-volume = {2019-Decem},
 year = {2019}
 }
 
@@ -757,6 +443,314 @@ year = {2019}
   timestamp = {Sat, 23 Jan 2021 01:20:50 +0100},
   biburl    = {https://dblp.org/rec/journals/corr/abs-1902-00089.bib},
   bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+% --- UNUSED --- %
+@article{Schwarting2018,
+abstract = {In this review, we provide an overview of emerging trends and challenges in the field of intelligent and autonomous, or self-driving, vehicles. Recent advances in the field of perception, planning, and decision-making for autonomous vehicles have led to great improvements in functional capabilities, with several prototypes already driving on our roads and streets. Yet challenges remain regarding guaranteed performance and safety under all driving circumstances. For instance, planning methods that provide safe and system-compliant performance in complex, cluttered environments while modeling the uncertain interaction with other traffic participants are required. Furthermore, new paradigms, such as interactive planning and end-to-end learning, open up questions regarding safety and reliability that need to be addressed. In this survey, we emphasize recent approaches for integrated perception and planning and for behavior-aware planning, many of which rely on machine learning. This raises the question of verification and safety, which we also touch upon. Finally, we discuss the state of the art and remaining challenges for managing fleets of autonomous vehicles.},
+author = {Schwarting, Wilko and Alonso-Mora, Javier and Rus, Daniela},
+doi = {10.1146/annurev-control-060117-105157},
+url = {https://doi.org/10.1146/annurev-control-060117-105157},
+file = {:C$\backslash$:/Users/chris/iCloudDrive/Documents/School/Uni/Masters/Planning and Decision-Making for Autonomous Vehicles.pdf:pdf},
+issn = {2573-5144},
+journal = {Annual Review of Control, Robotics, and Autonomous Systems},
+keywords = {artificial intelligence,autonomous vehicles,autonomous vehicles,intelligent vehicles,decision-,decision-making,fleet management,intelligent vehicles,motion,planning,verification},
+number = {1},
+pages = {187--210},
+title = {Planning and Decision-Making for Autonomous Vehicles},
+volume = {1},
+year = {2018}
+}
+
+@article{Shwartz2018,
+abstract = {Autonomous driving is a multi-agent setting where the host vehicle must apply sophisticated negotiation skills with other road users when overtaking, giving way, merging, taking left and right turns and while pushing ahead in unstructured urban roadways. Since there are many possible scenarios, manually tackling all possible cases will likely yield a too simplistic policy. Moreover, one must balance between unexpected behavior of other drivers/pedestrians and at the same time not to be too defensive so that normal traffic flow is maintained. In this paper we apply deep reinforcement learning to the problem of forming long term driving strategies. We note that there are two major challenges that make autonomous driving different from other robotic tasks. First, is the necessity for ensuring functional safety - something that machine learning has difficulty with given that performance is optimized at the level of an expectation over many instances. Second, the Markov Decision Process model often used in robotics is problematic in our case because of unpredictable behavior of other agents in this multi-agent scenario. We make three contributions in our work. First, we show how policy gradient iterations can be used without Markovian assumptions. Second, we decompose the problem into a composition of a Policy for Desires (which is to be learned) and trajectory planning with hard constraints (which is not learned). The goal of Desires is to enable comfort of driving, while hard constraints guarantees the safety of driving. Third, we introduce a hierarchical temporal abstraction we call an "Option Graph" with a gating mechanism that significantly reduces the effective horizon and thereby reducing the variance of the gradient estimation even further.},
+archivePrefix = {arXiv},
+arxivId = {arXiv:1610.03295v1},
+author = {Shalev-Shwartz, Shai and Shammah, Shaked and Shashua, Amnon},
+doi = {10.5626/ktcp.2018.24.12.670},
+url = {https://doi.org/10.5626/ktcp.2018.24.12.670},
+eprint = {arXiv:1610.03295v1},
+file = {:D$\backslash$:/chris/iCloudDrive/Documents/School/MASTERS/Research/Lei{\_}Prov/Safe, Multi-Agent, Reinforcement Learning for Autonomous Driving.pdf:pdf},
+issn = {2383-6318},
+journal = {KIISE Transactions on Computing Practices},
+number = {12},
+pages = {670--674},
+title = {{Multi-agent Deep Reinforcement Learning for Autonomous Driving}},
+volume = {24},
+year = {2018}
+}
+
+@article{Hussain2019,
+abstract = {Throughout the last century, the automobile industry achieved remarkable milestones in manufacturing reliable, safe, and affordable vehicles. Because of significant recent advances in computation and communication technologies, autonomous cars are becoming a reality. Already autonomous car prototype models have covered millions of miles in test driving. Leading technical companies and car manufacturers have invested a staggering amount of resources in autonomous car technology, as they prepare for autonomous cars' full commercialization in the coming years. However, to achieve this goal, several technical and nontechnical issues remain: software complexity, real-time data analytics, and testing and verification are among the greater technical challenges; and consumer stimulation, insurance management, and ethical/moral concerns rank high among the nontechnical issues. Tackling these challenges requires thoughtful solutions that satisfy consumers, industry, and governmental requirements, regulations, and policies. Thus, here we present a comprehensive review of state-of-the-art results for autonomous car technology. We discuss current issues that hinder autonomous cars' development and deployment on a large scale. We also highlight autonomous car applications that will benefit consumers and many other sectors. Finally, to enable cost-effective, safe, and efficient autonomous cars, we discuss several challenges that must be addressed (and provide helpful suggestions for adoption) by designers, implementers, policymakers, regulatory organizations, and car manufacturers.},
+author = {Hussain, Rasheed and Zeadally, Sherali},
+doi = {10.1109/COMST.2018.2869360},
+url = {https://doi.org/10.1109/COMST.2018.2869360},
+file = {:C$\backslash$:/Users/chris/iCloudDrive/Documents/School/Uni/Masters/Autonomous Cars Research Results, Issues, and Future Challenges.pdf:pdf},
+issn = {1553877X},
+journal = {IEEE Communications Surveys and Tutorials},
+keywords = {Autonomous cars,connected cars,driverless cars,policy,privacy,security,simulation},
+number = {2},
+pages = {1275--1313},
+publisher = {IEEE},
+title = {{Autonomous Cars: Research Results, Issues, and Future Challenges}},
+volume = {21},
+year = {2019}
+}
+
+@article{Vinitsky2018,
+abstract = {We release new benchmarks in the use of deep reinforcement learning (RL) to create controllers for mixed-autonomy traffic, where connected and autonomous vehicles (CAVs) interact with human drivers and infrastructure. Benchmarks , such as Mujoco or the Arcade Learning Environment, have spurred new research by enabling researchers to effectively compare their results so that they can focus on algorithmic improvements and control techniques rather than system design. To promote similar advances in traffic control via RL, we propose four benchmarks, based on three new traffic scenarios, illustrating distinct reinforcement learning problems with applications to mixed-autonomy traffic. We provide an introduction to each control problem, an overview of their MDP structures, and preliminary performance results from commonly used RL algorithms. For the purpose of reproducibility, the benchmarks, reference implementations, and tutorials are available at https://github.com/flow-project/flow.},
+author = {Vinitsky, Eugene and Kreidieh, Aboudy and {Le Flem}, Luc and Kheterpal, Nishant and Jang, Kathy and Wu, Cathy and Wu, Fangyu and Liaw, Richard and Liang, Eric and Bayen, Alexandre M},
+file = {:D$\backslash$:/chris/iCloudDrive/Documents/School/MASTERS/Research/Lei{\_}Prov/Benchmarks for reinforcement learning in mixed-autonomy traffic.pdf:pdf},
+number = {CoRL},
+title = {{Benchmarks for reinforcement learning in mixed-autonomy traffic}},
+url = {https://github.com/flow-project/flow.},
+year = {2018}
+}
+
+@article{Kiran2020,
+abstract = {With the development of deep representation learning, the domain of reinforcement learning (RL) has become a powerful learning framework now capable of learning complex policies in high dimensional environments. This review summarises deep reinforcement learning (DRL) algorithms, provides a taxonomy of automated driving tasks where (D)RL methods have been employed, highlights the key challenges algorithmically as well as in terms of deployment of real world autonomous driving agents, the role of simulators in training agents, and finally methods to evaluate, test and robustifying existing solutions in RL and imitation learning.},
+archivePrefix = {arXiv},
+arxivId = {2002.00444},
+author = {Kiran, B Ravi and Sobh, Ibrahim and Talpaert, Victor and Mannion, Patrick and Sallab, Ahmad A. Al and Yogamani, Senthil and P{\'{e}}rez, Patrick},
+eprint = {2002.00444},
+file = {:C$\backslash$:/Users/chris/iCloudDrive/Documents/School/Uni/Masters/Deep Reinforcement Learning for Autonomous Driving A Survey.pdf:pdf},
+pages = {1--18},
+title = {{Deep Reinforcement Learning for Autonomous Driving: A Survey}},
+url = {http://arxiv.org/abs/2002.00444},
+year = {2020}
+}
+
+@article{Li2019,
+author = {Li, Changjian},
+title = {Autonomous Driving : A Multi-Objective Deep Reinforcement Learning Approach},
+year = {2019}
+}
+
+@article{Kendall2019,
+abstract = {We demonstrate the first application of deep reinforcement learning to autonomous driving. From randomly initialised parameters, our model is able to learn a policy for lane following in a handful of training episodes using a single monocular image as input. We provide a general and easy to obtain reward: the distance travelled by the vehicle without the safety driver taking control. We use a continuous, model-free deep reinforcement learning algorithm, with all exploration and optimisation performed on-vehicle. This demonstrates a new framework for autonomous driving which moves away from reliance on defined logical rules, mapping, and direct supervision. We discuss the challenges and opportunities to scale this approach to a broader range of autonomous driving tasks.},
+archivePrefix = {arXiv},
+arxivId = {1807.00412},
+author = {Kendall, Alex and Hawke, Jeffrey and Janz, David and Mazur, Przemyslaw and Reda, Daniele and Allen, John Mark and Lam, Vinh Dieu and Bewley, Alex and Shah, Amar},
+doi = {10.1109/ICRA.2019.8793742},
+url = {https://doi.org/10.1109/ICRA.2019.8793742},
+eprint = {1807.00412},
+isbn = {9781538660263},
+issn = {10504729},
+journal = {Proceedings - IEEE International Conference on Robotics and Automation},
+pages = {8248--8254},
+title = {Learning to drive in a day},
+volume = {2019-May},
+year = {2019}
+}
+
+% ------------------------ COMMS AV RL -------------------------- %
+@article{Zeng2019,
+abstract = {Autonomous vehicular platoons will play an important role in improving on-road safety in tomorrow's smart cities. Vehicles in an autonomous platoon can exploit vehicle-to-vehicle (V2V) communications to collect environmental information so as to maintain the target velocity and inter-vehicle distance. However, due to the uncertainty of the wireless channel, V2V communications within a platoon will experience a wireless system delay. Such system delay can impair the vehicles' ability to stabilize their velocity and distances within their platoon. In this paper, the problem of integrated communication and control system is studied for wireless connected autonomous vehicular platoons. In particular, a novel framework is proposed for optimizing a platoon's operation while jointly taking into account the delay of the wireless V2V network and the stability of the vehicle's control system. First, stability analysis for the control system is performed and the maximum wireless system delay requirements which can prevent the instability of the control system are derived. Then, delay analysis is conducted to determine the end-to-end delay, including queuing, processing, and transmission delay for the V2V link in the wireless network. Subsequently, using the derived wireless delay, a lower bound and an approximated expression of the reliability for the wireless system, defined as the probability that the wireless system meets the control system's delay needs, are derived. Then, the parameters of the control system are optimized in a way to maximize the derived wireless system reliability. Simulation results corroborate the analytical derivations and study the impact of parameters, such as the packet size and the platoon size, on the reliability performance of the vehicular platoon. More importantly, the simulation results shed light on the benefits of integrating control system and wireless network design while providing guidelines for designing an autonomous platoon so as to realize the required wireless network reliability and control system stability.},
+archivePrefix = {arXiv},
+arxivId = {1804.05290},
+author = {Zeng, Tengchan and Semiari, Omid and Saad, Walid and Bennis, Mehdi},
+doi = {10.1109/TCOMM.2019.2931583},
+url = {https://doi.org/10.1109/TCOMM.2019.2931583},
+eprint = {1804.05290},
+file = {:C$\backslash$:/Users/chris/iCloudDrive/Documents/School/Uni/Masters/Joint Communication and Control for Wireless Autonomous Vehicular Platoon Systems.pdf:pdf},
+issn = {15580857},
+journal = {IEEE Transactions on Communications},
+keywords = {Vehicular communications,connected autonomous vehicles,control system design,delay analysis,stability analysis},
+number = {11},
+pages = {7907--7922},
+title = {{Joint Communication and Control for Wireless Autonomous Vehicular Platoon Systems}},
+volume = {67},
+year = {2019}
+}
+
+@article{Wang2018,
+abstract = {In this paper, we consider the problem of cooperative driving for connected autonomous vehicles to reduce traffic congestion. The connected autonomous vehicles are able to exchange information as well as driving intentions with surrounding vehicles through vehicle-to-vehicle (V2V) communications. We define three driving conditions for a given vehicle, namely, maximum, deadlock, and freerun, in which a deadlock condition implies that the vehicle is in a congestion condition that cannot be resolved alone. For the purpose of improving overall traffic flow, we design a strategy called Altruistic Cooperative Driving (ACD), in which a connected autonomous vehicle can automatically identify a deadlock condition and form a multi-vehicle coordination group to resolve the deadlock through a cooperative maneuver procedure. The proposed ACD is evaluated in our traffic simulator in terms of speed efficiency and communication traffic between the connected autonomous vehicles. The results show that ACD can improve speed efficiency and successfully resolve traffic congestion caused by deadlock conditions.},
+author = {Wang, Nannan and Wang, Xi and Palacharla, Paparao and Ikeuchi, Tadashi},
+doi = {10.1109/VNC.2017.8275620},
+url = {https://doi.org/10.1109/VNC.2017.8275620},
+file = {:D$\backslash$:/chris/iCloudDrive/Documents/School/MASTERS/Research/CB{\_}found/Comms/Cooperative Autonomous Driving for  Traffic Congestion Avoidance Through V2V Communications.pdf:pdf},
+isbn = {9781538609866},
+issn = {21579865},
+journal = {IEEE Vehicular Networking Conference, VNC},
+keywords = {Cooperative driving,coordination group,deadlock,traffic congestion,vehicle-to-vehicle communication},
+pages = {327--330},
+title = {{Cooperative autonomous driving for traffic congestion avoidance through vehicle-to-vehicle communications}},
+volume = {2018-Janua},
+year = {2018}
+}
+
+@article{Wang2019,
+abstract = {The development of light detection and ranging, Radar, camera, and other advanced sensor technologies inaugurated a new era in autonomous driving. However, due to the intrinsic limitations of these sensors, autonomous vehicles are prone to making erroneous decisions and causing serious disasters. At this point, networking and communication technologies can greatly make up for sensor deficiencies, and are more reliable, feasible and efficient to promote the information interaction, thereby improving autonomous vehicle's perception and planning capabilities as well as realizing better vehicle control. This paper surveys the networking and communication technologies in autonomous driving from two aspects: intra-and inter-vehicle. The intra-vehicle network as the basis of realizing autonomous driving connects the on-board electronic parts. The inter-vehicle network is the medium for interaction between vehicles and outside information. In addition, we present the new trends of communication technologies in autonomous driving, as well as investigate the current mainstream verification methods and emphasize the challenges and open issues of networking and communications in autonomous driving.},
+author = {Wang, Jiadai and Liu, Jiajia and Kato, Nei},
+doi = {10.1109/COMST.2018.2888904},
+url = {https://doi.org/10.1109/COMST.2018.2888904},
+file = {:C$\backslash$:/Users/chris/iCloudDrive/Documents/School/Uni/Masters/Networking and Communications in Autonomous Driving A Survey.pdf:pdf},
+issn = {1553877X},
+journal = {IEEE Communications Surveys and Tutorials},
+keywords = {Autonomous driving,inter-vehicle network,intra-vehicle network,survey,verification method},
+number = {2},
+pages = {1243--1274},
+publisher = {IEEE},
+title = {{Networking and Communications in Autonomous Driving: A Survey}},
+volume = {21},
+year = {2019}
+}
+
+@article{Naik2019,
+abstract = {With the rising interest in autonomous vehicles, developing radio access technologies (RATs) that enable reliable and low-latency vehicular communications has become of paramount importance. Dedicated short-range communications (DSRCs) and cellular V2X (C-V2X) are two present-day technologies that are capable of supporting day-1 vehicular applications. However, these RATs fall short of supporting communication requirements of many advanced vehicular applications, which are believed to be critical in enabling fully autonomous vehicles. Both the DSRC and C-V2X are undergoing extensive enhancements in order to support advanced vehicular applications that are characterized by high reliability, low latency, and high throughput requirements. These RAT evolutions - the IEEE 802.11bd for the DSRC and NR V2X for C-V2X - can supplement today's vehicular sensors in enabling autonomous driving. In this paper, we survey the latest developments in the standardization of 802.11bd and NR V2X. We begin with a brief description of the two present-day vehicular RATs. In doing so, we highlight their inability to guarantee the quality of service requirements of many advanced vehicular applications. We then look at the two RAT evolutions, i.e., the IEEE 802.11bd and NR V2X, outline their objectives, describe their salient features, and provide an in-depth description of key mechanisms that enable these features. While both, the IEEE 802.11bd and NR V2X, are in their initial stages of development, we shed light on their preliminary performance projections and compare and contrast the two evolutionary RATs with their respective predecessors.},
+archivePrefix = {arXiv},
+arxivId = {1903.08391},
+author = {Naik, Gaurang and Choudhury, Biplav and Park, Jung Min},
+doi = {10.1109/ACCESS.2019.2919489},
+url = {https://doi.org/10.1109/ACCESS.2019.2919489},
+eprint = {1903.08391},
+file = {:D$\backslash$:/chris/iCloudDrive/Documents/School/MASTERS/Research/CB{\_}found/Comms/Access Technologies for V2X Communications.pdf:pdf},
+issn = {21693536},
+journal = {IEEE Access},
+keywords = {C-V2X,DSRC,IEEE 802.11bd,NR V2X},
+pages = {70169--70184},
+publisher = {IEEE},
+title = {{IEEE 802.11bd 5G NR V2X: Evolution of Radio Access Technologies for V2X Communications}},
+volume = {7},
+year = {2019}
+}
+
+@article{Campolo2017,
+abstract = {Platooning is the first step toward fully autonomous driving, which is deemed as one of the most representative fifth-generation (5G) use cases. Spacing and speed in a platoon of vehicles are regulated by a fully automated control system that relies on updated vehicles? kinematics data. In this article, we investigate the potential of long-term evolution (LTE) device-todevice (D2D) communications for data dissemination in the platoon. Exploiting pooled LTE resources and the coordination by the in-front vehicle of the platoon, the proposed solution is shown to fulfill the ultralow latency requirements of messaging in the platoon. As a further advantage, our proposal is able to provide spatial reuse of LTE resources among members of the same platoon and of different platoons, thus drastically reducing the capacity demand.},
+author = {Campolo, Claudia and Molinaro, Antonella and Araniti, Giuseppe and Berthet, Antoine O.},
+doi = {10.1109/MVT.2016.2632418},
+url = {https://doi.org/10.1109/MVT.2016.2632418},
+file = {:D$\backslash$:/chris/iCloudDrive/Documents/School/MASTERS/Research/CB{\_}found/Comms/Better Platooning Control Toward Autonomous Driving.pdf:pdf},
+issn = {15566072},
+journal = {IEEE Vehicular Technology Magazine},
+number = {1},
+pages = {30--38},
+publisher = {IEEE},
+title = {{Better Platooning Control Toward Autonomous Driving: An LTE Device-to-Device Communications Strategy That Meets Ultralow Latency Requirements}},
+volume = {12},
+year = {2017}
+}
+
+@article{Dey2016,
+abstract = {Cooperative adaptive cruise control (CACC) systems have the potential to increase traffic throughput by allowing smaller headway between vehicles and moving vehicles safely in a platoon at a harmonized speed. CACC systems have been attracting significant attention from both academia and industry since connectivity between vehicles will become mandatory for new vehicles in the USA in the near future. In this paper, we review three basic and important aspects of CACC systems: communications, driver characteristics, and controls to identify the most challenging issues for their real-world deployment. Different routing protocols that support the data communication requirements between vehicles in the CACC platoon are reviewed. Promising and suitable protocols are identified. Driver characteristics related issues, such as how to keep drivers engaged in driving tasks during CACC operations, are discussed. To achieve mass acceptance, the control design needs to depict real-world traffic variability such as communication effects, driver behavior, and traffic composition. Thus, this paper also discusses the issues that existing CACC control modules face when considering close to ideal driving conditions.},
+author = {Dey, Kakan C. and Yan, Li and Wang, Xujie and Wang, Yue and Shen, Haiying and Chowdhury, Mashrur and Yu, Lei and Qiu, Chenxi and Soundararaj, Vivekgautham},
+doi = {10.1109/TITS.2015.2483063},
+url = {https://doi.org/10.1109/TITS.2015.2483063},
+file = {:C$\backslash$:/Users/chris/iCloudDrive/Documents/School/Uni/Masters/A Review of Communication, Driver Characteristics and Controls Aspects o....pdf:pdf},
+issn = {15249050},
+journal = {IEEE Transactions on Intelligent Transportation Systems},
+keywords = {Cooperative adaptive cruise control (CACC),communication protocols,controls,driver characteristics,string stability},
+number = {2},
+pages = {491--509},
+publisher = {IEEE},
+title = {{A Review of Communication, Driver Characteristics, and Controls Aspects of Cooperative Adaptive Cruise Control (CACC)}},
+volume = {17},
+year = {2016}
+}
+
+@article{Darbha2019,
+author = {Darbha, Swaroop and Konduri, Shyamprasad and Pagilla, Prabhakar R},
+file = {:D$\backslash$:/chris/iCloudDrive/Documents/School/MASTERS/Research/CB{\_}found/Comms/Benefits of Autonomous Driving.pdf:pdf},
+number = {5},
+pages = {1954--1963},
+title = {{Benefits of V2V Communication for Autonomous and Connected Vehicles}},
+volume = {20},
+year = {2019}
+}
+
+@article{Dey2016b,
+abstract = {Cooperative adaptive cruise control (CACC) systems have the potential to increase traffic throughput by allowing smaller headway between vehicles and moving vehicles safely in a platoon at a harmonized speed. CACC systems have been attracting significant attention from both academia and industry since connectivity between vehicles will become mandatory for new vehicles in the USA in the near future. In this paper, we review three basic and important aspects of CACC systems: communications, driver characteristics, and controls to identify the most challenging issues for their real-world deployment. Different routing protocols that support the data communication requirements between vehicles in the CACC platoon are reviewed. Promising and suitable protocols are identified. Driver characteristics related issues, such as how to keep drivers engaged in driving tasks during CACC operations, are discussed. To achieve mass acceptance, the control design needs to depict real-world traffic variability such as communication effects, driver behavior, and traffic composition. Thus, this paper also discusses the issues that existing CACC control modules face when considering close to ideal driving conditions.},
+author = {Dey, Kakan C. and Yan, Li and Wang, Xujie and Wang, Yue and Shen, Haiying and Chowdhury, Mashrur and Yu, Lei and Qiu, Chenxi and Soundararaj, Vivekgautham},
+doi = {10.1109/TITS.2015.2483063},
+url = {https://doi.org/10.1109/TITS.2015.2483063},
+issn = {15249050},
+journal = {IEEE Transactions on Intelligent Transportation Systems},
+keywords = {Cooperative adaptive cruise control (CACC),communication protocols,controls,driver characteristics,string stability},
+number = {2},
+pages = {491--509},
+publisher = {IEEE},
+title = {{A Review of Communication, Driver Characteristics, and Controls Aspects of Cooperative Adaptive Cruise Control (CACC)}},
+volume = {17},
+year = {2016}
+}
+
+@article{Hobert2016,
+abstract = {Two emerging technologies in the automotive domain are autonomous vehicles and V2X communication. Even though these technologies are usually considered separately, their combination enables two key cooperative features: sensing and maneuvering. Cooperative sensing allows vehicles to exchange information gathered from local sensors. Cooperative maneuvering permits inter-vehicle coordination of maneuvers. These features enable the creation of cooperative autonomous vehicles, which may greatly improve traffic safety, efficiency, and driver comfort. The first generation V2X communication systems with the corresponding standards, such as Release 1 from ETSI, have been designed mainly for driver warning applications in the context of road safety and traffic efficiency, and do not target use cases for autonomous driving. This article presents the design of core functionalities for cooperative autonomous driving and addresses the required evolution of communication standards in order to support a selected number of autonomous driving use cases. The article describes the targeted use cases, identifies their communication requirements, and analyzes the current V2X communication standards from ETSI for missing features. The result is a set of specifications for the amendment and extension of the standards in support of cooperative autonomous driving.},
+author = {Hobert, Laurens and Festag, Andreas and Llatser, Ignacio and Altomare, Luciano and Visintainer, Filippo and Kovacs, Andras},
+file = {:D$\backslash$:/chris/iCloudDrive/Documents/School/MASTERS/Research/CB{\_}found/V2X/Enhancements of V2X Communication in Suppoert of Cooperative Autonomous Driving.pdf:pdf},
+issn = {20612125},
+journal = {Infocommunications Journal},
+number = {3},
+pages = {27--33},
+publisher = {IEEE},
+title = {{Enhancements of V2X communication in support of cooperative autonomous driving}},
+volume = {8},
+year = {2016}
+}
+@article{Khamis2014a,
+abstract = {In this paper, we focus on computing a consistent traffic signal configuration at each junction that optimizes multiple performance indices, i.e.; multi-objective traffic signal control. The multi-objective function includes minimizing trip waiting time, total trip time, and junction waiting time. Moreover, the multi-objective function includes maximizing flow rate, satisfying green waves for platoons traveling in main roads, avoiding accidents especially in residential areas, and forcing vehicles to move within moderate speed range of minimum fuel consumption. In particular, we formulate our multi-objective traffic signal control as a multi-agent system (MAS). Traffic signal controllers have a distributed nature in which each traffic signal agent acts individually and possibly cooperatively in a MAS. In addition, agents act autonomously according to the current traffic situation without any human intervention. Thus, we develop a multi-agent multi-objective reinforcement learning (RL) traffic signal control framework that simulates the driver's behavior (acceleration/deceleration) continuously in space and time dimensions. The proposed framework is based on a multi-objective sequential decision making process whose parameters are estimated based on the Bayesian interpretation of probability. Using this interpretation together with a novel adaptive cooperative exploration technique, the proposed traffic signal controller can make real-time adaptation in the sense that it responds effectively to the changing road dynamics. These road dynamics are simulated by the Green Light District (GLD) vehicle traffic simulator that is the testbed of our traffic signal control. We have implemented the Intelligent Driver Model (IDM) acceleration model in the GLD traffic simulator. The change in road conditions is modeled by varying the traffic demand probability distribution and adapting the IDM parameters to the adverse weather conditions. Under the congested and free traffic situations, the proposed multi-objective controller significantly outperforms the underlying single objective controller which only minimizes the trip waiting time (i.e.; the total waiting time in the whole vehicle trip rather than at a specific junction). For instance, the average trip and waiting times are ≃ 8 and 6 times lower respectively when using the multi-objective controller. {\textcopyright} 2014 Elsevier Ltd. All rights reserved.},
+author = {Khamis, Mohamed A. and Gomaa, Walid},
+doi = {10.1016/j.engappai.2014.01.007},
+file = {:D$\backslash$:/chris/iCloudDrive/Documents/School/MASTERS/Research/CB{\_}found/RL/Adaptive multi-objective reinforcement learning with hybrid exploration for traffic signal control based on cooperative multi-agent framework.pdf:pdf},
+issn = {09521976},
+journal = {Engineering Applications of Artificial Intelligence},
+keywords = {Adaptive optimization,Cooperative multi-agent system,Exploration,Multi-objective optimization,Reinforcement learning,Traffic signal control},
+pages = {134--151},
+publisher = {Elsevier},
+title = {{Adaptive multi-objective reinforcement learning with hybrid exploration for traffic signal control based on cooperative multi-agent framework}},
+url = {http://dx.doi.org/10.1016/j.engappai.2014.01.007},
+volume = {29},
+year = {2014}
+}
+
+@article{Jung2020,
+abstract = {In recent years, research concerning autonomous driving has gained momentum to enhance road safety and traffic efficiency. Relevant concepts are being applied to the fields of perception, planning, and control of automated vehicles to leverage the advantages offered by the vehicle-to-everything (V2X) communication technology. This paper presents a V2X communication-aided autonomous driving system for vehicles. It is comprised of three subsystems: beyond line-of-sight (BLOS) perception, extended planning, and control. Specifically, the BLOS perception subsystem facilitates unlimited LOS environmental perception through data fusion between local perception using on-board sensors and communication perception via V2X. In the extended planning subsystem, various algorithms are presented regarding the route, velocity, and behavior planning to reflect real-time traffic information obtained utilizing V2X communication. To verify the results, the proposed system was integrated into a full-scale vehicle that participated in the 2019 Hyundai Autonomous Vehicle Competition held in K-city with the V2X infrastructure. Using the proposed system, the authors demonstrated successful completion of all assigned real-life-based missions, including emergency braking caused by a jaywalker, detouring around a construction site ahead, complying with traffic signals, collision avoidance, and yielding the ego-lane for an emergency vehicle. The findings of this study demonstrated the possibility of several potential applications of V2X communication with regard to autonomous driving systems.},
+author = {Jung, Chanyoung and Lee, Daegyu and Lee, Seungwook and Shim, David Hyunchul},
+doi = {10.3390/s20102903},
+url = {https://doi.org/10.3390/s20102903},
+file = {:D$\backslash$:/chris/iCloudDrive/Documents/School/MASTERS/Research/CB{\_}found/V2X/V2X-Communication-Aided Autonomous Driving.pdf:pdf},
+issn = {14248220},
+journal = {Sensors (Switzerland)},
+keywords = {Autonomous driving system,Control,Intelligent transportation system,Perception,Planning,V2X communication},
+number = {10},
+pages = {1--21},
+pmid = {32443823},
+title = {{V2x-communication-aided autonomous driving: System design and experimental validation}},
+volume = {20},
+year = {2020}
+}
+
+@article{Zheng2015,
+abstract = {Autonomous driving technology has been regarded as a promising solution to reduce road accidents and traffic congestion, as well as to optimize the usage of fuel and lane. Reliable and highly efficient vehicle-to-vehicle and vehicle-to-infrastructure communications are essential for commercial autonomous driving vehicles to be on the road before 2020. The current article first presents the concept of heterogeneous vehicular networks (HetVNETs) for autonomous driving, in which an improved protocol stack is proposed to satisfy the communication requirements of not only safety but also non-safety services. We then consider and study in detail several typical scenarios for autonomous driving. In order to tackle the potential challenges raised by the autonomous driving vehicles in HetVNETs, new techniques from transmission to networking are proposed as potential solutions.},
+archivePrefix = {arXiv},
+arxivId = {1510.06607},
+author = {Zheng, Kan and Zheng, Qiang and Yang, Haojun and Zhao, Long and Hou, Lu and Chatzimisios, Periklis},
+doi = {10.1109/MCOM.2015.7355569},
+url = {https://doi.org/10.1109/MCOM.2015.7355569},
+eprint = {1510.06607},
+file = {:D$\backslash$:/chris/iCloudDrive/Documents/School/MASTERS/Research/CB{\_}found/Comms/Reliable and Efficient Autonomous Driving The Need for Heterogeneous Vehicular Networks.pdf:pdf},
+issn = {01636804},
+journal = {IEEE Communications Magazine},
+keywords = {Planning,Protocols,Reliability,Roads,Safety,Vehicles},
+number = {12},
+pages = {72--79},
+publisher = {IEEE},
+title = {Reliable and efficient autonomous driving: The need for heterogeneous vehicular networks},
+volume = {53},
+year = {2015}
+}
+% ------------------------ SAFE RL ---------------------- %
+@article{Garcia2015,
+abstract = {Safe Reinforcement Learning can be defined as the process of learning policies that maximize the expectation of the return in problems in which it is important to ensure reasonable system performance and/or respect safety constraints during the learning and/or deployment processes. We categorize and analyze two approaches of Safe Reinforcement Learning. The first is based on the modification of the optimality criterion, the classic discounted finite/infinite horizon, with a safety factor. The second is based on the modification of the exploration process through the incorporation of external knowledge or the guidance of a risk metric. We use the proposed classification to survey the existing literature, as well as suggesting future directions for Safe Reinforcement Learning.},
+author = {Garc{\'{i}}a, Javier and Fern{\'{a}}ndez, Fernando},
+file = {:D$\backslash$:/chris/iCloudDrive/Documents/School/MASTERS/Research/Lei{\_}Prov/A comprehensive survye on safe reinforcement learning.pdf:pdf},
+issn = {15337928},
+journal = {Journal of Machine Learning Research},
+keywords = {Reinforcement learning,Risk sensitivity,Safe exploration,Teacher advice},
+pages = {1437--1480},
+title = {{A comprehensive survey on safe reinforcement learning}},
+volume = {16},
+year = {2015}
 }
 
 % ------------------------ DDGP AV RL --------------------------- %
@@ -828,35 +822,7 @@ title = {{Multi-Agent Reinforcement Learning for Cooperative Adaptive Cruise Con
 volume = {2020-Novem},
 year = {2020}
 }
-
-@article{Yuan2019,
-  author    = {Yuan Lin and
-               John McPhee and
-               Nasser L. Azad},
-  title     = {Longitudinal Dynamic versus Kinematic Models for Car-following Control
-               Using Deep Reinforcement Learning},
-  journal   = {CoRR},
-  volume    = {abs/1905.08314},
-  year      = {2019},
-  url       = {http://arxiv.org/abs/1905.08314},
-  archivePrefix = {arXiv},
-  eprint    = {1905.08314},
-  timestamp = {Tue, 28 May 2019 12:48:08 +0200},
-  biburl    = {https://dblp.org/rec/journals/corr/abs-1905-08314.bib},
-  bibsource = {dblp computer science bibliography, https://dblp.org}
-}
-
-
-        
-@unknown{yuenen,
-author = {Hou, Yuenan and Zhang, Yi},
-year = {2019},
-month = {05},
-pages = {},
-title = {Improving DDPG via Prioritized Experience Replay (RL course report)},
-doi = {10.13140/RG.2.2.23694.41287}
-}
-
+     
 @article{Lin_2021,
    title={Comparison of Deep Reinforcement Learning and Model Predictive Control for Adaptive Cruise Control},
    volume={6},
@@ -881,6 +847,33 @@ doi = {10.13140/RG.2.2.23694.41287}
       primaryClass={cs.AI}
 }
 
+@article{LeiV2x,
+  author={Lei, Lei and Liu, Tong and Zheng, Kan and Hanzo, Lajos},
+  journal={IEEE Transactions on Vehicular Technology}, 
+  title={Deep Reinforcement Learning Aided Platoon Control Relying on V2X Information}, 
+  year={2022},
+  volume={},
+  number={},
+  pages={1-1},
+  doi={10.1109/TVT.2022.3161585}}
+
+% ------ UNUSED -----
+@article{Yuan2019,
+  author    = {Yuan Lin and
+               John McPhee and
+               Nasser L. Azad},
+  title     = {Longitudinal Dynamic versus Kinematic Models for Car-following Control
+               Using Deep Reinforcement Learning},
+  journal   = {CoRR},
+  volume    = {abs/1905.08314},
+  year      = {2019},
+  url       = {http://arxiv.org/abs/1905.08314},
+  archivePrefix = {arXiv},
+  eprint    = {1905.08314},
+  timestamp = {Tue, 28 May 2019 12:48:08 +0200},
+  biburl    = {https://dblp.org/rec/journals/corr/abs-1905-08314.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
 @article{zhangYuxiang2020,
   author={Zhang, Yuxiang and Guo, Lulu and Gao, Bingzhao and Qu, Ting and Chen, Hong},
   journal={IEEE Transactions on Vehicular Technology}, 
@@ -890,4 +883,3 @@ doi = {10.13140/RG.2.2.23694.41287}
   number={1},
   pages={338-348},
   doi={10.1109/TVT.2019.2955959}}
-

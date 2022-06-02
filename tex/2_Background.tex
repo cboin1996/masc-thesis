@@ -201,11 +201,25 @@ proposes the following training cycle for each agent:
 
 HFRL may be noted to have similarities to ``Parallel RL".  Parallel RL is a long studied 
 field of RL, where agent gradients are transferred amongst each other 
-\cite{Lim2020, Nadiger2019}.  On the contrary, VFRL defines an architecture composed 
+\cite{Lim2020, Nadiger2019}.
+
+On the contrary, VFRL defines an architecture composed 
 of multiple agents exploring a single global environment. The agents in a VFRL system 
 may observe partial or full states from the global model, and the actions of each agent 
-have an affect the system as a whole. As previously stated, the works of this thesis most 
-closely align with an HFRL architecture.
+have an affect the system as a whole. A VFRL architecture is composed of the following steps \cite{IntelAI19}:
+
+\begin{itemize}
+    \item All RL agents take an action according the the \textbf{same} environment.
+    \item RL agents receive feedback from the environment (state, reward, etc.).
+    \item RL agents compute 'mid products' - that is, the output from their corresponding model.  
+    The output from their model is masked and sent to the Q-network agent.
+    \item The Q-network encrypts each of the mid-products and trains itself using back-propagation. 
+    The outputs from the Q-network are sent back to each agent \cite{IntelAI19}.
+    \item All gradients received by each agent are encrypted and used to update their network.
+\end{itemize}
+
+Since decentralized models for AV platooning include a separate environment for each
+vehicle in the platoon, we have chosen an HFRL architecture for our model.
 
 \section{Summary}
 Now that the theory and fundamentals of autonomous driving, FL, RL and lastly FRL 
