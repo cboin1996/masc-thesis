@@ -9,6 +9,8 @@ main.toc
 main.pdf
 main.bbl
 main.blg
+main.fls
+main.fdb_latexmk
 
 svg-inkscape/
 .task/
