@@ -2,19 +2,19 @@
 \newcommand{\interfrlRewSpace}{0cm}
 
 \chapter{Results and Discussion} \label{chap:results}
-In this chapter, the experimental setup for applying both Inter and Intra-FRL to the 
-AV platooning environment is presented.  The AV platooning environment and Inter/Intra 
-FRL algorithms are implemented in Python 3.7 using Tensorflow 2.  
+In this chapter, the experimental setup for applying both Inter and Intra-FRL to the
+AV platooning environment is presented.  The AV platooning environment and Inter/Intra
+FRL algorithms are implemented in Python 3.7 using Tensorflow 2.
 
 \section{Experimental Setup}
-The parameters specific to the AV platoon environment are summarized in Table 
-\ref{tab:pl_hyps}.  The time step interval is $T=0.1s$, and each training episode is 
-composed of 600 time steps.  Furthermore, the coefficients $a$, $b$, $c$ and $d$ 
-given in the reward function \eqref{eqn:rewardB} are a means to define how much each 
-component of \eqref{eqn:rewardB} contributes to the calculation of the reward. These 
-coefficients may be tuned in order to determine a balance amongst each component, 
+The parameters specific to the AV platoon environment are summarized in Table
+\ref{tab:pl_hyps}.  The time step interval is $T=0.1s$, and each training episode is
+composed of 600 time steps.  Furthermore, the coefficients $a$, $b$, $c$ and $d$
+given in the reward function \eqref{eqn:rewardB} are a means to define how much each
+component of \eqref{eqn:rewardB} contributes to the calculation of the reward. These
+coefficients may be tuned in order to determine a balance amongst each component,
 leading to a better optimization during training.
-The coefficients were tuned using a grid search strategy and are listed 
+The coefficients were tuned using a grid search strategy and are listed
 as $a=0.4, b = c = d = 0.2$.
 
 \begin{table}[H]
@@ -35,25 +35,25 @@ as $a=0.4, b = c = d = 0.2$.
     \label{tab:pl_hyps}
 \end{table}
 
-Each DDPG agent consists of a replay buffer, and networks for the actor, target actor, 
-critic and target critic.  The actor network contains four layers: an input layer for 
-the state, two hidden layers with 256 and 128 nodes respectively, and an output layer. 
-Both hidden layers use batch normalization and the relu activation function.  The 
-output layer uses the tanh() activation function.  The output layer is scaled by the 
-high bound for the control output, in this case 2.5 $m/s^2$.  The critic network is 
-structured with two separate input layers for state and action.  These two layers are 
-concatenated together, and fed into a single hidden layer before the output layer.  
-The layer with the state input has 48 nodes, the relu activation function and batch 
-normalization.  The same is applied for the action layer, but instead with 256 nodes.  
-The post concatenation layer uses 304 input nodes, followed by a hidden layer 
-with 128 nodes, again with relu activation and batch normalization applied.  The 
-output of the critic uses a linear activation function.  Ornstein-Uhlenbeck noise is 
-applied to the model's predicted action, $u_i$. The structure of the models are 
-presented in Figures \ref{fig:actB} and \ref{fig:crticB}. All except the final layers 
-of the actor and critic networks were initialized within the range 
-\begin{tiny}$\left[-\dfrac{1}{\sqrt{fan\:in}},\:\dfrac{1}{\sqrt{fan\:in}}\right]$\end{tiny}, 
-where-as the final layer is initialized using a random uniform 
-distribution bounded by $[-3\times10^{-3},\:3\times10^{-3}]$.  
+Each DDPG agent consists of a replay buffer, and networks for the actor, target actor,
+critic and target critic.  The actor network contains four layers: an input layer for
+the state, two hidden layers with 256 and 128 nodes respectively, and an output layer.
+Both hidden layers use batch normalization and the relu activation function.  The
+output layer uses the tanh() activation function.  The output layer is scaled by the
+high bound for the control output, in this case 2.5 $m/s^2$.  The critic network is
+structured with two separate input layers for state and action.  These two layers are
+concatenated together, and fed into a single hidden layer before the output layer.
+The layer with the state input has 48 nodes, the relu activation function and batch
+normalization.  The same is applied for the action layer, but instead with 256 nodes.
+The post concatenation layer uses 304 input nodes, followed by a hidden layer
+with 128 nodes, again with relu activation and batch normalization applied.  The
+output of the critic uses a linear activation function.  Ornstein-Uhlenbeck noise is
+applied to the model's predicted action, $u_i$. The structure of the models are
+presented in Figures \ref{fig:actB} and \ref{fig:crticB}. All except the final layers
+of the actor and critic networks were initialized within the range
+\begin{tiny}$\left[-\dfrac{1}{\sqrt{fan\:in}},\:\dfrac{1}{\sqrt{fan\:in}}\right]$\end{tiny},
+where-as the final layer is initialized using a random uniform
+distribution bounded by $[-3\times10^{-3},\:3\times10^{-3}]$.
 Table \ref{tab:ddpg_hyps} presents the hyperparameters specific to the DDPG algorithm.
 
 \begin{figure*}
@@ -92,15 +92,15 @@ Table \ref{tab:ddpg_hyps} presents the hyperparameters specific to the DDPG algo
     \label{tab:ddpg_hyps}
 \end{table}
 
-The hyperparameters specific to Inter and Intra-FRL are presented in Table \ref{tab:frlhyps}. 
-During a training session with FRL, both local updates and FRL updates with aggregated 
+The hyperparameters specific to Inter and Intra-FRL are presented in Table \ref{tab:frlhyps}.
+During a training session with FRL, both local updates and FRL updates with aggregated
 parameters are applied to each DDPG agent in the system. FRL updates usually
 occur at a given frequency known as the FRL update delay, and furthermore FRL updates
-may be terminated at a specific training episode as defined by the FRL cutoff ratio.  The 
-FRL update delay is defined as the time in seconds between FRL updates during a training 
-episode. The FRL cutoff ratio is the ratio of the number of episodes where FRL updates 
-are applied divided by the total number of episodes in a training session. Note that the 
-aggregation method denotes whether the model gradients or weights are averaged during 
+may be terminated at a specific training episode as defined by the FRL cutoff ratio.  The
+FRL update delay is defined as the time in seconds between FRL updates during a training
+episode. The FRL cutoff ratio is the ratio of the number of episodes where FRL updates
+are applied divided by the total number of episodes in a training session. Note that the
+aggregation method denotes whether the model gradients or weights are averaged during
 training using FRL.
 \begin{table}[H]
     \caption{FRL Specific Initial Hyperparameters}
@@ -123,45 +123,45 @@ training using FRL.
     \label{tab:frlhyps}
 \end{table}
 
-For the purposes of this study, an experiment is defined as a training session for a 
-specific configuration of hyper-parameters, using the algorithm defined in Algorithm 1. 
-During each experiment training session, model parameters were trained through the base 
-DDPG algorithm or FRL in accordance with Algorithm 1. Once training has concluded, a 
-simulation is performed using a custom built evaluator API.  The evaluator performs 
-simulations for a single 60 second episode using the trained models, calculating the 
-cumulative reward of the model(s) in the experiment.  The entire project is designed and 
-implemented using Python3, and Tensorflow.  As previously stated, each vehicle in the 
-platoon is modelled using the CACC CTHP model described in Section 3.  For the purposes 
-of this study multiple sets of DRL experiments were conducted, using 4 random seeds (1-4) 
+For the purposes of this study, an experiment is defined as a training session for a
+specific configuration of hyper-parameters, using the algorithm defined in Algorithm 1.
+During each experiment training session, model parameters were trained through the base
+DDPG algorithm or FRL in accordance with Algorithm 1. Once training has concluded, a
+simulation is performed using a custom built evaluator API.  The evaluator performs
+simulations for a single 60 second episode using the trained models, calculating the
+cumulative reward of the model(s) in the experiment.  The entire project is designed and
+implemented using Python3, and Tensorflow.  As previously stated, each vehicle in the
+platoon is modelled using the CACC CTHP model described in Section 3.  For the purposes
+of this study multiple sets of DRL experiments were conducted, using 4 random seeds (1-4)
 for training and a single random seed (6) across all evaluations.
 
 \section{Inter-FRL}
-In order to evaluate the effectiveness of Inter-FRL relative to the base case where a 
-DRL model is trained using DDPG without FRL, 4 experiments are conducted without 
-Inter-FRL (no-FRL), and 8 with.  For each of the 12 conducted experiments, 2 platoons 
-with 2 vehicles each were trained using one of the four random seeds.  Once training 
-across the four seeds has completed, the cumulative reward for a single evaluation 
-episode is evaluated.  For the experiments using Inter-FRL, two aggregation methods 
-are examined.  First, the gradients of each model are averaged during training, and 
-second, the model weights are averaged.  The multi platoon system trains and shares 
-the aggregated parameters (gradients or weights) from vehicle to vehicle with the same 
-index in the platoon. The federated server is responsible for performing the averaging, 
-and each vehicle performs a training episode with the averaged parameters in addition 
-to their local training episodes in accordance with the FRL update delay and FRL 
-cutoff ratio (see Table \ref{tab:frlhyps}). Note that here-after Inter-FRL with gradient 
-aggregation is denoted Inter-FRLGA, and Inter-FRL with weight aggregation is denoted 
+In order to evaluate the effectiveness of Inter-FRL relative to the base case where a
+DRL model is trained using DDPG without FRL, 4 experiments are conducted without
+Inter-FRL (no-FRL), and 8 with.  For each of the 12 conducted experiments, 2 platoons
+with 2 vehicles each were trained using one of the four random seeds.  Once training
+across the four seeds has completed, the cumulative reward for a single evaluation
+episode is evaluated.  For the experiments using Inter-FRL, two aggregation methods
+are examined.  First, the gradients of each model are averaged during training, and
+second, the model weights are averaged.  The multi platoon system trains and shares
+the aggregated parameters (gradients or weights) from vehicle to vehicle with the same
+index in the platoon. The federated server is responsible for performing the averaging,
+and each vehicle performs a training episode with the averaged parameters in addition
+to their local training episodes in accordance with the FRL update delay and FRL
+cutoff ratio (see Table \ref{tab:frlhyps}). Note that here-after Inter-FRL with gradient
+aggregation is denoted Inter-FRLGA, and Inter-FRL with weight aggregation is denoted
 Inter-FRLWA.
 
 
 \subsection{Performance Across 4 Random Seeds}
-The performance for each of the systems is calculated by averaging the cumulative reward 
-of each vehicle in the 2 vehicle 2 platoon system, as summarized in Table 
-\ref{tab:interfrl-summary}.  For each of the 3 cases (no-FRL, Inter-FRLGA and Inter-FRLWA), 
-training sessions were run using 4 random seeds.  In order to determine the highest 
-performing system overall, an average and standard deviation is obtained from the result 
-of training using the 4 random seeds. From Table \ref{tab:interfrl-summary}, it is 
-observed that both Inter-FRL scenarios using gradient and weight aggregation provide 
-large performance increases to that of the base case (no-FRL).  
+The performance for each of the systems is calculated by averaging the cumulative reward
+of each vehicle in the 2 vehicle 2 platoon system, as summarized in Table
+\ref{tab:interfrl-summary}.  For each of the 3 cases (no-FRL, Inter-FRLGA and Inter-FRLWA),
+training sessions were run using 4 random seeds.  In order to determine the highest
+performing system overall, an average and standard deviation is obtained from the result
+of training using the 4 random seeds. From Table \ref{tab:interfrl-summary}, it is
+observed that both Inter-FRL scenarios using gradient and weight aggregation provide
+large performance increases to that of the base case (no-FRL).
 
 % Table generated by Excel2LaTeX from sheet 'changed'
 \begin{table}[H]
@@ -176,14 +176,14 @@ large performance increases to that of the base case (no-FRL).
     \end{tabular}%
   \label{tab:interfrl-summary}%
 \end{table}%
- 
+
  \subsection{Convergence Properties}
-The cumulative reward is calculated over each training episode, and a moving average 
-is computed over 40 episodes to generate Figures 
-\ref{fig:avgep_pl1reward_nofrl}-\ref{fig:avgep_pl2reward_weight}.  It can be seen that 
-the cumulative reward for Inter-FRLWA not only converges more rapidly than both no-FRL 
-and Inter-FRLGA, but Inter-FRLWA also appears to have a more stable training session as 
-indicated by the lower magnitude of the shaded area (the standard deviation across the 
+The cumulative reward is calculated over each training episode, and a moving average
+is computed over 40 episodes to generate Figures
+\ref{fig:avgep_pl1reward_nofrl}-\ref{fig:avgep_pl2reward_weight}.  It can be seen that
+the cumulative reward for Inter-FRLWA not only converges more rapidly than both no-FRL
+and Inter-FRLGA, but Inter-FRLWA also appears to have a more stable training session as
+indicated by the lower magnitude of the shaded area (the standard deviation across the
 four random seeds).
 
 \begin{figure}[H]
@@ -223,19 +223,19 @@ four random seeds).
 \end{figure}
 
 \subsection{Test Results for One Episode}
-In Figures \ref{fig:simresINTERFRLWA_p1} and \ref{fig:simresINTERFRLWA_p2}, a simulation is 
-performed over a single training episode plotting the jerk, along with the control 
-input $u_{i,k}$, acceleration $a_{i,k}$, velocity error $e_{vi,k}$, and position 
-error $e_{pi,k}$ for each platoon.  There are 2 platoons in the Inter-FRL scenario, 
-and a simulation is provided for each platoon. The simulation environment is subject 
-to initial conditions of ($e_{pi} = 1.0\:m$, $e_{vi}=1.0\:m/s$, $a_i = 0.03\:m/s^2$).  
-It can be seen that each DDPG agent for both vehicles within both platoons quickly 
-responds to the platoon leader's control input $u_{i,k}$ to bring the position error, 
-velocity error and acceleration error to 0.  In addition, each DDPG agent closely 
-approximates the gaussian random input of the platoon leader, eliminating noise in 
-the response to maintain smooth tracking across the episode. Finally, each DDPG agent 
-in the platoon also minimizes the jerk effectively. These results are indicative of 
-both a good design of the reward function \eqref{eqn:rewardB}, and also a suitable 
+In Figures \ref{fig:simresINTERFRLWA_p1} and \ref{fig:simresINTERFRLWA_p2}, a simulation is
+performed over a single training episode plotting the jerk, along with the control
+input $u_{i,k}$, acceleration $a_{i,k}$, velocity error $e_{vi,k}$, and position
+error $e_{pi,k}$ for each platoon.  There are 2 platoons in the Inter-FRL scenario,
+and a simulation is provided for each platoon. The simulation environment is subject
+to initial conditions of ($e_{pi} = 1.0\:m$, $e_{vi}=1.0\:m/s$, $a_i = 0.03\:m/s^2$).
+It can be seen that each DDPG agent for both vehicles within both platoons quickly
+responds to the platoon leader's control input $u_{i,k}$ to bring the position error,
+velocity error and acceleration error to 0.  In addition, each DDPG agent closely
+approximates the gaussian random input of the platoon leader, eliminating noise in
+the response to maintain smooth tracking across the episode. Finally, each DDPG agent
+in the platoon also minimizes the jerk effectively. These results are indicative of
+both a good design of the reward function \eqref{eqn:rewardB}, and also a suitable
 selection of parameters $a, b, c$ and $d$ in \eqref{eqn:rewardB}.
 
 \begin{figure}[H]
@@ -251,37 +251,37 @@ selection of parameters $a, b, c$ and $d$ in \eqref{eqn:rewardB}.
        \caption{Platoon 2}\label{fig:simresINTERFRLWA_p2}
     \end{subfigure}
 \label{fig:interfrlsim}
-\caption{Results for a specific 60s test episode using the 2 vehicle 2 platoon environment 
+\caption{Results for a specific 60s test episode using the 2 vehicle 2 platoon environment
 trained using Inter-FRL with weight aggregation.}
 \end{figure}
 
 \section{Intra-FRL}
-In order to evaluate the effectiveness of Intra-FRL relative to the base AV platooning 
-scenario, 4 experiments are conducted without Intra-FRL (no-FRL), and 8 with.  For each of 
-the conducted experiments, 1 platoon with 2 vehicles is trained using 4 random seeds.  A 
-single platoon is required for studying Intra-FRL as parameters are shared amongst 
-vehicles within the platoon (no sharing is performed from vehicle's in one platoon to 
-another).  Once training across the four seeds has completed, the cumulative reward for 
-a single evaluation episode is evaluated.  Similar to the experiments using Inter-FRL, 
-two aggregation methods are examined.  First, the gradients of each model are averaged 
-during training, and second, the model weights are averaged.  The platoon trains and 
-shares the aggregated parameters (gradients or weights) from vehicle to vehicle such 
-that data is averaged and updated amongst vehicles within the same platoon. The federated 
-server is responsible for performing the averaging, and each vehicle performs a training 
-episode with the averaged parameters in addition to their local training episodes in 
-accordance with the FRL update delay and FRL cutoff ratio (see Table \ref{tab:frlhyps}).  
-Note that here-after Intra-FRL with gradient aggregation is denoted Intra-FRLGA, and 
+In order to evaluate the effectiveness of Intra-FRL relative to the base AV platooning
+scenario, 4 experiments are conducted without Intra-FRL (no-FRL), and 8 with.  For each of
+the conducted experiments, 1 platoon with 2 vehicles is trained using 4 random seeds.  A
+single platoon is required for studying Intra-FRL as parameters are shared amongst
+vehicles within the platoon (no sharing is performed from vehicle's in one platoon to
+another).  Once training across the four seeds has completed, the cumulative reward for
+a single evaluation episode is evaluated.  Similar to the experiments using Inter-FRL,
+two aggregation methods are examined.  First, the gradients of each model are averaged
+during training, and second, the model weights are averaged.  The platoon trains and
+shares the aggregated parameters (gradients or weights) from vehicle to vehicle such
+that data is averaged and updated amongst vehicles within the same platoon. The federated
+server is responsible for performing the averaging, and each vehicle performs a training
+episode with the averaged parameters in addition to their local training episodes in
+accordance with the FRL update delay and FRL cutoff ratio (see Table \ref{tab:frlhyps}).
+Note that here-after Intra-FRL with gradient aggregation is denoted Intra-FRLGA, and
 Intra-FRL with weight aggregation is denoted Intra-FRLWA.
 
 
 \subsection{Performance Across 4 Random Seeds}
-The performance for the platoon is calculated by averaging the cumulative reward generated 
-by the simulation for each of the 4 random seeds and is summarized in Table 
-\ref{tab:intrafrl-summary}. The results in Table \ref{tab:intrafrl-summary} summarize 
-the performance for no-FRL, Intra-FRLGA, and lastly Intra-FRLWA.  It is observed that 
-Intra-FRLWA performs most favourably, followed by no-FRL and lastly Intra-FRLGA.  
+The performance for the platoon is calculated by averaging the cumulative reward generated
+by the simulation for each of the 4 random seeds and is summarized in Table
+\ref{tab:intrafrl-summary}. The results in Table \ref{tab:intrafrl-summary} summarize
+the performance for no-FRL, Intra-FRLGA, and lastly Intra-FRLWA.  It is observed that
+Intra-FRLWA performs most favourably, followed by no-FRL and lastly Intra-FRLGA.
 
- % Table generated by Excel2LaTeX from sheet '20220215175934753328'
+
 \begin{table}[H]
   \centering
   \scriptsize
@@ -296,13 +296,13 @@ Intra-FRLWA performs most favourably, followed by no-FRL and lastly Intra-FRLGA.
 \end{table}%
 
  \subsection{Convergence Properties}
- 
-The cumulative reward is calculated over each training episode, and a moving average is 
-computed over 40 episodes to generate Figure \ref{fig:intra-convergence}.  Similar to the 
-Inter-FRL experiments, Intra-FRLWA shows the most favourable training results.  In addition, 
-the rate of convergence increases with Intra-FRLWA over no-FRL and Intra-FRLGA.  Lastly, 
-the stability during training is also shown to be improved as the standard deviation 
-across the four random seeds is much smaller than the other two cases (as evident in 
+
+The cumulative reward is calculated over each training episode, and a moving average is
+computed over 40 episodes to generate Figure \ref{fig:intra-convergence}.  Similar to the
+Inter-FRL experiments, Intra-FRLWA shows the most favourable training results.  In addition,
+the rate of convergence increases with Intra-FRLWA over no-FRL and Intra-FRLGA.  Lastly,
+the stability during training is also shown to be improved as the standard deviation
+across the four random seeds is much smaller than the other two cases (as evident in
 the shaded regions of Figure \ref{fig:intra-convergence}.
 \begin{figure}[H]
 \centering
@@ -326,23 +326,23 @@ the shaded regions of Figure \ref{fig:intra-convergence}.
 \end{figure}
 
 \subsection{Test Results for One Episode}
-A single simulation is performed on an episode plotting the jerk, along with the control 
-input $u_{i,k}$, acceleration $a_{i,k}$, velocity error $e_{vi,k}$, and position 
-error $e_{pi,k}$.  Figure \ref{fig:intraFRL-simresult} shows the precise control of 
-Intra-FRLWA on the environment.  The environment is initialized to the same conditions 
-as that of the Inter-FRLWA scenario 
-($e_{pi} = 1.0 m$, $e_{vi}=1.0 m/s$, $a_i = 0.03 m/s^2$), and each DDPG agent in the 
-platoon quickly and precisely tracks the gaussian random input $u_{i,k}$ from the 
-leader while minimizing position error, velocity error, acceleration, and jerk.  Much 
-like the Inter-FRLWA scenario, it is observed that a strong optimization of the reward 
-function (Equation 10) has occurred.  This is an indication of a good design of the 
-reward function in addition to a good balance of parameters $a,b,c$ and $d$ in the 
+A single simulation is performed on an episode plotting the jerk, along with the control
+input $u_{i,k}$, acceleration $a_{i,k}$, velocity error $e_{vi,k}$, and position
+error $e_{pi,k}$.  Figure \ref{fig:intraFRL-simresult} shows the precise control of
+Intra-FRLWA on the environment.  The environment is initialized to the same conditions
+as that of the Inter-FRLWA scenario
+($e_{pi} = 1.0 m$, $e_{vi}=1.0 m/s$, $a_i = 0.03 m/s^2$), and each DDPG agent in the
+platoon quickly and precisely tracks the gaussian random input $u_{i,k}$ from the
+leader while minimizing position error, velocity error, acceleration, and jerk.  Much
+like the Inter-FRLWA scenario, it is observed that a strong optimization of the reward
+function (Equation 10) has occurred.  This is an indication of a good design of the
+reward function in addition to a good balance of parameters $a,b,c$ and $d$ in the
 reward function.
 
 \begin{figure}[H]
     \centering
     \includesvg[width=0.35\textwidth]{assets/intrafrl/intra_sim_guassian_p1.svg}
-    \caption{Results for a specific 60s test episode using the 2 vehicle 1 platoon 
+    \caption{Results for a specific 60s test episode using the 2 vehicle 1 platoon
     environment trained using Intra-FRLWA.}
     \label{fig:intraFRL-simresult}
 \end{figure}
@@ -364,43 +364,43 @@ The results of for both Inter-FRL and Intra-FRL are summarized in Table \ref{tab
     \label{tab:inter_vs_intra}
 \end{table}
 
-It is clear that using weight aggregation in both Inter-FRL and Intra-FRL is favourable 
-to gradient aggregation.  In addition, Intra-FRLWA provides the overall best result.  
-Intra-FRL likely converges to the best model due to conditions each agent experiences 
-during training.  For Inter-FRL, the environment is independent and identically 
-distributed. For Intra-FRL, each follower's training depends on the policy of the 
-preceding vehicle.  For the 2 vehicle scenario studied, vehicle 1 will converge prior 
-to vehicle 2 as vehicle 1 learns based on the stochastic random input generated by 
-the platoon leader. As vehicle 1 is training, vehicle 2 trains based off the policy 
-of vehicle 1. As previously stated, Inter-FRL parameters are shared amongst vehicles 
-in the same index across platoons, where-as Intra-FRL provides the advantage of 
-sharing parameters from preceding vehicles to following vehicles. Our implementation 
-of Intra-FRL includes a directional parameter averaging.  For example, vehicle 1 does 
-not train with averaged parameters from the followers, but vehicle 2 has the advantage 
-of including vehicle 1's model in its averaging.  This directional averaging provides 
-an advantage to vehicle 2, as evidenced by the increased performance in Table 
-\ref{tab:inter_vs_intra}.  
+It is clear that using weight aggregation in both Inter-FRL and Intra-FRL is favourable
+to gradient aggregation.  In addition, Intra-FRLWA provides the overall best result.
+Intra-FRL likely converges to the best model due to conditions each agent experiences
+during training.  For Inter-FRL, the environment is independent and identically
+distributed. For Intra-FRL, each follower's training depends on the policy of the
+preceding vehicle.  For the 2 vehicle scenario studied, vehicle 1 will converge prior
+to vehicle 2 as vehicle 1 learns based on the stochastic random input generated by
+the platoon leader. As vehicle 1 is training, vehicle 2 trains based off the policy
+of vehicle 1. As previously stated, Inter-FRL parameters are shared amongst vehicles
+in the same index across platoons, where-as Intra-FRL provides the advantage of
+sharing parameters from preceding vehicles to following vehicles. Our implementation
+of Intra-FRL includes a directional parameter averaging.  For example, vehicle 1 does
+not train with averaged parameters from the followers, but vehicle 2 has the advantage
+of including vehicle 1's model in its averaging.  This directional averaging provides
+an advantage to vehicle 2, as evidenced by the increased performance in Table
+\ref{tab:inter_vs_intra}.
 
 \section{Intra-FRL with Variant Number of Vehicles}
-An additional factor to consider when evaluating FRL in relation to the no-FRL base 
-scenario is how FRL performs with increasing agents relative to no-FRL.  In this section, 
-12 experiments are conducted with no-FRL, and 12 with Intra-FRLWA. The set of 12 
-experiments for no-FRL and Intra-FRLWA are broken up by number of vehicle and random 
-seed.  The random seed is selected to be a value between 1 and 4, inclusive. In addition, 
-the platoons under study contain either 3, 4, or 5 vehicles. Once training has completed 
-for all experiments, the cumulative reward for each experiment is evaluated using a single 
-simulation episode in which the seed is kept constant.  Intra-FRLWA is used as the FRL 
-training strategy since Intra-FRLWA was identified to be the highest performing FRL 
-strategy in the previous section. 
+An additional factor to consider when evaluating FRL in relation to the no-FRL base
+scenario is how FRL performs with increasing agents relative to no-FRL.  In this section,
+12 experiments are conducted with no-FRL, and 12 with Intra-FRLWA. The set of 12
+experiments for no-FRL and Intra-FRLWA are broken up by number of vehicle and random
+seed.  The random seed is selected to be a value between 1 and 4, inclusive. In addition,
+the platoons under study contain either 3, 4, or 5 vehicles. Once training has completed
+for all experiments, the cumulative reward for each experiment is evaluated using a single
+simulation episode in which the seed is kept constant.  Intra-FRLWA is used as the FRL
+training strategy since Intra-FRLWA was identified to be the highest performing FRL
+strategy in the previous section.
 
 \subsection{Performance with Varying Number of Vehicles}
-The performance for each experiment is calculated by taking the average cumulative episodic 
-reward across each vehicle in the platoon at the end of the simulation episode.  Table 
-\ref{tab:varypl} presents the results for no-FRL and Intra-FRLWA for platoons with 3, 4, 
-and 5 follower vehicles. Table \ref{tab:varypl} shows that Intra-FRLWA provides 
-favourable performance in all platoon lengths. A notable example of Intra-FRLWA's success 
-is highlighted when considering the poor performance of the 4 vehicle platoon trained with 
-no-FRL using seed 1. The Intra-FRLWA training strategy was able to overcome the performance 
+The performance for each experiment is calculated by taking the average cumulative episodic
+reward across each vehicle in the platoon at the end of the simulation episode.  Table
+\ref{tab:varypl} presents the results for no-FRL and Intra-FRLWA for platoons with 3, 4,
+and 5 follower vehicles. Table \ref{tab:varypl} shows that Intra-FRLWA provides
+favourable performance in all platoon lengths. A notable example of Intra-FRLWA's success
+is highlighted when considering the poor performance of the 4 vehicle platoon trained with
+no-FRL using seed 1. The Intra-FRLWA training strategy was able to overcome the performance
 challenges, correcting the poor performance entirely.
 
 % Table generated by Excel2LaTeX from sheet 'changed'
@@ -422,16 +422,16 @@ challenges, correcting the poor performance entirely.
 \end{table}%
 
 \subsection{Convergence Properties}
-The cumulative reward is calculated over each training episode, and a moving average is 
-computed over 40 episodes to generate Figure \ref{fig:vehmult-convergence}.  Intra-FRLWA 
-shows favourable training performance to that of the no-FRL scenario for all platoon 
-lengths.  In addition, the rate of convergence is increased using Intra-FRLWA versus 
-no-FRL.  Furthermore, the shaded areas corresponding to standard deviation across the 
-seeds are reduced significantly indicating better stability across the seeds for 
-Intra-FRLWA than no-FRL.  Last, the overall stability is improved as shown by the large 
-noise reduction during training in Figures \ref{fig:reward_curve_p1_3v_intrafrlwa}, 
-\ref{fig:reward_curve_p1_4v_intrafrlwa}, \ref{fig:reward_curve_p1_5v_intrafrlwa} when 
-compared with no-FRL's Figures \ref{fig:reward_curve_p1_3v_nofrl},  
+The cumulative reward is calculated over each training episode, and a moving average is
+computed over 40 episodes to generate Figure \ref{fig:vehmult-convergence}.  Intra-FRLWA
+shows favourable training performance to that of the no-FRL scenario for all platoon
+lengths.  In addition, the rate of convergence is increased using Intra-FRLWA versus
+no-FRL.  Furthermore, the shaded areas corresponding to standard deviation across the
+seeds are reduced significantly indicating better stability across the seeds for
+Intra-FRLWA than no-FRL.  Last, the overall stability is improved as shown by the large
+noise reduction during training in Figures \ref{fig:reward_curve_p1_3v_intrafrlwa},
+\ref{fig:reward_curve_p1_4v_intrafrlwa}, \ref{fig:reward_curve_p1_5v_intrafrlwa} when
+compared with no-FRL's Figures \ref{fig:reward_curve_p1_3v_nofrl},
 \ref{fig:reward_curve_p1_4v_nofrl}, \ref{fig:reward_curve_p1_5v_nofrl}.
 
 \begin{figure}[H]
@@ -471,19 +471,19 @@ compared with no-FRL's Figures \ref{fig:reward_curve_p1_3v_nofrl},
 \end{figure}
 
 \subsection{Test Results for One Episode}
-As with all previous sections, a single simulation is performed on a 60 second episode 
-plotting the jerk along with the control input $u_{i,k}$, acceleration $a_{i,k}$, 
-velocity error $e_{vi,k}$, and position error $e_{pi,k}$.  
-Figure \ref{fig:intraFRL-vehmult-simresult} showcases the ability of Intra-FRLWA to 
-control a 5 platoon environment precisely when compared to a platoon trained without 
-Intra-FRLWA.  The environment for Intra-FRLWA is initialized with the same values as 
-no-FRL, just like all previous experiments: 
-($e_{pi} = 1.0 m$, $e_{vi}=1.0 m/s$, $a_i = 0.03 m/s^2$). The Intra-FRLWA agent quickly 
-and precisely tracks the gaussian random control input $u_{i,k}$ from the leader minimizing 
-$e_{pi}$, $e_{vi}$, $a_i$ and jerk. In particular, the response for $e_{pi,k}$ and 
-$e_{vi,k}$ in the platoon trained using Intra-FRLWA 
-(Figure \ref{fig:sim_guassian_p1_5v_intrafrlwa}) appears to respond to the platoon 
-leader's input quicker and in a much smoother manner than that of the no-FRL 
+As with all previous sections, a single simulation is performed on a 60 second episode
+plotting the jerk along with the control input $u_{i,k}$, acceleration $a_{i,k}$,
+velocity error $e_{vi,k}$, and position error $e_{pi,k}$.
+Figure \ref{fig:intraFRL-vehmult-simresult} showcases the ability of Intra-FRLWA to
+control a 5 platoon environment precisely when compared to a platoon trained without
+Intra-FRLWA.  The environment for Intra-FRLWA is initialized with the same values as
+no-FRL, just like all previous experiments:
+($e_{pi} = 1.0 m$, $e_{vi}=1.0 m/s$, $a_i = 0.03 m/s^2$). The Intra-FRLWA agent quickly
+and precisely tracks the gaussian random control input $u_{i,k}$ from the leader minimizing
+$e_{pi}$, $e_{vi}$, $a_i$ and jerk. In particular, the response for $e_{pi,k}$ and
+$e_{vi,k}$ in the platoon trained using Intra-FRLWA
+(Figure \ref{fig:sim_guassian_p1_5v_intrafrlwa}) appears to respond to the platoon
+leader's input quicker and in a much smoother manner than that of the no-FRL
 scenario (Figure \ref{fig:sim_guassian_p1_5v_nofrl}).
 
 \begin{figure}[H]
@@ -502,14 +502,14 @@ scenario (Figure \ref{fig:sim_guassian_p1_5v_nofrl}).
 \label{fig:intraFRL-vehmult-simresult}
 \end{figure}
 
-The large difference in performance for no-FRL versus Intra-FRL can be explained by 
-understanding how Intra-FRLWA works. With no-FRL, each agent trains independently, and 
-the inputs to the following vehicles are directly outputted from the predecessors. Thus, 
-the followers farther back in the platoon take longer to train as their predecessors' 
-outputs can be highly variable while training. As the policies of the predecessors 
-converge, the policy of each follower can then begin to converge. This sequential 
-convergence from predecessor to follower can be seen in Figure \ref{fig:vehmult-convergence}, 
-where the convergence during training is slower for vehicles 4 and 5 then it is for 3, 2 
-and 1. Intra-FRLWA helps to resolve this challenge by allowing vehicles to average 
-their model weights, thus distributing an aggregation of more mature predecessor parameters 
+The large difference in performance for no-FRL versus Intra-FRL can be explained by
+understanding how Intra-FRLWA works. With no-FRL, each agent trains independently, and
+the inputs to the following vehicles are directly outputted from the predecessors. Thus,
+the followers farther back in the platoon take longer to train as their predecessors'
+outputs can be highly variable while training. As the policies of the predecessors
+converge, the policy of each follower can then begin to converge. This sequential
+convergence from predecessor to follower can be seen in Figure \ref{fig:vehmult-convergence},
+where the convergence during training is slower for vehicles 4 and 5 then it is for 3, 2
+and 1. Intra-FRLWA helps to resolve this challenge by allowing vehicles to average
+their model weights, thus distributing an aggregation of more mature predecessor parameters
 amongst the platoon.
