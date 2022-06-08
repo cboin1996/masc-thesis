@@ -21,14 +21,16 @@ large successes in autonomous driving and AV platooning research.
 
 In general there are two types of models for AV decision making: vehicle-following
 modeling or lane-changing modeling \cite{Ye2019}, the vehicle-following approach is
-selected as the AV model for this study.  In \cite{Zhu2018}, four typical AV platooning
-environments are presented: stimulus-based, safety-based, safety-distance, pyscho-physical
-and desired-measures. Stimulus-based environments reference their acceleration off
-of the relative distance and speed from the leading vehicle \cite{Zhu2018}. Safety
-distance models choose a gap large enough to stop at a specific velocity if the
-leading vehicle were to suddenly stop \cite{Zhu2018}.  Psycho-physical models
-operate with a driver varying their behavior with regard to traffic state through
-approaching the lead vehicle, steady state following, free driving, or braking \cite{Zhu2018}.  The desired measures model takes a select set of measures (for example speed or headway), and tries to minimize its actual measurements from the desired \cite{Zhu2018}. Vehicle-following models are based on following a vehicle in a single lane of a road with respect to a leading vehicle's actions \cite{Zhu2018}.  Vehicle-following models controlled using traditional controls methods are known to have: limited accuracy, poor generalization from a lack of data, and a lack of adaptive updating \cite{Zhu2018}. In order to address such limitations, AI is being explored as a method to control vehicle-following models \cite{Zhu2018}. In particular, DRL models have become a prominent area of research applied to AV platooning.
+selected as the AV model for this thesis.  Vehicle-following
+models include a vehicle in a single lane road  known as the follower that aims to maintain
+a desired set of parameters (headway, velocity, accleration for example) relative to a
+predecessor vehicle.  Vehicle-following models are commonly formulated as conventional cruise control,
+adaptive cruise control, or co-operative adaptive cruise control (CACC) problems \cite{Mil2014}.
+CACC is the model of choice for this thesis. Traditionally controlled vehicle-following models
+are known to have: limited accuracy, poor generalization from a lack of data,
+and a lack of adaptive updating \cite{Zhu2018}. In order to address such limitations,
+AI is being explored as a method to control vehicle-following models \cite{Zhu2018}.
+In particular, DRL models have become a prominent area of research applied to AV platooning.
 
 DRL approaches are model-free and the model may be inferred by the algorithm during
 training.  There are three elements important to DRL: training environment (ensuring
@@ -43,16 +45,23 @@ by deep neural networks (DNN)'s, ability to generalize from learning through tra
 data (rather than parameter estimation as a result of data fitting) and continuous
 improvement \cite{Zhu2018}.
 
-Several reinforcement learning models are useful to know when considering a DRL approach
+Several RL models are useful to know when considering a DRL approach
 to AV: value-based RL, policy-based RL, DRL, Deep Q-Network (DQN) and Deep Deterministic
 Policy Gradient (DDPG). It is important to note that DDPG is the current prominent algorithm
 for applying DRL to AV driving scenarios, especially AV platooning. The following
-references are summarized in Chapter \ref{chap:litreview}, which are works that apply
+references are summarized in Chapter \ref{chap:litreview}, which are a few works that apply
 DDPG to AV platooning \cite{Lin2019, Song2020, Chu2019b, Peake2020}.
 
 \section{Federated Learning}
 Google began the discussion of FL, showing FL's privacy advantages when compared
-to a centralized architecture \cite{Konecny2015, BrendanMcMahan2017a, McMahan2016FederatedLO}.  At the time of discovery, the core ideology of FL was to train machine learning models from distributed data sets across mobile devices while minimizing data leakage \cite{McMahan2016FederatedLO}.   Data transmitted during a FL process must be the minimal required to improve a model in order to reduce risk of data breaches \cite{BrendanMcMahan2017a}.  FL is defined in \cite{Yang2019a, IntelAI19} as a series of $N$ data owners ${\mathcal{F}_1,...\mathcal{F}_N}$ wishing to train a machine learning model by compiling data ${\mathcal{D}_1,...\mathcal{D}_N}$.  FL can be framed as an optimization problem containing the following characteristics \cite{IntelAI19}:
+to a centralized architecture \cite{Konecny2015, BrendanMcMahan2017a, McMahan2016FederatedLO}.
+At the time of discovery, the core ideology of FL was to train machine learning models from
+distributed data sets across mobile devices while minimizing data leakage \cite{McMahan2016FederatedLO}.
+Data transmitted during a FL process must be the minimal required to improve a model in order to
+reduce risk of data breaches \cite{BrendanMcMahan2017a}.  FL is defined in \cite{Yang2019a, IntelAI19}
+as a series of $N$ data owners ${\mathcal{F}_1,...\mathcal{F}_N}$ wishing to train a machine learning
+model by compiling data ${\mathcal{D}_1,...\mathcal{D}_N}$.  FL can be framed as an optimization
+problem containing the following characteristics \cite{IntelAI19}:
 \begin{enumerate}
     \item Non-independent identical distributed (non-IID) datasets: Agents in a FL setting
     may contain differing distributions amongst their data.

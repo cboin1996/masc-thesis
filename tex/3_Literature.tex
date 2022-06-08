@@ -137,19 +137,28 @@ network or communications environments.  It is the goal of this study to conclud
 model weight or gradient aggregation is favourable for AV platooning, as well as be one of
 the first (if not the first) to apply FRL to AV platooning.
 
-% Not revelant in this paper, perhaps the next it will be!
-% A final important note to consider when implementing FRL is summarized from a study by \cite{Lim2020}:
-
-% \begin{enumerate}
-%     \item increasing the number of agents has a positive effect on FRL's performance,
-%     \item transferring models which have completed training accelerates the training process for models in the early stages of training.
-% \end{enumerate}
-
 \section{Deep Reinforcement Learning applied to AV Platooning} \label{sec:avRL}
 
 In order to improve the limitations of vehicle following models, DRL has been a
 steady area of research in the AV community with many authors contributing works
-to DRL applied to CACC \cite{Lin2019, Song2020, Chu2019b, Peake2020}.  In a study
+to DRL applied to CACC \cite{Schwarting2018, Li2019, Kendall2019, zhangYuxiang2020}.
+By assumining vehicle-vehicle (V2V) or
+vehicle to everything (V2X) communications, it is possible to model AV platooning scenarios
+where key driving data is shared amongst vehicles in a platoon \cite{Schwarting2018,Hussain2019}.
+The sharing of data amongst vehicles has enabled successes for CACC in literature as seen in \cite{LeiV2x}.
+As previously states, classically controlled AV platoons have limitations related to
+accuracy, poor ability for models to generalize, and a lack of adaptive updating in the models \cite{Zhu2018}
+As a result of such limitations, DRL applied to AV platooning has become a large
+research ecosystem for authors to explore \cite{Vinitsky2018, Kiran2020}.
+
+Many of the existing AV platooning works apply DDPG to AV platooning environments.
+Due to the popularity of the DDPG algorithm in AV platooning, DDPG has been selected
+as the algorithm of choice in this thesis.
+In addition, CACC models are often selected as the model in AV platooning, and as such
+a CACC model is proposed for the design of the platooning environment in this thesis.
+Some studies closely related to the works of this thesis are summarized below.
+
+In a study
 by \cite{Lin2019},  a DRL framework is designed to control a CACC AV platoon.  The
 DRL framework uses the Deep Deterministic Policy Gradient (DDPG) \cite{Lillicrap2016}
 algorithm and is found to have near-optimal performance \cite{Lin2019}.  In addition,
@@ -179,7 +188,10 @@ communications are envisioned to have a beneficial impact on the performance of 
 controllers, the works of Lei et al. investigates the value of V2X communications for
 DRL-based platoon controllers. Lei et al. emphasizes the trade-off between the gain of
 including exogenous information in the system state for reducing uncertainty and the
-performance erosion due to the curse-of-dimensionality \cite{LeiV2x}.
+performance erosion due to the curse-of-dimensionality \cite{LeiV2x}. Lastly, \cite{Yuan2019}
+presents the introduction of vehicle dynamics into an adaptive cruise control (ACC) model.
+Using a custom DRL model, trained by DDPG, \cite{Yuan2019} finds that the DRL model is optimized
+to a performance level near that of dynamic programming methods.
 
 When formulating the AV platooning problem as a DRL model DDPG is prominently selected
 as the algorithm for training.  DDPG's ability to handle continuous actions space and
@@ -192,17 +204,3 @@ performance during training and improve the performance of the system as a whole
 addition, the ability to share experience across like models has been proven to allow
 for fast convergence of models \cite{Lim2020}, which further optimizes the performance
 of DDPG when applied to AV platoons.
-
-\section{add-ons}
-
-
-% AVDRL
-\cite{Schwarting2018}
-\cite{Shwartz2018}
-\cite{Hussain2019}
-\cite{Vinitsky2018}
-\cite{Kiran2020}
-\cite{Li2019}
-\cite{Kendall2019}
-\cite{Yuan2019}
-\cite{zhangYuxiang2020}
