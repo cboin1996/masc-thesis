@@ -17,6 +17,6 @@ task build
 ```
 
 # Dependencies
-- `latex`
-- `task`
-- `inkscape`
+- [latex](https://www.latex-project.org/get/)
+- [task](https://taskfile.dev/installation/)
+- [inkscape](https://wiki.inkscape.org/wiki/Installing_Inkscape)
