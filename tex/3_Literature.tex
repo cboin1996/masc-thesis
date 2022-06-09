@@ -1,70 +1,118 @@
 \chapter{Literature Review} \label{chap:litreview}
-In this chapter, an in-depth summary of the state-of-the-art research related to 
-FRL and DRL applied to AV platooning is presented. 
+In this chapter, an in-depth summary of the state-of-the-art research related to
+FRL and DRL applied to AV platooning is presented.
 
 \section{Federated Reinforcement Learning}
 Although FL provides promise for supervised learning tasks, FL has been recognized to have
-shortcomings in dynamic environments \cite{Li2020a}.   
+shortcomings in dynamic environments \cite{Li2020a}.   In addition, the works of FL
+are largely associated with supervised learning tasks. As opposed to supervised learning,
+RL is a sequential learning process where data is often non-IID with a small sample space
+\cite{Zhuo2019, sutton2018reinforcement}. FRL has been developed and explored to enable FL advantages
+in RL settings.
 
-% VFRL
-\cite{Zhuo2019}
-\cite{Wang2018a}
-\cite{Wang2020a}
-
-% HFRL
-\cite{Ren2019}
-
-Reinforcement learning is often a sequential learning process, and as such data is often 
-non-IID with a small sample space \cite{sutton2018reinforcement}.  HFRL provides the ability 
-to aggregate experience while increasing the sample efficiency thus providing more accurate 
-and stable learning  \cite{IntelAI19}. It is important to note that few existing works apply 
-FRL to autonomous driving at the time of this study.  Some of the current works studying 
+As previously discussed in Chapter \ref{chap:background}, FRL can be categorized into two categories: HFRL and VFRL.
+HFRL provides the ability to aggregate experience while increasing the sample efficiency thus
+providing more accurate and stable learning  \cite{IntelAI19}.
+It is important to note that few existing works apply
+FRL to autonomous driving at the time of this study.  Some of the current works studying
 HFRL to a variety of applications are summarized below.
 
+% HFRL
 % HFRL references here %
-% \cite{Ren2019}
-A study by \cite{Lim2020} aims to increase the performance of RL methods applied to 
-multi-IoT device systems.  RL models trained on single devices are often unable to control 
-devices in a similar albeit slightly different environment \cite{Lim2020}.  Currently, 
-multiple devices need to be trained using separate RL agents \cite{Lim2020}. The methods 
-proposed by \cite{Lim2020} sped up the learning process by 1.5 times for a two agent system. 
-In a study by \cite{Nadiger2019}, the challenges in the personalization of dialogue 
-managers, smart assistants and more are explored.  RL has proven to be successful in 
-practice for personalized experiences; however long learning times and no sharing of data 
-limits the ability for RL to be applied at scale.  Applying HFRL to atari non-playable 
-characters in pong showed a median improvement of ~17\% for the personalization time 
-\cite{Nadiger2019}. Lastly, \cite{Liu2019b} discusses RL as a promising algorithm for 
-smart navigation systems, with the following challenges: long training times, poor 
-generalization across environments, and storing data over long periods of time.  In order 
-to address these problems \cite{Liu2019b} proposed the architecture `Lifelong FRL', 
-which can be categorized as a HFRL problem.  It was found the Lifelong FRL increased 
-the learning rate for the smart navigation system when tested on robots in a cloud 
-robotic system \cite{Liu2019b}.  
+A study by \cite{Lim2020} aims to increase the performance of RL methods applied to
+multi-IoT device systems.  RL models trained on single devices are often unable to control
+devices in a similar albeit slightly different environment \cite{Lim2020}.  Currently,
+multiple devices need to be trained using separate RL agents \cite{Lim2020}. The methods
+proposed by \cite{Lim2020} sped up the learning process by 1.5 times for a two agent system.
+In a study by \cite{Nadiger2019}, the challenges in the personalization of dialogue
+managers, smart assistants and more are explored.  RL has proven to be successful in
+practice for personalized experiences; however long learning times and no sharing of data
+limits the ability for RL to be applied at scale.  Applying HFRL to atari non-playable
+characters in pong showed a median improvement of ~17\% for the personalization time
+\cite{Nadiger2019}. Lastly, \cite{Liu2019b} discusses RL as a promising algorithm for
+smart navigation systems, with the following challenges: long training times, poor
+generalization across environments, and storing data over long periods of time.  In order
+to address these problems \cite{Liu2019b} proposed the architecture `Lifelong FRL',
+which can be categorized as a HFRL problem.  It was found the Lifelong FRL increased
+the learning rate for the smart navigation system when tested on robots in a cloud
+robotic system \cite{Liu2019b}. Finally, \cite{Ren2019} utilizes FRL to train multiple distributed
+DRL agents for an Internet of Things (IoT) energy harvesting application.  It was found that FRL
+provided advantages to DRL when applied to the same system model \cite{Ren2019}.
 
-The successes of the FedAvg algorithm as a means to improve performance and training 
-times for systems has inspired further research into how aggregation methods should 
-be applied.  The design of the aggregation method is crucial in providing performance 
-benefits to that of the base case where FRL is not applied.  The FedAvg 
-\cite{BrendanMcMahan2017a} algorithm proposed the averaging of gradients in the 
-aggregation method.  In contrast, \cite{Liang2019} proposed using model weights in 
-the aggregation method for AV steering control. Thus, FRL applications can differ 
-based upon the selection of which parameter to use in the aggregation method.  A study 
-by \cite{ZhangX2020} explores applying FRL to a decentralized DRL system optimizing 
-cellular vehicle-to-everything communication. \cite{ZhangX2020} utilizes the model 
-weights in the aggregation method, and describes a weighting factor dividing the sum 
-batch size for all agents by the training batch size for a specific agent.  In addition, 
-the works of \cite{LimHyun2021} explores how FRL using gradient aggregation can improve 
-convergence speed and performance on the OpenAI-gym environments CartPole-V0, 
-MountainvehicleContinuous-V0, Pendulum-V0 and Acrobot-V1.  \cite{LimHyun2021} determines 
-that aggregating gradients using FRL creates high performing agents for each of the 
-OpenAI-gym environments relative to models trained without FRL.  In addition, 
-\cite{WangXiaofei2021} applies FRL to heterogeneous edge caching.  \cite{WangXiaofei2021} 
-shows the effectiveness of FRL using weight aggregation to improve hit rate, reduce 
-average delays in the network and offload traffic. Lastly, \cite{Huang2021} applies FRL 
-using model weight aggregation to Service Function Chains in network function virtualization 
-enabled networks. \cite{Huang2021} observes that FRL using model weight aggregation 
-provides benefits to convergence speed, average reward and average resource consumption. 
-Below is a summary of the previously mentioned FRL works categorized by their proposed 
+
+% VFRL
+As opposed to HFRL, VFRL's environment structure is composed of multiple agents exploring
+a single global environment. Some existing works on VFRL are summarized in this paragraph.
+\cite{Zhuo2019} identifies the challenges of building high quality Q-network policies in
+small feature spaces or with limited training data.  In order to address this problem, (FRL)
+is employed through sharing encrypted Q-network outputs amongst agents all while building a
+shared value network with the agents encrypted outputs as inputs \cite{Zhuo2019}.
+\cite{Zhuo2019} demonstrates the effectiveness of VFRL in training high-quality policies
+even with no training data shared amongst agents \cite{Zhuo2019}.
+\cite{Wang2018a} applies current DRL techniques with a custom FL framework to a mobile edge computing scenario
+aiming to optimize mobile edge computing, specifically caching and communication. Compares a custom FRL
+framework against a centralized DDQN optimal model, and finds
+that FRL provides near optimal performance.  Furthermore, \cite{Wang2020a} proposes a framework
+`Favor' with aim to select which agent in a distributed
+training process may contribute to each FRL training round. It is that using `Favor' can reduce
+the number of communication rounds in FRL by up to 49\%, 23\% and 42 \% on the MNIST, FashionMNIST, and CIFAR-10
+datasets, respectively. \cite{Liang2019} applies a federated transfer learning process to deep deterministic
+policy gradient applied to the control of steering angle.  The FTRL process includes three steps: online
+transfer process, single RL agent training and inference and a `FedAvg' process \cite{Liang2019}.
+`FedAvg' uses a single model with weights that are the arithmetic mean of all RL models \cite{Liang2019}.
+\cite{Liang2019} concludes that a FTRL process in both a simulated and real environment led to increased
+performance when compared to the base DDPG algorithm.  Table \ref{tab:HFRLVFRLworks} provides a summary of existing works for HFRL and VFRL.
+
+
+% Table generated by Excel2LaTeX from sheet 'Sheet1'
+\begin{table}[H]
+  \centering
+  \caption{Summary of Existing Works for HFRL and VFRL Architectures}
+    \begin{tabular}{ll} \toprule
+    \textbf{FRL Architecture} & \textbf{References} \\ \midrule
+    \midrule
+    HFRL & \cite{Lim2020}, \cite{Nadiger2019}, \cite{Liu2019b}, \cite{Ren2019} \\
+    VFRL & \cite{Zhuo2019}, \cite{Wang2018a}, \cite{Wang2020a}, \cite{Liang2019} \\ \bottomrule
+    \end{tabular}%
+  \label{tab:HFRLVFRLworks}%
+\end{table}%
+
+It is clear that both HFRL and VFRL have promising research directions, however
+the AV platooning problem best identifies with HFRL due to the following reasons:
+
+\begin{itemize}
+  \item The training process of training a decentralized platoon follows that of HFRL
+  training processes: (train locally, upload to server, aggregate parameters, update
+  each agent with aggregated parameters)
+  \item An AV platoon is composed of vehicles, or agents. Each agent's environment may
+  differ slightly from each other, and are isolated with the exception of some shared state
+  data such as the acceleration of the predecessor vehicle.
+\end{itemize}
+
+In addition, the successes of the FedAvg algorithm as a means to improve performance and training
+times for systems has inspired further research into how aggregation methods should
+be applied.  The design of the aggregation method is crucial in providing performance
+benefits to that of the base case where FRL is not applied.  The FedAvg
+\cite{BrendanMcMahan2017a} algorithm proposed the averaging of gradients in the
+aggregation method.  In contrast, \cite{Liang2019} proposed using model weights in
+the aggregation method for AV steering control. Thus, FRL applications can differ
+based upon the selection of which parameter to use in the aggregation method.  A study
+by \cite{ZhangX2020} explores applying FRL to a decentralized DRL system optimizing
+cellular vehicle-to-everything communication. \cite{ZhangX2020} utilizes the model
+weights in the aggregation method, and describes a weighting factor dividing the sum
+batch size for all agents by the training batch size for a specific agent.  In addition,
+the works of \cite{LimHyun2021} explores how FRL using gradient aggregation can improve
+convergence speed and performance on the OpenAI-gym environments CartPole-V0,
+MountainvehicleContinuous-V0, Pendulum-V0 and Acrobot-V1.  \cite{LimHyun2021} determines
+that aggregating gradients using FRL creates high performing agents for each of the
+OpenAI-gym environments relative to models trained without FRL.  In addition,
+\cite{WangXiaofei2021} applies FRL to heterogeneous edge caching.  \cite{WangXiaofei2021}
+shows the effectiveness of FRL using weight aggregation to improve hit rate, reduce
+average delays in the network and offload traffic. Lastly, \cite{Huang2021} applies FRL
+using model weight aggregation to Service Function Chains in network function virtualization
+enabled networks. \cite{Huang2021} observes that FRL using model weight aggregation
+provides benefits to convergence speed, average reward and average resource consumption.
+Below is a summary of the previously mentioned FRL works categorized by their proposed
 aggregation method.
 
 % Table generated by Excel2LaTeX from sheet 'Sheet1'
@@ -81,80 +129,78 @@ aggregation method.
 \end{table}%
 
 
-Despite the differences in FRL applications within the aforementioned studies, each study 
-maintain a similar goal: to improve the performance of each agent within the system.  None 
-of the aforementioned works explore the differences in whether gradient or model weight 
-aggregation is favourable in performance, and many of the works apply FRL to distributed 
-network or communications environments.  It is the goal of this study to conclude whether 
-model weight or gradient aggregation is favourable for AV platooning, as well as be one of 
-the first (if not the first) to apply FRL to AV platooning.  
-
-% Not revelant in this paper, perhaps the next it will be!
-% A final important note to consider when implementing FRL is summarized from a study by \cite{Lim2020}:
-
-% \begin{enumerate}
-%     \item increasing the number of agents has a positive effect on FRL's performance,
-%     \item transferring models which have completed training accelerates the training process for models in the early stages of training.
-% \end{enumerate}
+Despite the differences in FRL applications within the aforementioned studies, each study
+maintain a similar goal: to improve the performance of each agent within the system.  None
+of the aforementioned works explore the differences in whether gradient or model weight
+aggregation is favourable in performance, and many of the works apply FRL to distributed
+network or communications environments.  It is the goal of this study to conclude whether
+model weight or gradient aggregation is favourable for AV platooning, as well as be one of
+the first (if not the first) to apply FRL to AV platooning.
 
 \section{Deep Reinforcement Learning applied to AV Platooning} \label{sec:avRL}
 
-In order to improve the limitations of vehicle following models, DRL has been a 
-steady area of research in the AV community with many authors contributing works 
-to DRL applied to CACC \cite{Lin2019, Song2020, Chu2019b, Peake2020}.  In a study 
-by \cite{Lin2019},  a DRL framework is designed to control a CACC AV platoon.  The 
-DRL framework uses the Deep Deterministic Policy Gradient (DDPG) \cite{Lillicrap2016} 
-algorithm and is found to have near-optimal performance \cite{Lin2019}.  In addition, 
-\cite{Peake2020} identifies limitations in platooning with regard to the communication.  
-Through the application of a multi-agent reinforcement learning process, i.e. a policy 
-gradient RL and LSTM network, the performance of a platoon containing 3-5 vehicles was 
-improved upon that of current RL applications to platooning \cite{Peake2020}. Furthermore, 
-Model Predictive Control (MPC) is the current state-of-the-art for real-time optimal 
-control practices \cite{Lin_2021}.  The study performed by \cite{Lin_2021} applies both 
-MPC and DRL methodologies to the AV platoon problem, observing a DRL model using the 
-DDPG algorithm to have a 5.8\% episodic cost higher than the current state-of-the-art. 
-The works of \cite{yan2021hybrid} propose a hybrid approach to the AV platooning 
-problem where the platoon is modeled as a Markov Decision Process (MDP) in order to 
-collect two rewards from the system at each time step simultaneously.  This approach 
-also incorporates jerk, the rate of change of acceleration in the calculation of the 
-reward for each vehicle in order to ensure passenger comfort \cite{yan2021hybrid}.  The 
-hybrid strategy led to increased performance to that of the base DDPG algorithm, as the 
-proposed framework switches between using classic CACC modeling and DDPG depending on 
-the performance degradation of the DDPG algorithm \cite{yan2021hybrid}. In another 
-study by \cite{Zhu2019}, a DRL model is formulated and trained using DDPG to be evaluated 
-against real world driving data. Parameters such as time to collision, headway, and jerk 
-were considered in the DRL model's reward function.  The DDPG algorithm provided favourable 
-performance to that of the analysed human driving data \cite{Zhu2019}, with favourable 
-time to collision results, more efficient driving via reduced vehicle headways, and 
-improved passenger comfort with lower magnitudes of jerk. As Vehicle-to-Everything (V2X) 
-communications are envisioned to have a beneficial impact on the performance of platoon 
-controllers, the works of Lei et al. investigates the value of V2X communications for 
-DRL-based platoon controllers. Lei et al. emphasizes the trade-off between the gain of 
-including exogenous information in the system state for reducing uncertainty and the 
-performance erosion due to the curse-of-dimensionality \cite{LeiV2x}.
+In order to improve the limitations of vehicle following models, DRL has been a
+steady area of research in the AV community with many authors contributing works
+to DRL applied to CACC \cite{Schwarting2018, Li2019, Kendall2019, zhangYuxiang2020}.
+By assumining vehicle-vehicle (V2V) or
+vehicle to everything (V2X) communications, it is possible to model AV platooning scenarios
+where key driving data is shared amongst vehicles in a platoon \cite{Schwarting2018,Hussain2019}.
+The sharing of data amongst vehicles has enabled successes for CACC in literature as seen in \cite{LeiV2x}.
+As previously states, classically controlled AV platoons have limitations related to
+accuracy, poor ability for models to generalize, and a lack of adaptive updating in the models \cite{Zhu2018}
+As a result of such limitations, DRL applied to AV platooning has become a large
+research ecosystem for authors to explore \cite{Vinitsky2018, Kiran2020}.
 
-When formulating the AV platooning problem as a DRL model DDPG is prominently selected 
-as the algorithm for training.  DDPG's ability to handle continuous actions space and 
-complex state's is perfect for the CACC platoon problem.  However, despite the DDPG 
-algorithm's success in literature, there are still instability challenges related to 
-the algorithm along with a time consuming hyper-parameter tuning process to account 
-for the minute differences in vehicle models/dynamics amongst platoons. As previously 
-discussed, FRL provides advantages in these areas where information sharing can accelerate 
-performance during training and improve the performance of the system as a whole. In 
-addition, the ability to share experience across like models has been proven to allow 
-for fast convergence of models \cite{Lim2020}, which further optimizes the performance 
+Many of the existing AV platooning works apply DDPG to AV platooning environments.
+Due to the popularity of the DDPG algorithm in AV platooning, DDPG has been selected
+as the algorithm of choice in this thesis.
+In addition, CACC models are often selected as the model in AV platooning, and as such
+a CACC model is proposed for the design of the platooning environment in this thesis.
+Some studies closely related to the works of this thesis are summarized below.
+
+In a study
+by \cite{Lin2019},  a DRL framework is designed to control a CACC AV platoon.  The
+DRL framework uses the Deep Deterministic Policy Gradient (DDPG) \cite{Lillicrap2016}
+algorithm and is found to have near-optimal performance \cite{Lin2019}.  In addition,
+\cite{Peake2020} identifies limitations in platooning with regard to the communication.
+Through the application of a multi-agent reinforcement learning process, i.e. a policy
+gradient RL and LSTM network, the performance of a platoon containing 3-5 vehicles was
+improved upon that of current RL applications to platooning \cite{Peake2020}. Furthermore,
+Model Predictive Control (MPC) is the current state-of-the-art for real-time optimal
+control practices \cite{Lin_2021}.  The study performed by \cite{Lin_2021} applies both
+MPC and DRL methodologies to the AV platoon problem, observing a DRL model using the
+DDPG algorithm to have a 5.8\% episodic cost higher than the current state-of-the-art.
+The works of \cite{yan2021hybrid} propose a hybrid approach to the AV platooning
+problem where the platoon is modeled as a Markov Decision Process (MDP) in order to
+collect two rewards from the system at each time step simultaneously.  This approach
+also incorporates jerk, the rate of change of acceleration in the calculation of the
+reward for each vehicle in order to ensure passenger comfort \cite{yan2021hybrid}.  The
+hybrid strategy led to increased performance to that of the base DDPG algorithm, as the
+proposed framework switches between using classic CACC modeling and DDPG depending on
+the performance degradation of the DDPG algorithm \cite{yan2021hybrid}. In another
+study by \cite{Zhu2019}, a DRL model is formulated and trained using DDPG to be evaluated
+against real world driving data. Parameters such as time to collision, headway, and jerk
+were considered in the DRL model's reward function.  The DDPG algorithm provided favourable
+performance to that of the analysed human driving data \cite{Zhu2019}, with favourable
+time to collision results, more efficient driving via reduced vehicle headways, and
+improved passenger comfort with lower magnitudes of jerk. As Vehicle-to-Everything (V2X)
+communications are envisioned to have a beneficial impact on the performance of platoon
+controllers, the works of Lei et al. investigates the value of V2X communications for
+DRL-based platoon controllers. Lei et al. emphasizes the trade-off between the gain of
+including exogenous information in the system state for reducing uncertainty and the
+performance erosion due to the curse-of-dimensionality \cite{LeiV2x}. Lastly, \cite{Yuan2019}
+presents the introduction of vehicle dynamics into an adaptive cruise control (ACC) model.
+Using a custom DRL model, trained by DDPG, \cite{Yuan2019} finds that the DRL model is optimized
+to a performance level near that of dynamic programming methods.
+
+When formulating the AV platooning problem as a DRL model DDPG is prominently selected
+as the algorithm for training.  DDPG's ability to handle continuous actions space and
+complex state's is perfect for the CACC platoon problem.  However, despite the DDPG
+algorithm's success in literature, there are still instability challenges related to
+the algorithm along with a time consuming hyper-parameter tuning process to account
+for the minute differences in vehicle models/dynamics amongst platoons. As previously
+discussed, FRL provides advantages in these areas where information sharing can accelerate
+performance during training and improve the performance of the system as a whole. In
+addition, the ability to share experience across like models has been proven to allow
+for fast convergence of models \cite{Lim2020}, which further optimizes the performance
 of DDPG when applied to AV platoons.
-
-\section{add-ons}
-
-
-% AVDRL
-\cite{Schwarting2018}
-\cite{Shwartz2018}
-\cite{Hussain2019}
-\cite{Vinitsky2018}
-\cite{Kiran2020}
-\cite{Li2019}
-\cite{Kendall2019}
-\cite{Yuan2019}
-\cite{zhangYuxiang2020}

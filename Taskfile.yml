@@ -6,7 +6,7 @@ tasks:
   dev:
     prefix: dev
     cmds:
-      - task: build    
+      - task: build
     sources:
       - ./main.tex
       - ./references.bib
@@ -20,3 +20,9 @@ tasks:
       - bibtex main
       - pdflatex -shell-escape main.tex
       - pdflatex -shell-escape main.tex
+      - task: clean
+
+  clean:
+    prefix: clean
+    cmds:
+      - rm main.aux main.bbl main.blg main.lof main.log main.lot main.out main.toc
