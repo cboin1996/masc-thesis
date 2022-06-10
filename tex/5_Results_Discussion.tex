@@ -374,7 +374,7 @@ to vehicle 2 as vehicle 1 learns based on the stochastic random input generated 
 the platoon leader. As vehicle 1 is training, vehicle 2 trains based off the policy
 of vehicle 1. As previously stated, Inter-FRL parameters are shared amongst vehicles
 in the same index across platoons, where-as Intra-FRL provides the advantage of
-sharing parameters from preceding vehicles to following vehicles. Our implementation
+sharing parameters from preceding vehicles to following vehicles. Furthermore, the implementation
 of Intra-FRL includes a directional parameter averaging.  For example, vehicle 1 does
 not train with averaged parameters from the followers, but vehicle 2 has the advantage
 of including vehicle 1's model in its averaging.  This directional averaging provides

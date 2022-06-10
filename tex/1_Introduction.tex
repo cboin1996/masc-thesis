@@ -15,7 +15,7 @@ Research on the topics of reinforcement learning (RL) and deep reinforcement lea
 have made great progress over the years, however there remain important challenges for
 ensuring the stable performance of DRL algorithms in the real world. DRL processes are
 often sensitive to small changes in the model space or hyper-parameter space, and as such
-the application of a single trained model across similar systems often leads to control
+the application of a single trained model across similar environments often leads to control
 inaccuracies or instability \cite{Yang2019a, Lim2020}.   In order to overcome the
 stability challenges that DRL poses, often a model must be manually customized to
 accommodate the finite differences amongst similar agents in a distributed system.
@@ -24,10 +24,10 @@ information in a secure way.  By utilizing an aggregation method such as FedAvg
 \cite{McMahan2016FederatedLO}, systems with many agents can have decreased training
 times with increased performance.
 
-Despite the popularity of FL and FRL, there are few works applying FRL to autonomous
+Despite the popularity of FL and FRL, at the time of this thesis, there are few works applying FRL to autonomous
 driving.  In general there are two types of `models' for AV decision making:
 vehicle-following modeling and lane-changing modeling \cite{Ye2019}. For the purposes of
-this study, the vehicle-following approach known as co-operative adaptive cruise control
+this thesis, the vehicle-following approach known as co-operative adaptive cruise control
 (CACC) is explored. Vehicle following models are based on following a vehicle in a single
 lane road with respect to a leading vehicle's actions \cite{Zhu2018}.  CACC is a
 multi-vehicle control strategy where vehicles follow one another in a line known as a
@@ -37,17 +37,18 @@ for occupants \cite{Song2020, Chu2019b}.  Traditionally controlled vehicle follo
 models have limited accuracy, poor generalization from a lack of data, and a lack of
 adaptive updating \cite{Zhu2018}.
 
-We are motivated by the current state-of-the-art for CACC AV Platoons along with previous
-works related to FRL to apply FRL to the AV platooning problem and observe the performance
-benefits it may have on the system.  We propose an FRL framework built atop of a custom AV
-platooning environment in order to analyse FRL's suitability for improving AV platoon performance.
+The current state-of-the-art for CACC AV Platoons along with previous
+works related to FRL are the main motivation for applying FRL to the AV platooning problem. In addition,
+an important goal of this thesis is to observe the performance
+benefits FRL may have for AV platooning systems.  An FRL framework built atop of a custom AV
+platooning environment is designed in order to analyse FRL's suitability for improving AV platoon performance.
 In addition, two approaches are proposed for applying FRL amongst AV platoons. The first proposed
 method is Inter-platoon FRL (Inter-FRL), where FRL is applied to AVs across different platoons.
 The second proposed method is Intra-platoon FRL (Intra-FRL), where FRL is applied to AVs
-within the same platoon.  We investigate the possibility of Inter-FRL and Intra-FRL as a
-means to increase performance using three aggregation methods: averaging model weights,
-and averaging gradients, and weighted averaging.  Finally, we compare the performance
-of Intra-FRL with weight averaging (Intra-FRLWA) against a platooning environment trained
+within the same platoon.  Furthermore, an investigation is conducted evaluating the performance advantages of
+Inter-FRL and Intra-FRL using three aggregation methods: averaging model weights,
+averaging gradients, and weighted averaging.  Finally, a comparison of the performance
+of Intra-FRL with weight averaging (Intra-FRLWA) is conducted against a platooning environment trained
 without FRL (no-FRL).
 
 \section{Objectives}
@@ -55,21 +56,22 @@ The main objective of this thesis is to explore FRL's effectiveness in a variety
 platooning scenarios, in particular:
 
 \begin{itemize}
-    \item Investigate and gain and understanding of the current state-of-the-art for FRL, and DRL
+    \onehalfspacing
+    \item Gain and understanding of the current state-of-the-art for FRL, and DRL
     applied to AV platoon control
-    \item Using this knowledge, create a discretized model of an AV CACC platoon.
-    \item Design an MDP model for AV platooning, using the discretized model
-    \item Design and implement a python3 MDP platooning environment based on the discretized model of an AV
+    \item Using this knowledge, formulate a discretized model of an AV CACC platoon.
+    \item Design an MDP model for AV platooning, using the discretized model.
+    \item Design and implement a Python3 MDP platooning environment based on the discretized model of an AV
     CACC platoon.
     \item Implement a training system for applying the DDPG algorithm to the platooning
-    environment, allowing for repeatable DRL experiments to be conducted on the platooning environment
-    \item Implement an evaluation system for the DRL experiments
+    environment, allowing for repeatable DRL experiments to be conducted on the platooning environment.
+    \item Implement an evaluation system for the DRL experiments.
     \item Tune any hyperparameters for the DRL model, DDPG algorithm, and platooning environment
-    through training cycles
+    through training cycles.
     \item Scale the system to be able to handle multiple platoons, for $\mathcal{V}$ number of
-    vehicles
+    vehicles.
     \item Design and implement an FRL algorithm to be applied to the platooning
-    environment,
+    environment.
     \item Evaluate the performance of a base case no-FRL AV platooning system in
     comparison with
         \begin{itemize}
@@ -83,15 +85,15 @@ platooning scenarios, in particular:
 \end{itemize}
 
 \section{Contributions}
-To the best of our knowledge, no works at the time of this study exist covering the
+To the best of my knowledge, no works at the time of this study exist covering the
 specific topic of FRL applied to platoon control. Many of the works existing on FRL
 have shown the benefits of FRL with regard to increased rate of convergence and overall
 system performance with distributed networks, edge caching and communications
 \cite{ZhangX2020, LimHyun2021, WangXiaofei2021, Huang2021}.  Furthermore, of the works
 cited in this study, the works closely related to FRL for platoon control are those of
 \cite{Peake2020} and \cite{Liang2019}.  In contrast to \cite{Liang2019}, where FedAvg
-is successfully applied to control the steering angle of a single vehicle, we apply
-FRL to an AV platooning problem where the control of multiple vehicles' positions and
+is successfully applied to control the steering angle of a single vehicle,
+the works of this thesis apply FRL to an AV platooning problem where the control of multiple vehicles' positions and
 spacing are required.  \cite{Peake2020} explores multi-agent reinforcement learning
 and it's ability to improve the performance of AV platoons experiencing communication delays.
 Although \cite{Peake2020} is also successful in their approach, there is no specific
@@ -110,7 +112,8 @@ new possible ways to apply FRL to AV platooning:
 \end{enumerate}
 
 In contrast to existing literature where it is common to average the parameters
-across each model in the system, for Intra-FRL we propose a directional averaging where
+across each model in the system, the proposed Intra-FRL architecture includes
+a directional averaging where
 the first following vehicle does not average it's parameters, and the remaining
 followers do. Thus, in Intra-FRL the leading vehicle trains independently of those
 following. The AV platoon provides a unique playground environment suitable for
