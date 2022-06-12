@@ -105,7 +105,6 @@ training using FRL.
 \begin{table}[H]
     \caption{FRL Specific Initial Hyperparameters}
     \centering
-    \tiny
     \begin{tabular}{llll}
         \toprule
         FRL Type & Aggregation Method & Hyperparmeter & Value \\
@@ -131,7 +130,7 @@ simulation is performed using a custom built evaluator API.  The evaluator perfo
 simulations for a single 60 second episode using the trained models, calculating the
 cumulative reward of the model(s) in the experiment.  The entire project is designed and
 implemented using Python3, and Tensorflow.  As previously stated, each vehicle in the
-platoon is modelled using the CACC CTHP model described in Section 3.  For the purposes
+platoon is modelled using the CACC model described in Section 3.  For the purposes
 of this study multiple sets of DRL experiments were conducted, using 4 random seeds (1-4)
 for training and a single random seed (6) across all evaluations.
 
@@ -139,13 +138,13 @@ for training and a single random seed (6) across all evaluations.
 In order to evaluate the effectiveness of Inter-FRL relative to the base case where a
 DRL model is trained using DDPG without FRL, 4 experiments are conducted without
 Inter-FRL (no-FRL), and 8 with.  For each of the 12 conducted experiments, 2 platoons
-with 2 vehicles each were trained using one of the four random seeds.  Once training
+with 2 vehicles were trained using one of the four random seeds.  Once training
 across the four seeds has completed, the cumulative reward for a single evaluation
 episode is evaluated.  For the experiments using Inter-FRL, two aggregation methods
 are examined.  First, the gradients of each model are averaged during training, and
 second, the model weights are averaged.  The multi platoon system trains and shares
 the aggregated parameters (gradients or weights) from vehicle to vehicle with the same
-index in the platoon. The federated server is responsible for performing the averaging,
+index across platoons. The federated server is responsible for performing the averaging,
 and each vehicle performs a training episode with the averaged parameters in addition
 to their local training episodes in accordance with the FRL update delay and FRL
 cutoff ratio (see Table \ref{tab:frlhyps}). Note that here-after Inter-FRL with gradient
@@ -169,7 +168,7 @@ large performance increases to that of the base case (no-FRL).
   \scriptsize
   \caption{Performance after training across 4 random seeds. Each simulation result contains 600 time steps.}
     \begin{tabular}{lrrlrrr} \toprule
-    \textbf{Training Method} & \multicolumn{1}{l}{\textbf{Seed 1}} & \multicolumn{1}{l}{\textbf{Seed 2}} & \multicolumn{1}{l}{\textbf{Seed 3}} & \multicolumn{1}{l}{\textbf{Seed 4}} & \multicolumn{1}{l}{\textbf{Average System Reward}} & \multicolumn{1}{l}{\textbf{Standard Deviation}} \\ \midrule
+    \textbf{Training Method} & \multicolumn{1}{l}{\textbf{Seed 1}} & \multicolumn{1}{l}{\textbf{Seed 2}} & \multicolumn{1}{l}{\textbf{Seed 3}} & \multicolumn{1}{l}{\textbf{Seed 4}} & \multicolumn{1}{l}{\textbf{Avg. System Reward}} & \multicolumn{1}{l}{\textbf{Std. Deviation}} \\ \midrule
     No-FRL & -3.73 & -2.89 & -4.69 & -3.38 & -3.67 & 0.66 \\
     Inter-FRLGA & -2.79 & -2.81 & -3.05 & -2.76 & -2.85 & 0.11 \\
     Inter-FRLWA & -2.64 & -2.88 & -2.92 & -2.93 & -2.84 & 0.12 \\ \bottomrule
@@ -229,9 +228,9 @@ input $u_{i,k}$, acceleration $a_{i,k}$, velocity error $e_{vi,k}$, and position
 error $e_{pi,k}$ for each platoon.  There are 2 platoons in the Inter-FRL scenario,
 and a simulation is provided for each platoon. The simulation environment is subject
 to initial conditions of ($e_{pi} = 1.0\:m$, $e_{vi}=1.0\:m/s$, $a_i = 0.03\:m/s^2$).
-It can be seen that each DDPG agent for both vehicles within both platoons quickly
-responds to the platoon leader's control input $u_{i,k}$ to bring the position error,
-velocity error and acceleration error to 0.  In addition, each DDPG agent closely
+It can be seen that each DDPG agent for both vehicles within the platoons quickly
+responds to the platoon leader's control input $u_{i,k}$ to bring position error,
+velocity error and control input to zero.  In addition, each DDPG agent closely
 approximates the gaussian random input of the platoon leader, eliminating noise in
 the response to maintain smooth tracking across the episode. Finally, each DDPG agent
 in the platoon also minimizes the jerk effectively. These results are indicative of
@@ -287,7 +286,7 @@ Intra-FRLWA performs most favourably, followed by no-FRL and lastly Intra-FRLGA.
   \scriptsize
   \caption{Performance after training across 4 random seeds. Each simulation result contains 600 time steps.}
     \begin{tabular}{lrrrrrr} \toprule
-    \textbf{Training Method} & \multicolumn{1}{l}{\textbf{Seed 1}} & \multicolumn{1}{l}{\textbf{Seed 2}} & \multicolumn{1}{l}{\textbf{Seed 3}} & \multicolumn{1}{l}{\textbf{Seed 4}} & \multicolumn{1}{l}{\textbf{Average System Reward}} & \multicolumn{1}{l}{\textbf{Standard Deviation}} \\ \midrule
+    \textbf{Training Method} & \multicolumn{1}{l}{\textbf{Seed 1}} & \multicolumn{1}{l}{\textbf{Seed 2}} & \multicolumn{1}{l}{\textbf{Seed 3}} & \multicolumn{1}{l}{\textbf{Seed 4}} & \multicolumn{1}{l}{\textbf{Avg. System Reward}} & \multicolumn{1}{l}{\textbf{Std. Deviation}} \\ \midrule
     No-FRL & -3.84 & -3.40 & -3.29 & -3.21 & -3.44 & 0.24 \\
     Intra-FRLGA & -2.85 & -8.05 & -4.23 & -2.99 & -4.53 & 2.10 \\
     Intra-FRLWA & -2.56 & -2.60 & -2.68 & -2.75 & -2.65 & 0.07 \\ \bottomrule
@@ -303,7 +302,7 @@ Inter-FRL experiments, Intra-FRLWA shows the most favourable training results.  
 the rate of convergence increases with Intra-FRLWA over no-FRL and Intra-FRLGA.  Lastly,
 the stability during training is also shown to be improved as the standard deviation
 across the four random seeds is much smaller than the other two cases (as evident in
-the shaded regions of Figure \ref{fig:intra-convergence}.
+the shaded regions of Figure \ref{fig:intra-convergence}).
 \begin{figure}[H]
 \centering
     \begin{subfigure}{\interfrlRewWidth\textwidth}
@@ -333,10 +332,9 @@ Intra-FRLWA on the environment.  The environment is initialized to the same cond
 as that of the Inter-FRLWA scenario
 ($e_{pi} = 1.0 m$, $e_{vi}=1.0 m/s$, $a_i = 0.03 m/s^2$), and each DDPG agent in the
 platoon quickly and precisely tracks the gaussian random input $u_{i,k}$ from the
-leader while minimizing position error, velocity error, acceleration, and jerk.  Much
+leader while minimizing position error $e_{pi,k}$, velocity error $e_{vi,k}$, control input $u_{i,k}$ and jerk.  Much
 like the Inter-FRLWA scenario, it is observed that a strong optimization of the reward
-function (Equation 10) has occurred.  This is an indication of a good design of the
-reward function in addition to a good balance of parameters $a,b,c$ and $d$ in the
+function (\ref{eqn:rewardB}) has occured indicating a suitable selection of parameters $a,b,c$ and $d$ in the
 reward function.
 
 \begin{figure}[H]
@@ -353,9 +351,9 @@ The results of for both Inter-FRL and Intra-FRL are summarized in Table \ref{tab
 \begin{table}[H]
     \centering
     \scriptsize
-    \caption{Performance after training across 4 random seeds for both Inter and Intra FRL. Each simulation result contains 600 time steps.}
+    \caption{Performance after training across 4 random seeds for both Inter and Intra-FRL. Each simulation result contains 600 time steps.}
     \begin{tabular}{lrrlrrr} \toprule
-    \textbf{Training Method} & \multicolumn{1}{l}{\textbf{Seed 1}} & \multicolumn{1}{l}{\textbf{Seed 2}} & \multicolumn{1}{l}{\textbf{Seed 3}} & \multicolumn{1}{l}{\textbf{Seed 4}} & \multicolumn{1}{l}{\textbf{Average System Reward}} & \multicolumn{1}{l}{\textbf{Standard Deviation}} \\ \midrule
+    \textbf{Training Method} & \multicolumn{1}{l}{\textbf{Seed 1}} & \multicolumn{1}{l}{\textbf{Seed 2}} & \multicolumn{1}{l}{\textbf{Seed 3}} & \multicolumn{1}{l}{\textbf{Seed 4}} & \multicolumn{1}{l}{\textbf{Avg. System Reward}} & \multicolumn{1}{l}{\textbf{Std. Deviation}} \\ \midrule
         Inter-FRLGA & -2.79 & -2.81 & -3.05 & -2.76 & -2.85 & 0.11 \\
         Inter-FRLWA & -2.64 & -2.88 & -2.92 & -2.93 & -2.84 & 0.12 \\
         Intra-FRLGA & -2.85 & -8.05 & -4.23 & -2.99 & -4.53 & 2.10 \\
@@ -480,7 +478,7 @@ Intra-FRLWA.  The environment for Intra-FRLWA is initialized with the same value
 no-FRL, just like all previous experiments:
 ($e_{pi} = 1.0 m$, $e_{vi}=1.0 m/s$, $a_i = 0.03 m/s^2$). The Intra-FRLWA agent quickly
 and precisely tracks the gaussian random control input $u_{i,k}$ from the leader minimizing
-$e_{pi}$, $e_{vi}$, $a_i$ and jerk. In particular, the response for $e_{pi,k}$ and
+$e_{pi,k}$, $e_{vi,k}$, $u_{i,k}$ and jerk. In particular, the response for $e_{pi,k}$ and
 $e_{vi,k}$ in the platoon trained using Intra-FRLWA
 (Figure \ref{fig:sim_guassian_p1_5v_intrafrlwa}) appears to respond to the platoon
 leader's input quicker and in a much smoother manner than that of the no-FRL

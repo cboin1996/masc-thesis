@@ -148,14 +148,14 @@ In this section, the design for implementing the FRL DDPG algorithm on the AV pl
 problem is presented.
 \subsection{DDPG Model Description}
 The DDPG algorithm is composed of an actor, $\mu$ and a critic, $Q$. The actor produces
-actions $a_t \in \mathbf{A}$ given some observation $x_t \in \mathbf{X}$ and the critic
+actions $u_t \in \mathbf{U}$ given some observation $x_t \in \mathbf{X}$ and the critic
 makes judgements on those actions while training using the Bellman equation
 \cite{Lillicrap2016, sutton2018reinforcement}. The actor is updated by the policy gradient
 \cite{Lillicrap2016}.  The critic network uses it's weights $\theta^q$ to approximate the
-optimal action-value function $Q(x, a|\theta^q)$ \cite{Lillicrap2016}.  The actor network
+optimal action-value function $Q(x, u|\theta^q)$ \cite{Lillicrap2016}.  The actor network
 uses weights $\theta^\mu$ to represent the agents current policy $\mu(x|\theta^\mu)$ for
 the action-value function \cite{Lillicrap2016}.  The actor
-$\mu(x): \mathbf{X} \xrightarrow{} \mathbf{A}$ maps the observation to the action.
+$\mu(x): \mathbf{X} \xrightarrow{} \mathbf{U}$ maps the observation to the action.
 Experience replay is used to mitigate the issue of training samples not being independent
 and identically distributed due to their generation from sequential explorations
 \cite{Lillicrap2016}.  Two additional models, the target actor $\mu'$ and critic $Q'$
@@ -178,11 +178,11 @@ Intra-FRL.  In order to implement FedAvg the following modifications are require
 
 \begin{enumerate}
     \item An FRL server: responsible for averaging the system parameters for use in a
-    global update
+    global update.
     \item Model weight aggregation: storing of each model's weights for use in
-    aggregation
+    aggregation.
     \item Model gradient aggregation: storing of each model's gradients for use in
-     aggregation
+     aggregation.
 \end{enumerate}
 
 In order to perform FRL, it has been proven that including an update delay between global

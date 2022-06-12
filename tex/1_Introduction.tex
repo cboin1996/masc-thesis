@@ -37,18 +37,18 @@ for occupants \cite{Song2020, Chu2019b}.  Traditionally controlled vehicle follo
 models have limited accuracy, poor generalization from a lack of data, and a lack of
 adaptive updating \cite{Zhu2018}.
 
-The current state-of-the-art for CACC AV Platoons along with previous
+The current state-of-the-art for CACC AV platoons along with previous
 works related to FRL are the main motivation for applying FRL to the AV platooning problem. In addition,
 an important goal of this thesis is to observe the performance
 benefits FRL may have for AV platooning systems.  An FRL framework built atop of a custom AV
-platooning environment is designed in order to analyse FRL's suitability for improving AV platoon performance.
+platooning environment designed to analyse FRL's suitability for improving AV platoon performance.
 In addition, two approaches are proposed for applying FRL amongst AV platoons. The first proposed
 method is Inter-platoon FRL (Inter-FRL), where FRL is applied to AVs across different platoons.
 The second proposed method is Intra-platoon FRL (Intra-FRL), where FRL is applied to AVs
 within the same platoon.  Furthermore, an investigation is conducted evaluating the performance advantages of
 Inter-FRL and Intra-FRL using three aggregation methods: averaging model weights,
-averaging gradients, and weighted averaging.  Finally, a comparison of the performance
-of Intra-FRL with weight averaging (Intra-FRLWA) is conducted against a platooning environment trained
+averaging gradients, and weighted averaging.  Finally, a performance analysis is conducted for
+Intra-FRL with weight averaging (Intra-FRLWA) against a platooning environment trained
 without FRL (no-FRL).
 
 \section{Objectives}
@@ -57,12 +57,11 @@ platooning scenarios, in particular:
 
 \begin{itemize}
     \onehalfspacing
-    \item Gain and understanding of the current state-of-the-art for FRL, and DRL
-    applied to AV platoon control
-    \item Using this knowledge, formulate a discretized model of an AV CACC platoon.
-    \item Design an MDP model for AV platooning, using the discretized model.
-    \item Design and implement a Python3 MDP platooning environment based on the discretized model of an AV
-    CACC platoon.
+    \item Gain and understanding of the current state-of-the-art for FRL and DRL
+    applied to AV platoon control.
+    \item Formulate a discretized model of an AV CACC platoon.
+    \item Design a MDP platooning environment based on the discretized model of an AV
+    CACC platoon, and implement the model in Python3.
     \item Implement a training system for applying the DDPG algorithm to the platooning
     environment, allowing for repeatable DRL experiments to be conducted on the platooning environment.
     \item Implement an evaluation system for the DRL experiments.
@@ -85,12 +84,12 @@ platooning scenarios, in particular:
 \end{itemize}
 
 \section{Contributions}
-To the best of my knowledge, no works at the time of this study exist covering the
+To the best of my knowledge, no works at the time of this thesis exist covering the
 specific topic of FRL applied to platoon control. Many of the works existing on FRL
 have shown the benefits of FRL with regard to increased rate of convergence and overall
 system performance with distributed networks, edge caching and communications
 \cite{ZhangX2020, LimHyun2021, WangXiaofei2021, Huang2021}.  Furthermore, of the works
-cited in this study, the works closely related to FRL for platoon control are those of
+cited in this thesis, the works closely related to FRL for platoon control are those of
 \cite{Peake2020} and \cite{Liang2019}.  In contrast to \cite{Liang2019}, where FedAvg
 is successfully applied to control the steering angle of a single vehicle,
 the works of this thesis apply FRL to an AV platooning problem where the control of multiple vehicles' positions and
@@ -99,9 +98,9 @@ and it's ability to improve the performance of AV platoons experiencing communic
 Although \cite{Peake2020} is also successful in their approach, there is no specific
 reference to FRL in the paper. In addition, the variety of existing works on FRL
 choose to use either gradients or model weights in the FRL aggregation method.
-This study explores how both aggregation methods can provide benefits to the AV
+This thesis explores how both aggregation methods can provide benefits to the AV
 platooning problem, and most importantly which provides a better result. Finally, this
-study further distinguishes it's approach from existing literature through declaring two
+thesis further distinguishes it's approach from existing literature through declaring two
 new possible ways to apply FRL to AV platooning:
 
 \begin{enumerate}
@@ -111,7 +110,7 @@ new possible ways to apply FRL to AV platooning:
     platoons amongst vehicles in the exact same platoon position.
 \end{enumerate}
 
-In contrast to existing literature where it is common to average the parameters
+In contrast to existing literature where it is common to average parameters
 across each model in the system, the proposed Intra-FRL architecture includes
 a directional averaging where
 the first following vehicle does not average it's parameters, and the remaining
@@ -125,7 +124,7 @@ This thesis is divided into the following chapters:
 
 \begin{itemize}
     \item Chapter \ref{chap:background} provides background information on
-    topics related to the study, introducing autonomous driving, FL, DRL,
+    topics related to the thesis, introducing autonomous driving, FL, DRL,
     and lastly FRL at a high level. The background information in Chapter
     \ref{chap:background} is intended to to give the reader a high level
     understanding of the topics that follow in each
@@ -141,12 +140,12 @@ This thesis is divided into the following chapters:
     system model, the MDP model, and lastly the DRL model with an
     algorithm implementation of FRL to AV platooning.  The intention of
     Chapter \ref{chap:methods} is to give the reader an understanding of
-    the frameworks, design and how each component of the overall system
+    the frameworks design and how each component of the overall system
     connects.
     \vspace{12pt}
     \item Chapter \ref{chap:results} presents the experimental
     setup for applying FRL to the AV platooning system, the
-    experimental results and a discussion. A comparison of performance for
+    experimental results and a discussion for the results. A comparison of performance for
     no-FRL versus FRL in a variety of AV platooning scenarios with varying
     aggregation methods is provided.
     \vspace{12pt}

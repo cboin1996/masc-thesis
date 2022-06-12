@@ -1,6 +1,6 @@
 \chapter{Background} \label{chap:background}
 In this chapter, high level background information is introduced on topics of autonomous
-driving, FL, DRL, and lastly FRL
+driving, FL, DRL, and lastly FRL.
 
 \section{Autonomous Driving}
 In recent years there has been a surge in autonomous vehicle (AV) research, likely due
@@ -16,15 +16,17 @@ and due to large variability of road data it can be quite challenging (or near i
 to gather a dataset large enough to train a supervised model \cite{ElSallab2017a}.
 In addition, driving data is collected from humans, which can also limit an AI's ability
 to that of human level \cite{Ye2019}. In contrast, RL methods are known to generalize
-quite well \cite{Makantasis2020a} \cite{Makantasis2020a}, and furthermore DRL has seen
+quite well \cite{Makantasis2020a}, and furthermore DRL has seen
 large successes in autonomous driving and AV platooning research.
 
-In general there are two types of models for AV decision making: vehicle-following
-modeling or lane-changing modeling \cite{Ye2019}, the vehicle-following approach is
+In general there are two types of models for AV decision making in a platoon: vehicle-following
+modeling or lane-changing modeling \cite{Ye2019}. The vehicle-following approach is
 selected as the AV model for this thesis.  Vehicle-following
-models include a vehicle in a single lane road  known as the follower that aims to maintain
-a desired set of parameters (headway, velocity, accleration for example) relative to a
-predecessor vehicle.  Vehicle-following models are commonly formulated as conventional cruise control,
+models are designed to model a vehicle in a single lane road, often reffered to as the follower. The follower's objective
+is to maintain a setpoint (desired headway) based on a variety of inputs computed or recieved from a predecessor vehicle.
+A few examples of input parameters to a follower may be position error, velocity error or acceleration,
+which may be used to determine position or velocity error.
+Vehicle-following models are commonly formulated as conventional cruise control,
 adaptive cruise control, or co-operative adaptive cruise control (CACC) problems \cite{Mil2014}.
 CACC is the model of choice for this thesis. Traditionally controlled vehicle-following models
 are known to have: limited accuracy, poor generalization from a lack of data,
@@ -119,7 +121,7 @@ introduction on the topics of RL and DRL is presented.
 
 \section{Deep Reinforcement Learning}
 RL is a learning from experience based optimization method useful for inferring actions as
-an output using an environment's states as input. In RL, an agent observes a given state,
+an output using an environment's state as input. In RL, an agent observes a given state,
 takes an action based on the state, and receives a reward as a metric to determine how
 `good' the action was.  As an RL agent explores an environment over a training episode,
 the agent aims to maximize the cumulative reward that is the sum of each reward received
@@ -133,8 +135,8 @@ algorithm is selected for use in this thesis.
 Several RL and DRL algorithms are useful in building an understanding of DRL applications
 to AV platooning: value-based RL, policy-based RL, DQN and DDPG. In value-based RL a value
 function measures the quality of each state action pair predicting a long-term reward. The
-action value equation provides an expected reward given an action $u$ in state $x$,
-thereafter following the optimal policy. The action-value function is presented below
+action-value equation produces the optimal policy given an expected reward and action $u$
+for state $x$. The action-value equation is presented below
 from \cite{sutton2018reinforcement}
 
 \begin{equation}
@@ -152,7 +154,7 @@ random, and is updated according to the Bellman equation, presented below from
 \noindent The Bellman equation assumes that the immediate reward $r$ plus the maximum
 future reward for the next state $x'$ produces the maximum future reward for state $x$
 and action $u$ \cite{Zhu2018}.  Q-learning has become one of the most popular value-based
-methods, along with its variants: DQN, Double DQN, and Dueling DQN.\cite{sWang2017}.
+methods, along with its variants: DQN, Double DQN, and Dueling DQN \cite{sWang2017}.
 
 Policy based DRL also uses a value function $q(x, \theta)$
 \cite{sutton2018reinforcement, sWang2017}. The policy, $\pi(u|x, \theta)$, is represented
@@ -186,7 +188,9 @@ The DDPG algorithm has been hugely successful in the control of continuous non
 linear systems: the inverted pendulum and robotic arm control are but a few examples
 of such successes \cite{Lim2020}. These successes in conjunction with the existing
 literature for AV platooning have been a large motivation for this thesis's application of
-DDPG to AV platooning.
+DDPG to AV platooning. Despite DDPG's success in the control of continuous systems, the
+current performance is limited by instability and sensitivity to hyper-parameters.
+FRL is being explored in literature as a way to address these challenges.
 
 \section{Federated Reinforcement Learning}
 Like FL, FRL aims to accelerate the training of DRL models through the sharing of parameters
@@ -195,7 +199,7 @@ Horizontal Federated Reinforcement Learning (HFRL), and Vertical Federated Reinf
 Learning (VFRL).  The works in this Thesis are most closely related to HFRL.  HFRL and VFRL
 differ with respect to the structure of their environments and aggregation methods.  All
 agents in a HFRL architecture use isolated environments. It follows that each agent's action
-in a HFRL system has no effect on the other agents in the system.  HFRL architecture
+in a HFRL system has no effect on the other agents in the system.  An HFRL architecture
 proposes the following training cycle for each agent:
 
 \begin{itemize}
@@ -218,10 +222,10 @@ may observe partial or full states from the global model, and the actions of eac
 have an affect the system as a whole. A VFRL architecture is composed of the following steps \cite{IntelAI19}:
 
 \begin{itemize}
-    \item All RL agents take an action according the the \textbf{same} environment.
+    \item All RL agents take an action according to a global environment.
     \item RL agents receive feedback from the environment (state, reward, etc.).
-    \item RL agents compute 'mid products' - that is, the output from their corresponding model.
-    The output from their model is masked and sent to the Q-network agent.
+    \item RL agents compute 'mid products' defined as the output from each agents model.
+    The mid products are masked and sent to a global Q-network agent.
     \item The Q-network encrypts each of the mid-products and trains itself using back-propagation.
     The outputs from the Q-network are sent back to each agent \cite{IntelAI19}.
     \item All gradients received by each agent are encrypted and used to update their network.
@@ -233,4 +237,4 @@ vehicle in the platoon, an HFRL architecture is selected for designing the FRL f
 \section{Summary}
 Now that the theory and fundamentals of autonomous driving, FL, RL and lastly FRL
 have been introduced, an in depth summary of the state-of-the-art research in
-direct relation to the works of this thesis is presented in the next Chapter.
+direct relation to the works of this thesis is presented in the next chapter.
