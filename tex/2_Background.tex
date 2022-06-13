@@ -48,7 +48,7 @@ data (rather than parameter estimation as a result of data fitting) and continuo
 improvement \cite{Zhu2018}.
 
 Several RL models are useful to know when considering a DRL approach
-to AV: value-based RL, policy-based RL, DRL, Deep Q-Network (DQN) and Deep Deterministic
+to AV platooning: value-based RL, policy-based RL, DRL, Deep Q-Network (DQN) and Deep Deterministic
 Policy Gradient (DDPG). It is important to note that DDPG is the current prominent algorithm
 for applying DRL to AV driving scenarios, especially AV platooning. The following
 references are summarized in Chapter \ref{chap:litreview}, which are a few works that apply
@@ -80,12 +80,12 @@ FL strategies can be categorized based on the data's underlying characteristics
 
 \begin{itemize}
     \item Horizontal FL (HFL): Applied to data sets with the same feature space (columns)
-    but different samples \cite{Yang2019a, IntelAI19}.
+    but different samples.
     \item Vertical FL (VFL): Applied to data sets with the same sample space (rows in the
-    data set), but different features \cite{Yang2019a}.
+    data set), but different features.
     \item Federated transfer learning (FTL): is essentially a combination of HFL and
-    VFL \cite{Yang2019a, IntelAI19}.  Thus, the feature and sample spaces of the data
-    sets are variable \cite{Yang2019a}.
+    VFL.  Thus, the feature and sample spaces of the data
+    sets are variable.
 \end{itemize}
 
 In general, FL enables the online training of a single model with performance approaching
@@ -170,7 +170,7 @@ action spaces \cite{Lillicrap2016, sWang2017}.
 
 Much like DQN, DDPG uses DNNs as the function approximators \cite{Zhu2018}.  Most
 optimization algorithms assume that samples of data are IID \cite{Lillicrap2016}.
-By the addition of a finite ``replay buffer'' which stores the state, action, reward
+By the addition of a finite `replay buffer' which stores the state, action, reward
 and next state $(x, u, r, x^{'})$ for each state transition, minibatch sampling from
 the buffer allows the DDPG algorithm to learn across uncorrelated state transitions
 \cite{Lillicrap2016}.  In addition to the inclusion of a replay buffer, target
@@ -196,23 +196,23 @@ FRL is being explored in literature as a way to address these challenges.
 Like FL, FRL aims to accelerate the training of DRL models through the sharing of parameters
 across a system. Most FRL research can be categorized into the following two categories:
 Horizontal Federated Reinforcement Learning (HFRL), and Vertical Federated Reinforcement
-Learning (VFRL).  The works in this Thesis are most closely related to HFRL.  HFRL and VFRL
+Learning (VFRL).  The works in this thesis are most closely related to HFRL.  HFRL and VFRL
 differ with respect to the structure of their environments and aggregation methods.  All
-agents in a HFRL architecture use isolated environments. It follows that each agent's action
-in a HFRL system has no effect on the other agents in the system.  An HFRL architecture
+agents in an HFRL architecture use isolated environments. It follows that each agent's action
+in an HFRL system has no effect on the other agents in the system.  An HFRL architecture
 proposes the following training cycle for each agent:
 
 \begin{itemize}
-    \item a training step is performed locally,
-    \item environment specific parameters are uploaded to the aggregation server,
-    known as the Federated Server,
-    \item the Federated Server aggregates the parameters based on the aggregation
-    method (FedAvg is one example of an aggregation method),
-    \item aggregated parameters are returned to each agent in the system for
+    \item A training step is performed locally.
+    \item Environment specific parameters are uploaded to the aggregation server,
+    known as the Federated Server.
+    \item The Federated Server aggregates the parameters based on the aggregation
+    method (FedAvg is one example of an aggregation method).
+    \item Aggregated parameters are returned to each agent in the system for
     another local training step.
 \end{itemize}
 
-HFRL may be noted to have similarities to ``Parallel RL".  Parallel RL is a long studied
+HFRL may be noted to have similarities to `Parallel RL'.  Parallel RL is a long studied
 field of RL, where agent gradients are transferred amongst each other
 \cite{Lim2020, Nadiger2019}.
 
@@ -227,7 +227,7 @@ have an affect the system as a whole. A VFRL architecture is composed of the fol
     \item RL agents compute 'mid products' defined as the output from each agents model.
     The mid products are masked and sent to a global Q-network agent.
     \item The Q-network encrypts each of the mid-products and trains itself using back-propagation.
-    The outputs from the Q-network are sent back to each agent \cite{IntelAI19}.
+    The outputs from the Q-network are sent back to each agent.
     \item All gradients received by each agent are encrypted and used to update their network.
 \end{itemize}
 

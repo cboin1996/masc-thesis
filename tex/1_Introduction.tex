@@ -57,11 +57,11 @@ platooning scenarios, in particular:
 
 \begin{itemize}
     \onehalfspacing
-    \item Gain and understanding of the current state-of-the-art for FRL and DRL
+    \item Gain an understanding of the current state-of-the-art for FRL and DRL
     applied to AV platoon control.
-    \item Formulate a discretized model of an AV CACC platoon.
-    \item Design a MDP platooning environment based on the discretized model of an AV
-    CACC platoon, and implement the model in Python3.
+    \item Formulate a discretized model of a CACC AV platoon.
+    \item Design a MDP platooning environment based on the discretized model of a
+    CACC AV platoon, and implement the model in Python3.
     \item Implement a training system for applying the DDPG algorithm to the platooning
     environment, allowing for repeatable DRL experiments to be conducted on the platooning environment.
     \item Implement an evaluation system for the DRL experiments.
@@ -104,10 +104,10 @@ thesis further distinguishes it's approach from existing literature through decl
 new possible ways to apply FRL to AV platooning:
 
 \begin{enumerate}
-    \item Intra-FRL: where multi-vehicle platoons share data during training to increase
-    the performance of vehicles within the same platoon.
     \item Inter-FRL: where multi-vehicle platoons share data during training across
     platoons amongst vehicles in the exact same platoon position.
+    \item Intra-FRL: where multi-vehicle platoons share data during training to increase
+    the performance of vehicles within the same platoon.
 \end{enumerate}
 
 In contrast to existing literature where it is common to average parameters

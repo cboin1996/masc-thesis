@@ -20,7 +20,7 @@ HFRL to a variety of applications are summarized below.
 % HFRL
 % HFRL references here %
 A study by \cite{Lim2020} aims to increase the performance of RL methods applied to
-multi-IoT device systems.  RL models trained on single devices are often unable to control
+multi-internet-of-things (multi-IoT) device systems.  RL models trained on single devices are often unable to control
 devices in a similar albeit slightly different environment \cite{Lim2020}.  Currently,
 multiple devices need to be trained using separate RL agents \cite{Lim2020}. The methods
 proposed by \cite{Lim2020} sped up the learning process by 1.5 times for a two agent system.
@@ -36,7 +36,7 @@ to address these problems \cite{Liu2019b} proposed the architecture `Lifelong FR
 which can be categorized as a HFRL problem.  It was found the Lifelong FRL increased
 the learning rate for the smart navigation system when tested on robots in a cloud
 robotic system \cite{Liu2019b}. Finally, \cite{Ren2019} utilizes FRL to train multiple distributed
-DRL agents for an Internet of Things (IoT) energy harvesting application.  It was found that FRL
+DRL agents for an IoT energy harvesting application.  It was found that FRL
 provided advantages to DRL when applied to the same system model \cite{Ren2019}.
 
 
@@ -46,7 +46,7 @@ a single global environment. Some existing works on VFRL are summarized in this 
 A study by \cite{Zhuo2019} identifies the challenge of building high quality Q-network policies in
 small feature spaces or with limited training data.  In order to address this problem, \cite{Zhuo2019} applies FRL
 by sharing encrypted Q-network outputs amongst agents while building a
-shared value network which uses each agents encrypted outputs as inputs.
+shared value network which uses each agent's encrypted outputs as inputs.
 \cite{Zhuo2019} demonstrates the effectiveness of VFRL in training high-quality policies
 even with no training data shared amongst agents.
 The works of \cite{Wang2018a} applies current DRL techniques with a custom FL framework to a mobile edge computing scenario
@@ -99,7 +99,7 @@ aggregation method.  In contrast, \cite{Liang2019} proposed using model weights 
 the aggregation method for AV steering control. Thus, FRL applications can differ
 based upon the selection of which parameter to use in the aggregation method.  A study
 by \cite{ZhangX2020} explores applying FRL to a decentralized DRL system optimizing
-cellular vehicle-to-everything communication. \cite{ZhangX2020} utilizes the model
+cellular vehicle-to-everything (V2X) communication. \cite{ZhangX2020} utilizes the model
 weights in the aggregation method, and describes a weighting factor dividing the sum
 batch size for all agents by the training batch size for a specific agent.  In addition,
 the works of \cite{LimHyun2021} explores how FRL using gradient aggregation can improve
@@ -143,8 +143,7 @@ the first (if not the first) to apply FRL to AV platooning successfully.
 In order to improve the limitations of vehicle following models, DRL has been a
 steady area of research in the AV community with many authors contributing works
 to DRL applied to CACC \cite{Schwarting2018, Li2019, Kendall2019, zhangYuxiang2020}.
-By assumining vehicle-vehicle (V2V) or
-vehicle to everything (V2X) communications, it is possible to model AV platooning scenarios
+By assumining vehicle-vehicle (V2V) or V2X communications, it is possible to model AV platooning scenarios
 where key driving data is shared amongst vehicles in a platoon \cite{Schwarting2018,Hussain2019}.
 The sharing of data amongst vehicles has enabled successes for CACC in literature as seen in \cite{LeiV2x}.
 As previously stated, classically controlled AV platoons have limitations related to
@@ -184,7 +183,7 @@ against real world driving data. Parameters such as time to collision, headway, 
 were considered in the DRL model's reward function.  The DDPG algorithm provided favourable
 performance to that of the analysed human driving data \cite{Zhu2019}, with favourable
 time to collision results, more efficient driving via reduced vehicle headways, and
-improved passenger comfort with lower magnitudes of jerk. As Vehicle-to-Everything (V2X)
+improved passenger comfort with lower magnitudes of jerk. As V2X
 communications are envisioned to have a beneficial impact on the performance of platoon
 controllers, the works of \cite{LeiV2x} investigates the value of V2X communications for
 DRL-based platoon controllers. \cite{LeiV2x} emphasizes the trade-off between the gain of
@@ -196,7 +195,7 @@ to a performance level near that of dynamic programming methods.
 
 When formulating the AV platooning problem as a DRL model DDPG is prominently selected
 as the algorithm for training.  DDPG's ability to handle continuous actions space and
-complex state's is perfect for the CACC platoon problem.  However, despite the DDPG
+complex states is perfect for the CACC platoon problem.  However, despite the DDPG
 algorithm's success in literature, there are still instability challenges related to
 the algorithm along with a time consuming hyper-parameter tuning process to account
 for the minute differences in vehicle models/dynamics amongst platoons. As previously

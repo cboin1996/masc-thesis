@@ -85,8 +85,8 @@ Table \ref{tab:ddpg_hyps} presents the hyperparameters specific to the DDPG algo
         Actor learning rate & 5e-05\\ \hline
         Critic learning rate & 0.0005\\ \hline
         Batch size & 64\\ \hline
-        Noise & Ornstein-Uhlenbeck Process with $\theta=0.15$, $\sigma=0.02$ \\ \hline
-        Weights and Biases  & random uniform distribution $[-3\times10^{-3},\:3\times10^{-3}]$ (final layer), \\
+        Noise & Ornstein-Uhlenbeck process with $\theta=0.15$, $\sigma=0.02$ \\ \hline
+        Weights and Biases  & Random uniform distribution $[-3\times10^{-3},\:3\times10^{-3}]$ (final layer), \\
         Initialization    & \begin{tiny}$\left[-\dfrac{1}{\sqrt{fan\:in}},\:-\dfrac{1}{\sqrt{fan\:in}}\right]$\end{tiny} (other layers)\\        \bottomrule
     \end{tabular}
     \label{tab:ddpg_hyps}
