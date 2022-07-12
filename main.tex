@@ -4,6 +4,9 @@
 \graphicspath{{./images/}{images/}} %this command specifies first the path relative to main file to images folder, then the path relative to sub file i think.. very important
 
 \usepackage{hyperref}
+
+
+
 \begin{document}
 \begin{titlepage}
 	\setlength{\parskip}{12pt}
@@ -70,9 +73,28 @@ generous with time whenever I needed critical review of my work.
 \listoftables
 % \clearpage\addcontentsline{toc}{chapter}{List of Figures}
 \listoffigures
+\newpage
+\chapter*{Acronyms}
+\begin{itemize}[label={}]
+	\singlespacing
+	\item \textbf{FL} Federated Learning \\
+	\item \textbf{FRL} Federated Reinforcement Learning \\
+	\item \textbf{Inter-FRL}  Inter Federated Reinforcement Learning \\
+	\item \textbf{Intra-FRL}  Intra Federated Reinforcement Learning \\
+	\item \textbf{Inter-FRLGA} Inter Federated Reinforcement Learning with Gradient Averaging \\
+	\item \textbf{Inter-FRLWA} Inter Federated Reinforcement Learning with Weight Averaging \\
+	\item \textbf{Intra-FRLGA} Intra Federated Reinforcement Learning with Gradient Averaging \\
+	\item \textbf{Intra-FRLWA} Intra Federated Reinforcement Learning with Weight Averaging \\
+	\item \textbf{RL} Reinforcement Learning \\
+	\item \textbf{DRL} Deep Reinforcement Learning \\
+	\item \textbf{DDPG} Deep Deterministic Policy Gradient \\
+	\item \textbf{No-FRL}  No Federated Reinforcement Learning \\
+	\item \textbf{CACC} Co-operative Adaptive Cruise Control
+\end{itemize}
 % \textcolor{green}{PROOF READ NEEDED}
 % \textcolor{blue}{FINAL RESULT SUMMARY NEEDED}
 % \textcolor{red}{MAJOR REVISION NEEDED!}
+\doublespacing
 \subfile{tex/1_Introduction}
 \subfile{tex/2_Background}
 \subfile{tex/3_Literature}
@@ -80,8 +102,6 @@ generous with time whenever I needed critical review of my work.
 \subfile{tex/5_Results_Discussion}
 \subfile{tex/6_Conclusion}
 
-
-\newpage
 \bibliographystyle{IEEEtran}
 \addcontentsline{toc}{section}{References}
 \bibliography{references}
