@@ -15,7 +15,7 @@ HFRL provides the ability to aggregate experience while increasing the sample ef
 providing more accurate and stable learning  \cite{IntelAI19}.
 It is important to note that few existing works apply
 FRL to autonomous driving at the time of this study.  Some of the current works studying
-HFRL to a variety of applications are summarized below.
+HFRL in a variety of applications are summarized below.
 
 % HFRL
 % HFRL references here %
@@ -33,8 +33,8 @@ characters in pong showed a median improvement of ~17\% for the personalization 
 smart navigation systems, with the following challenges: long training times, poor
 generalization across environments, and storing data over long periods of time.  In order
 to address these problems \cite{Liu2019b} proposed the architecture `Lifelong FRL',
-which can be categorized as a HFRL problem.  It was found the Lifelong FRL increased
-the learning rate for the smart navigation system when tested on robots in a cloud
+which can be categorized as an HFRL problem.  It was found the Lifelong FRL increased
+the learning rate for a smart navigation system when tested on robots in a cloud
 robotic system \cite{Liu2019b}. Finally, \cite{Ren2019} utilizes FRL to train multiple distributed
 DRL agents for an IoT energy harvesting application.  It was found that FRL
 provided advantages to DRL when applied to the same system model \cite{Ren2019}.
@@ -82,7 +82,7 @@ It is clear that both HFRL and VFRL have promising research directions, however
 the AV platooning problem best identifies with HFRL due to the following reasons:
 
 \begin{itemize}
-  \item Training a decentralized platoon follows that of HFRL
+  \item Training a decentralized platoon follows that of an HFRL
   training processes: (train locally, upload to server, aggregate parameters, update
   each agent with aggregated parameters)
   \item An AV platoon is composed of vehicles, or agents. Each agent's environment may
@@ -110,7 +110,7 @@ OpenAI-gym environments relative to models trained without FRL.  In addition,
 \cite{WangXiaofei2021} applies FRL to heterogeneous edge caching.  \cite{WangXiaofei2021}
 shows the effectiveness of FRL using weight aggregation to improve hit rate, reduce
 average delays in the network and offload traffic. Lastly, \cite{Huang2021} applies FRL
-using model weight aggregation to Service Function Chains in network function virtualization
+using model weight aggregation to service function chains in network function virtualization
 enabled networks. \cite{Huang2021} observes that FRL using model weight aggregation
 provides benefits to convergence speed, average reward and average resource consumption.
 Below is a summary of the previously mentioned FRL works categorized by their proposed
@@ -143,7 +143,7 @@ the first (if not the first) to apply FRL to AV platooning successfully.
 In order to improve the limitations of vehicle following models, DRL has been a
 steady area of research in the AV community with many authors contributing works
 to DRL applied to CACC \cite{Schwarting2018, Li2019, Kendall2019, zhangYuxiang2020}.
-By assumining vehicle-vehicle (V2V) or V2X communications, it is possible to model AV platooning scenarios
+By assuming vehicle-vehicle (V2V) or V2X communications, it is possible to model AV platooning scenarios
 where key driving data is shared amongst vehicles in a platoon \cite{Schwarting2018,Hussain2019}.
 The sharing of data amongst vehicles has enabled successes for CACC in literature as seen in \cite{LeiV2x}.
 As previously stated, classically controlled AV platoons have limitations related to
@@ -154,24 +154,24 @@ research ecosystem for authors to explore \cite{Vinitsky2018, Kiran2020}.
 Many of the existing AV platooning works apply DDPG to AV platooning environments.
 Due to the popularity of the DDPG algorithm in AV platooning, DDPG has been selected
 as the algorithm of choice in this thesis.
-In addition, CACC models are often selected as the model in AV platooning, and as such
+In addition, CACC models are often selected as the model of choice in AV platooning, and as such
 a CACC model is proposed for the design of the platooning environment in this thesis.
 Some studies closely related to the works of this thesis are summarized below.
 
 In a study
 by \cite{Lin2019},  a DRL framework is designed to control a CACC AV platoon.  The
-DRL framework uses the Deep Deterministic Policy Gradient (DDPG) \cite{Lillicrap2016}
+DRL framework uses the DDPG \cite{Lillicrap2016}
 algorithm and is found to have near-optimal performance \cite{Lin2019}.  In addition,
 \cite{Peake2020} identifies limitations in platooning with regard to the communication.
 Through the application of a multi-agent reinforcement learning process, i.e. a policy
 gradient RL and LSTM network, the performance of a platoon containing 3-5 vehicles was
 improved upon that of current RL applications to platooning \cite{Peake2020}. Furthermore,
-Model Predictive Control (MPC) is the current state-of-the-art for real-time optimal
+model predictive control (MPC) is the current state-of-the-art for real-time optimal
 control practices \cite{Lin_2021}.  The study performed by \cite{Lin_2021} applies both
 MPC and DRL methodologies to the AV platoon problem, observing a DRL model using the
 DDPG algorithm to have a 5.8\% episodic cost higher than the current state-of-the-art.
 The works of \cite{yan2021hybrid} propose a hybrid approach to the AV platooning
-problem where the platoon is modeled as a Markov Decision Process (MDP) in order to
+problem where the platoon is modeled as a markov decision process (MDP) in order to
 collect two rewards from the system at each time step simultaneously.  This approach
 also incorporates jerk, the rate of change of acceleration in the calculation of the
 reward for each vehicle in order to ensure passenger comfort \cite{yan2021hybrid}.  The
@@ -189,12 +189,12 @@ controllers, the works of \cite{LeiV2x} investigates the value of V2X communicat
 DRL-based platoon controllers. \cite{LeiV2x} emphasizes the trade-off between the gain of
 including exogenous information in the system state for reducing uncertainty and the
 performance erosion due to the curse-of-dimensionality. Lastly, \cite{Yuan2019}
-presents the introduction of vehicle dynamics into an adaptive cruise control (ACC) model.
+presents the introduction of vehicle dynamics into an adaptive cruise control model.
 Using a custom DRL model, trained by DDPG, \cite{Yuan2019} finds that the DRL model is optimized
 to a performance level near that of dynamic programming methods.
 
 When formulating the AV platooning problem as a DRL model DDPG is prominently selected
-as the algorithm for training.  DDPG's ability to handle continuous actions space and
+as the algorithm for training.  DDPG's ability to handle continuous action spaces and
 complex states is perfect for the CACC platoon problem.  However, despite the DDPG
 algorithm's success in literature, there are still instability challenges related to
 the algorithm along with a time consuming hyper-parameter tuning process to account

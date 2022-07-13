@@ -23,9 +23,8 @@ In general there are two types of models for AV decision making in a platoon: ve
 modeling or lane-changing modeling \cite{Ye2019}. The vehicle-following approach is
 selected as the AV model for this thesis.  Vehicle-following
 models are designed to model a vehicle in a single lane road, often reffered to as the follower. The follower's objective
-is to maintain a setpoint (desired headway) based on a variety of inputs computed or recieved from a predecessor vehicle.
-A few examples of input parameters to a follower may be position error, velocity error or acceleration,
-which may be used to determine position or velocity error.
+is to maintain a setpoint (desired headway) based on a variety of computed or recieved inputs from a predecessor vehicle.
+A few examples of input parameters to a follower may be position error, velocity error or acceleration.
 Vehicle-following models are commonly formulated as conventional cruise control,
 adaptive cruise control, or co-operative adaptive cruise control (CACC) problems \cite{Mil2014}.
 CACC is the model of choice for this thesis. Traditionally controlled vehicle-following models
@@ -35,7 +34,7 @@ AI is being explored as a method to control vehicle-following models \cite{Zhu20
 In particular, DRL models have become a prominent area of research applied to AV platooning.
 
 DRL approaches are model-free and the model may be inferred by the algorithm during
-training.  There are three elements important to DRL: training environment (ensuring
+training.  There are three main elements to consider when using DRL: training environment (ensuring
 variety in the training), choosing the proper algorithm for the case study (Q-learning
 and other algorithms are described below), and the creation of an effective reward
 function \cite{Ye2019}.  In order to achieve human like control, DRL has been accepted
@@ -48,8 +47,8 @@ data (rather than parameter estimation as a result of data fitting) and continuo
 improvement \cite{Zhu2018}.
 
 Several RL models are useful to know when considering a DRL approach
-to AV platooning: value-based RL, policy-based RL, DRL, Deep Q-Network (DQN) and Deep Deterministic
-Policy Gradient (DDPG). It is important to note that DDPG is the current prominent algorithm
+to AV platooning: value-based RL, policy-based RL, DRL, deep Q-Network (DQN) and deep deterministic
+policy gradient (DDPG). It is important to note that DDPG is the current prominent algorithm
 for applying DRL to AV driving scenarios, especially AV platooning. The following
 references are summarized in Chapter \ref{chap:litreview}, which are a few works that apply
 DDPG to AV platooning \cite{Lin2019, Song2020, Chu2019b, Peake2020}.
@@ -60,7 +59,7 @@ to a centralized architecture \cite{Konecny2015, BrendanMcMahan2017a, McMahan201
 At the time of discovery, the core ideology of FL was to train machine learning models from
 distributed data sets across mobile devices while minimizing data leakage \cite{McMahan2016FederatedLO}.
 Data transmitted during a FL process must be the minimal required to improve a model in order to
-reduce risk of data breaches \cite{BrendanMcMahan2017a}.  FL is defined in \cite{Yang2019a, IntelAI19}
+reduce the risk of data breaches \cite{BrendanMcMahan2017a}.  FL is defined in \cite{Yang2019a, IntelAI19}
 as a series of $N$ data owners ${\mathcal{F}_1,...\mathcal{F}_N}$ wishing to train a machine learning
 model by compiling data ${\mathcal{D}_1,...\mathcal{D}_N}$.  FL can be framed as an optimization
 problem containing the following characteristics \cite{IntelAI19}:
@@ -95,13 +94,13 @@ of all agents into it's model structure directly \cite{Yang2019a}.  Often this c
 approach is desired for the control of a multi-agent system, however in the event of server
 failure all agents in the system would also fail \cite{Long2018}.  FL processes aim to
 avoid the risk of total system failure by producing a FL model from a training process
-that does not share any of the agents data points amongst themselves \cite{Yang2019a}.
+that does not share any of the agent's data points amongst themselves \cite{Yang2019a}.
 Ideally, the FL  model's performance should be close to that of the centralized model
 \cite{Yang2019a}.
 
 As previously mentioned, \cite{BrendanMcMahan2017a} produced the FedAvg algorithm.  In
 FedAvg, each client takes a single step of gradient descent, computing the loss with
-local data. The Federated server then takes the weighted average of all resulting models
+local data. The federated server then takes the weighted average of all resulting models
 \cite{BrendanMcMahan2017a}, returning the averaged parameters to each client for another
 local training step.  FedAvg provided an increase in performance for training high
 quality models, however privacy still needed to be considered further to ensure security
@@ -110,14 +109,14 @@ approach from that of \cite{Yang2019a, BrendanMcMahan2017a} in the implementatio
 by applying Multi-Task Learning (MTL) to the FL setting.  MTL allows for the training of
 separate models for each node in a system, but with the fitting of related models
 simultaneously \cite{Smith2017}. MTL labels any clustered, spare or low-rank structure
-between tasks in an a-priori fashion (without observation) -- task relationships are not
+between tasks in an a-priori fashion (without observation); task relationships are not
 known beforehand and may be inferred from the data structure itself \cite{Smith2017}.
 Although MTL has its benefits, FedAvg is widely used in literature and even used an an
 aggregation strategy within FRL. Because of FedAvg's relevance in literature, FedAvg is
 selected to be implemented on the AV platooning problem in this thesis. Lastly, it is
 important to understand that FL is only applied to supervised ML problems.  In order to
 apply FL to DRL problems, FRL has been developed. Before discussing FRL, first a brief
-introduction on the topics of RL and DRL is presented.
+introduction on the topic of DRL is presented.
 
 \section{Deep Reinforcement Learning}
 RL is a learning from experience based optimization method useful for inferring actions as
@@ -137,7 +136,6 @@ to AV platooning: value-based RL, policy-based RL, DQN and DDPG. In value-based 
 function measures the quality of each state action pair predicting a long-term reward. The
 action-value equation produces the optimal policy given an expected reward and action $u$
 for state $x$. The action-value equation is presented below
-from \cite{sutton2018reinforcement}
 
 \begin{equation}
     q^{\pi}(x,u) = E[R_t|x_t = x, u_t = u]. \label{eqn:act_val}
@@ -158,7 +156,7 @@ methods, along with its variants: DQN, Double DQN, and Dueling DQN \cite{sWang20
 
 Policy based DRL also uses a value function $q(x, \theta)$
 \cite{sutton2018reinforcement, sWang2017}. The policy, $\pi(u|x, \theta)$, is represented
-by neural networks, where $\theta$ represents the weights in a deep neural network (DNN)
+by neural networks, where $\theta$ represents the weights in a DNN
 \cite{Zhu2018}.  A state space is given as input, and a continuous action space may be
 the output \cite{Zhu2018}. DRL uses a neural network to model the policy or value
 function \cite{Zhu2018}.  DQN is known to work in discrete action states, which has
@@ -195,7 +193,7 @@ FRL is being explored in literature as a way to address these challenges.
 \section{Federated Reinforcement Learning}
 Like FL, FRL aims to accelerate the training of DRL models through the sharing of parameters
 across a system. Most FRL research can be categorized into the following two categories:
-Horizontal Federated Reinforcement Learning (HFRL), and Vertical Federated Reinforcement
+horizontal federated reinforcement learning (HFRL), and vertical federated reinforcement
 Learning (VFRL).  The works in this thesis are most closely related to HFRL.  HFRL and VFRL
 differ with respect to the structure of their environments and aggregation methods.  All
 agents in an HFRL architecture use isolated environments. It follows that each agent's action
@@ -205,8 +203,8 @@ proposes the following training cycle for each agent:
 \begin{itemize}
     \item A training step is performed locally.
     \item Environment specific parameters are uploaded to the aggregation server,
-    known as the Federated Server.
-    \item The Federated Server aggregates the parameters based on the aggregation
+    known as the federated server.
+    \item The federated server aggregates the parameters based on the aggregation
     method (FedAvg is one example of an aggregation method).
     \item Aggregated parameters are returned to each agent in the system for
     another local training step.
@@ -224,7 +222,7 @@ have an affect the system as a whole. A VFRL architecture is composed of the fol
 \begin{itemize}
     \item All RL agents take an action according to a global environment.
     \item RL agents receive feedback from the environment (state, reward, etc.).
-    \item RL agents compute 'mid products' defined as the output from each agents model.
+    \item RL agents compute `mid products' defined as the output from each agent's model.
     The mid products are masked and sent to a global Q-network agent.
     \item The Q-network encrypts each of the mid-products and trains itself using back-propagation.
     The outputs from the Q-network are sent back to each agent.

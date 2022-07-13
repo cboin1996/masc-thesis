@@ -1,9 +1,9 @@
 \chapter{Introduction}
 \pagenumbering{arabic}
-In recent years, Federated Learning (FL) and it's extension Federated Reinforcement Learning
+In recent years, federated learning (FL) and it's extension federated reinforcement learning
 (FRL) have become a popular topic of discussion in the artificial intelligence (AI)
 community.  The concept of FL was first proposed by Google with the development of the
-Federated Averaging (FedAvg) aggregation method \cite{McMahan2016FederatedLO}.
+federated averaging (FedAvg) aggregation method \cite{McMahan2016FederatedLO}.
 FedAvg was shown to increase the performance of distributed systems while also providing
 privacy advantages when compared to using centralized architectures for supervised machine
 learning (ML) tasks \cite{Konecny2015, BrendanMcMahan2017a, McMahan2016FederatedLO}.
@@ -28,8 +28,8 @@ Despite the popularity of FL and FRL, at the time of this thesis, there are few 
 driving.  In general there are two types of `models' for AV decision making:
 vehicle-following modeling and lane-changing modeling \cite{Ye2019}. For the purposes of
 this thesis, the vehicle-following approach known as co-operative adaptive cruise control
-(CACC) is explored. Vehicle following models are based on following a vehicle in a single
-lane road with respect to a leading vehicle's actions \cite{Zhu2018}.  CACC is a
+(CACC) is explored. Vehicle following models are based on a follower vehicle in a single lane road taking actions
+in response to a leader vehicle's actions\cite{Zhu2018}.  CACC is a
 multi-vehicle control strategy where vehicles follow one another in a line known as a
 platoon, while simultaneously transmitting vehicle data amongst each other \cite{Song2020}.
 CACC platoons have been proven to improve traffic flow stability, throughput and safety
@@ -41,13 +41,13 @@ The current state-of-the-art for CACC AV platoons along with previous
 works related to FRL are the main motivation for applying FRL to the AV platooning problem. In addition,
 an important goal of this thesis is to observe the performance
 benefits FRL may have for AV platooning systems.  An FRL framework built atop of a custom AV
-platooning environment designed to analyse FRL's suitability for improving AV platoon performance.
+platooning environment is designed to analyse FRL's suitability for improving AV platoon performance.
 In addition, two approaches are proposed for applying FRL amongst AV platoons. The first proposed
 method is Inter-platoon FRL (Inter-FRL), where FRL is applied to AVs across different platoons.
 The second proposed method is Intra-platoon FRL (Intra-FRL), where FRL is applied to AVs
 within the same platoon.  Furthermore, an investigation is conducted evaluating the performance advantages of
-Inter-FRL and Intra-FRL using three aggregation methods: averaging model weights,
-averaging gradients, and weighted averaging.  Finally, a performance analysis is conducted for
+Inter-FRL and Intra-FRL using two aggregation methods: averaging model weights,
+and averaging gradients.  Finally, a performance analysis is conducted for
 Intra-FRL with weight averaging (Intra-FRLWA) against a platooning environment trained
 without FRL (no-FRL).
 
@@ -145,7 +145,7 @@ This thesis is divided into the following chapters:
     \vspace{12pt}
     \item Chapter \ref{chap:results} presents the experimental
     setup for applying FRL to the AV platooning system, the
-    experimental results and a discussion for the results. A comparison of performance for
+    experimental results and a discussion of the results. A comparison of performance for
     no-FRL versus FRL in a variety of AV platooning scenarios with varying
     aggregation methods is provided.
     \vspace{12pt}

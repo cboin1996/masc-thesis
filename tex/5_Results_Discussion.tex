@@ -132,7 +132,9 @@ cumulative reward of the model(s) in the experiment.  The entire project is desi
 implemented using Python3, and Tensorflow.  As previously stated, each vehicle in the
 platoon is modelled using the CACC model described in Section 3.  For the purposes
 of this study multiple sets of DRL experiments were conducted, using 4 random seeds (1-4)
-for training and a single random seed (6) across all evaluations.
+for training and a single random seed (6) across all evaluations. The control input for the platoon
+leader during training and evaluation is randomly sampled from a gaussian distribution
+with a standard deviation of $0.1m/s^2$.
 
 \section{Inter-FRL}
 In order to evaluate the effectiveness of Inter-FRL relative to the base case where a
@@ -346,7 +348,7 @@ reward function.
 \end{figure}
 
 \section{Comparison Between Inter and Intra-FRL}
-The results of for both Inter-FRL and Intra-FRL are summarized in Table \ref{tab:inter_vs_intra} below.
+The results for both Inter-FRL and Intra-FRL are summarized in Table \ref{tab:inter_vs_intra} below.
 
 \begin{table}[H]
     \centering
