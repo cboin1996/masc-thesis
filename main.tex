@@ -5,35 +5,63 @@
 
 \usepackage{hyperref}
 
+%Heading definition----------------------------
+%Frontmatter and chapter page?
+\fancypagestyle{plain}{%
+  \fancyhf{}%
+  \fancyhead[R]{\thepage}
+  \renewcommand{\headrulewidth}{0pt}%
+  \renewcommand{\footrulewidth}{0pt}%
+  \setlength{\headheight}{15pt}%
+}
 
+%overall?
+\fancypagestyle{myfancy}{%
+\fancyhf{} %
+\fancyfoot[C]{\thepage}%
+}
+
+\let\oldfrontmatter\frontmatter
+\let\oldmainmatter\mainmatter
+\gdef\frontmatter{\oldfrontmatter\pagestyle{plain}}
+\gdef\mainmatter{\oldmainmatter\pagestyle{myfancy}}
 
 \begin{document}
+\frontmatter
 \begin{titlepage}
 	\setlength{\parskip}{12pt}
 	\centering
 	{\textbf{\LARGE A Federated Reinforcement Learning Approach for Autonomous Vehicle Platooning}\par}
 	\vspace{1.5 cm}
 	{by}\par
-	\vspace{1 cm}
 	{Christian Boin}\par
 	\vspace{2cm}
-	{A thesis\\
+	{A Thesis\\
 	presented to\\
-	the University of Guelph}\par
+	The University of Guelph}\par
 	\vspace{2cm}
 	{In partial fulfillment of requirements\\
 	for the degree of\\
-	Master of Applied Science,\\
-	Engineering (Artificial Intelligence)}\par
+	Master of Applied Science\\
+	in\\
+	Engineering\\
+	(Artificial Intelligence)}\par
 	\vspace{2cm}
 	{\normalsize Guelph, Ontario, Canada}\par
 	\vspace{0.25cm}
-	{\copyright\hspace{6pt}Christian Boin, August 2022}\par
+	{\copyright\hspace{6pt}Christian Boin, July, 2022}\par
 \end{titlepage}
-\pagenumbering{roman}
-\chapter*{Abstract}
-\noindent Christian Boin \hfill Advisor: Dr. Lei Lei
 
+\pagenumbering{roman}
+\addtocounter{page}{1} % UofG requires numbering to start at titlepage, so start count at 2 for the abstract
+
+\chapter*{\centering Abstract}
+\addcontentsline{toc}{chapter}{Abstract}
+\thispagestyle{empty} % gobble first page number of abstract
+\pagestyle{empty} % gobble rest of abstract page numbers
+\begin{center} A FEDERATED REINFORCEMENT LEARNING APPROACH FOR AUTONOMOUS VEHICLE PLATOONING \end{center}
+
+\noindent Christian Boin \hfill Advisor: Dr. Lei Lei
 
 \noindent University of Guelph, 2022  \hfill Co-advisor: Dr. Simon Yang
 \vspace{12pt}
@@ -60,6 +88,8 @@ environment trained without FRL for platoons of length 3, 4 and 5 vehicles. It i
 that Intra-FRLWA largely out-performs the platooning environment that is trained without FRL.
 
 \chapter*{Acknowledgements}
+\addcontentsline{toc}{chapter}{Acknowledgements}
+\pagestyle{plain} % ensure all pages include numbering until the body
 I would like to thank my advisor Dr. Lei Lei for giving me the opportunity to perform this research.
 Thank you for your support and guidance, it was a massive help throughout my graduate years.  With your guidance,
 I have learned how to perform research effectively, become published, and learned more than I could have imagined on
@@ -67,14 +97,15 @@ the topics of DRL, FRL, and autonomous vehicles.
 
 In addition, I would like to thank Dr. Simon Yang for joining my advisory committee and being
 generous with time whenever I needed critical review of my work.
-
 \tableofcontents
-% \clearpage\addcontentsline{toc}{chapter}{List of Tables}
+\addcontentsline{toc}{chapter}{Table of Contents}
 \listoftables
-% \clearpage\addcontentsline{toc}{chapter}{List of Figures}
+\addcontentsline{toc}{chapter}{List of Tables}
 \listoffigures
+\addcontentsline{toc}{chapter}{List of Figures}
 \newpage
 \chapter*{Acronyms}
+\addcontentsline{toc}{chapter}{Acronyms}
 \begin{itemize}[label={}]
 	\singlespacing
 	\item \textbf{FL} Federated Learning \\
@@ -91,10 +122,17 @@ generous with time whenever I needed critical review of my work.
 	\item \textbf{No-FRL}  No Federated Reinforcement Learning \\
 	\item \textbf{CACC} Co-operative Adaptive Cruise Control
 \end{itemize}
-% \textcolor{green}{PROOF READ NEEDED}
-% \textcolor{blue}{FINAL RESULT SUMMARY NEEDED}
-% \textcolor{red}{MAJOR REVISION NEEDED!}
+
 \doublespacing
+% ----------- UofG requires bottom center numbering for main body -------- %
+\mainmatter
+\makeatletter
+\renewcommand\chapter{\if@openright\cleardoublepage\else\clearpage\fi
+                    \thispagestyle{fancy}%
+                    \global\@topnum\z@
+                    \@afterindentfalse
+                    \secdef\@chapter\@schapter}
+\makeatother
 \subfile{tex/1_Introduction}
 \subfile{tex/2_Background}
 \subfile{tex/3_Literature}
@@ -103,9 +141,8 @@ generous with time whenever I needed critical review of my work.
 \subfile{tex/6_Conclusion}
 
 \bibliographystyle{IEEEtran}
-\addcontentsline{toc}{section}{References}
 \bibliography{references}
-% \newpage
+\addcontentsline{toc}{chapter}{Bibliography}
 % \newpage
 % \appendix
 
