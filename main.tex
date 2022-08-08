@@ -5,61 +5,86 @@
 
 \usepackage{hyperref}
 
+%Heading definition----------------------------
+%Frontmatter and chapter page?
+\fancypagestyle{plain}{%
+  \fancyhf{}%
+  \fancyhead[R]{\thepage}
+  \renewcommand{\headrulewidth}{0pt}%
+  \renewcommand{\footrulewidth}{0pt}%
+  \setlength{\headheight}{15pt}%
+}
 
+%overall?
+\fancypagestyle{myfancy}{%
+\fancyhf{} %
+\fancyfoot[C]{\thepage}%
+}
+
+\let\oldfrontmatter\frontmatter
+\let\oldmainmatter\mainmatter
+\gdef\frontmatter{\oldfrontmatter\pagestyle{plain}}
+\gdef\mainmatter{\oldmainmatter\pagestyle{myfancy}}
 
 \begin{document}
+\frontmatter
 \begin{titlepage}
 	\setlength{\parskip}{12pt}
 	\centering
 	{\textbf{\LARGE A Federated Reinforcement Learning Approach for Autonomous Vehicle Platooning}\par}
 	\vspace{1.5 cm}
 	{by}\par
-	\vspace{1 cm}
 	{Christian Boin}\par
 	\vspace{2cm}
-	{A thesis\\
+	{A Thesis\\
 	presented to\\
-	the University of Guelph}\par
+	The University of Guelph}\par
 	\vspace{2cm}
 	{In partial fulfillment of requirements\\
 	for the degree of\\
-	Master of Applied Science,\\
-	Engineering (Artificial Intelligence)}\par
+	Master of Applied Science\\
+	in\\
+	Engineering\\
+	(Collaborative Specialization in Artificial Intelligence)}\par
 	\vspace{2cm}
 	{\normalsize Guelph, Ontario, Canada}\par
 	\vspace{0.25cm}
-	{\copyright\hspace{6pt}Christian Boin, August 2022}\par
+	{\copyright\hspace{6pt}Christian Boin, July, 2022}\par
 \end{titlepage}
+
 \pagenumbering{roman}
-\chapter*{Abstract}
-\noindent Christian Boin \hfill Advisor: Dr. Lei Lei
+\addtocounter{page}{1} % UofG requires numbering to start at titlepage, so start count at 2 for the abstract
 
+\chapter*{\centering \MakeUppercase{Abstract}}
+\addcontentsline{toc}{chapter}{Abstract}
+\thispagestyle{empty} % gobble first page number of abstract
+\pagestyle{empty} % gobble rest of abstract page numbers
+\begin{center} A FEDERATED REINFORCEMENT LEARNING APPROACH FOR AUTONOMOUS VEHICLE PLATOONING \end{center}
 
-\noindent University of Guelph, 2022  \hfill Co-advisor: Dr. Simon Yang
+\noindent Christian Boin
+
+\noindent University of Guelph, 2022   \hfill Advisors: \hspace{1.5cm}
+
+									   \hfill Dr. Lei Lei \hspace{1.20cm}
+
+									   \hfill Dr. Simon Yang \hspace{0.15cm}
 \vspace{12pt}
 
 Since 2016 federated learning (FL) has been an evolving topic of discussion in the artificial
-intelligence (AI) research community.  In recent years, the successful applications of FL
+intelligence (AI) research community.  In particular, the successful applications of FL
 in supervised learning applications led to the development and study of
 federated reinforcement learning (FRL).  At the time of writing this thesis,
 few works exist on the topic of FRL applied to
-autonomous vehicle (AV) platoons. In addition, most FRL works choose a single aggregation
-method (usually weight or gradient aggregation). We explore FRL's effectiveness as a means
-to improve AV platooning by designing and implementing an FRL framework atop of a custom
-AV platoon environment.  The application of FRL in AV platooning is studied under two
-scenarios: (1)  Inter-platoon FRL (Inter-FRL) where FRL is applied to AVs across different
-platoons; (2) Intra-platoon FRL (Intra-FRL) where FRL is applied to AVs within a single
-platoon. Both Inter-FRL and Intra-FRL are applied to a custom AV platooning environment using
-both gradient and weight aggregation to observe the performance effects FRL can have on AV
-platoons relative to an AV platooning environment trained without FRL.  It is concluded that
-Intra-FRL using weight aggregation (Intra-FRLWA) provides the best performance for
-controlling an AV platoon. In addition, it is found that weight aggregation in FRL for
-AV platooning provides increases in performance relative to gradient aggregation.
-Finally, a performance analysis is conducted for Intra-FRLWA versus a platooning
-environment trained without FRL for platoons of length 3, 4 and 5 vehicles. It is concluded
-that Intra-FRLWA largely out-performs the platooning environment that is trained without FRL.
+autonomous vehicle (AV) platoons. Furthermore, most FRL works implement either weight or gradient aggregation.  We explore
+FRL's effectiveness as a means to improve AV platooning by designing and implementing
+an FRL framework atop of a custom AV platoon environment. We study the application of FRL in
+AV platooning for two scenarios: (1) Inter-platoon FRL (Inter-FRL) -- FRL applied across platoons;
+(2) Intra-platoon FRL (Intra-FRL) -- FRL applied within platoons. It is concluded that Intra-FRL using weight aggregation
+(Intra-FRLWA) provides optimal performance for controlling an AV platoon, even with variable platoon length.
 
 \chapter*{Acknowledgements}
+\addcontentsline{toc}{chapter}{Acknowledgements}
+\pagestyle{plain} % ensure all pages include numbering until the body
 I would like to thank my advisor Dr. Lei Lei for giving me the opportunity to perform this research.
 Thank you for your support and guidance, it was a massive help throughout my graduate years.  With your guidance,
 I have learned how to perform research effectively, become published, and learned more than I could have imagined on
@@ -67,14 +92,21 @@ the topics of DRL, FRL, and autonomous vehicles.
 
 In addition, I would like to thank Dr. Simon Yang for joining my advisory committee and being
 generous with time whenever I needed critical review of my work.
-
+\newpage
+\phantomsection
+\addcontentsline{toc}{chapter}{Contents}
 \tableofcontents
-% \clearpage\addcontentsline{toc}{chapter}{List of Tables}
+\newpage
+\phantomsection
+\addcontentsline{toc}{chapter}{List of Tables}
 \listoftables
-% \clearpage\addcontentsline{toc}{chapter}{List of Figures}
+\newpage
+\phantomsection
+\addcontentsline{toc}{chapter}{List of Figures}
 \listoffigures
 \newpage
 \chapter*{Acronyms}
+\addcontentsline{toc}{chapter}{Acronyms}
 \begin{itemize}[label={}]
 	\singlespacing
 	\item \textbf{FL} Federated Learning \\
@@ -91,10 +123,17 @@ generous with time whenever I needed critical review of my work.
 	\item \textbf{No-FRL}  No Federated Reinforcement Learning \\
 	\item \textbf{CACC} Co-operative Adaptive Cruise Control
 \end{itemize}
-% \textcolor{green}{PROOF READ NEEDED}
-% \textcolor{blue}{FINAL RESULT SUMMARY NEEDED}
-% \textcolor{red}{MAJOR REVISION NEEDED!}
+
 \doublespacing
+% ----------- UofG requires bottom center numbering for main body -------- %
+\mainmatter
+\makeatletter
+\renewcommand\chapter{\if@openright\cleardoublepage\else\clearpage\fi
+                    \thispagestyle{fancy}%
+                    \global\@topnum\z@
+                    \@afterindentfalse
+                    \secdef\@chapter\@schapter}
+\makeatother
 \subfile{tex/1_Introduction}
 \subfile{tex/2_Background}
 \subfile{tex/3_Literature}
@@ -103,9 +142,8 @@ generous with time whenever I needed critical review of my work.
 \subfile{tex/6_Conclusion}
 
 \bibliographystyle{IEEEtran}
-\addcontentsline{toc}{section}{References}
 \bibliography{references}
-% \newpage
+\addcontentsline{toc}{chapter}{Bibliography}
 % \newpage
 % \appendix
 
